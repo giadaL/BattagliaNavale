@@ -12,521 +12,55 @@ import javax.swing.JButton;
 
 /**
  *
- * @author giada
+ * @author Giada
  */
 public class interfaccia extends javax.swing.JFrame {
 
-    /**
-     * Creates new form interfaccia
-     */
-    int acqua[][],miaAcqua [][],lMat, run, mosse, linguaggio, fineGioco, punteggio, numeroNavi, lMosse;
+    int [][] water, myWater;
+    int begin, mosse, linguaggio, fineGioco, scores, numeroNavi, lMosse,  conta;
     ArrayList click;
+ 
 
+    enum di {  //modalità di gioco
+        _5x5,
+        _8x8,
+        _10x10,
+    }
+
+    
     public interfaccia() {
         initComponents();
-        if(facile.isSelected()==true)
-        {
-            lMat=5;
-            acqua = new int [lMat][lMat];
-        }
-        else if(medio.isSelected()==true)
-        {
-            lMat=7;
-            acqua = new int [lMat][lMat];
-        }
-        else if(difficile.isSelected()==true)
-        {
-            lMat=10;
-            acqua = new int [lMat][lMat];
-        }
-        run = 0;
+        begin = 0;
         mosse = 0;
         linguaggio = 0;
         fineGioco = 0;
-        punteggio = 0;
+        scores = 0;
         numeroNavi = 0;
         lMosse = 0;
         click = new ArrayList();
-        acqua = new int[lMat][lMat];
-        miaAcqua = new int [lMat][lMat];
-        //proprietà componenti inziali
+        water = new int[10][10];
+        myWater = new int[10][10];
+        conta= 0;
+//proprietà componenti inziali
+        
         insert.setVisible(false);
-        if (facile.isSelected() == true) {
-            J.setVisible(false);
-            F.setVisible(false);
-            G.setVisible(false);
-            H.setVisible(false);
-            I.setVisible(false);
-            dieci.setVisible(false);
-            nove.setVisible(false);
-            otto.setVisible(false);
-            sette.setVisible(false);
-            sei.setVisible(false);
-            zero_cinque.setVisible(false);
-            zero_sei.setVisible(false);
-            zero_sette.setVisible(false);
-            zero_otto.setVisible(false);
-            zero_nove.setVisible(false);
-            uno_cinque.setVisible(false);
-            uno_sei.setVisible(false);
-            uno_sette.setVisible(false);
-            uno_otto.setVisible(false);
-            uno_nove.setVisible(false);
-            due_cinque.setVisible(false);
-            due_sei.setVisible(false);
-            due_sette.setVisible(false);
-            due_otto.setVisible(false);
-            due_nove.setVisible(false);
-            tre_cinque.setVisible(false);
-            tre_sei.setVisible(false);
-            tre_sette.setVisible(false);
-            tre_otto.setVisible(false);
-            tre_nove.setVisible(false);
-            quattro_cinque.setVisible(false);
-            quattro_sei.setVisible(false);
-            quattro_sette.setVisible(false);
-            quattro_otto.setVisible(false);
-            quattro_nove.setVisible(false);
-            cinque_zero.setVisible(false);
-            cinque_uno.setVisible(false);
-            cinque_due.setVisible(false);
-            cinque_tre.setVisible(false);
-            cinque_quattro.setVisible(false);
-            cinque_cinque.setVisible(false);
-            cinque_sei.setVisible(false);
-            cinque_sette.setVisible(false);
-            cinque_otto.setVisible(false);
-            cinque_nove.setVisible(false);
-            sei_zero.setVisible(false);
-            sei_uno.setVisible(false);
-            sei_due.setVisible(false);
-            sei_tre.setVisible(false);
-            sei_quattro.setVisible(false);
-            sei_cinque.setVisible(false);
-            sei_sei.setVisible(false);
-            sei_sette.setVisible(false);
-            sei_otto.setVisible(false);
-            sei_nove.setVisible(false);
-            sette_zero.setVisible(false);
-            sette_uno.setVisible(false);
-            sette_due.setVisible(false);
-            sette_tre.setVisible(false);
-            sette_quattro.setVisible(false);
-            sette_cinque.setVisible(false);
-            sette_sei.setVisible(false);
-            sette_sette.setVisible(false);
-            sette_otto.setVisible(false);
-            sette_nove.setVisible(false);
-            otto_zero.setVisible(false);
-            otto_uno.setVisible(false);
-            otto_due.setVisible(false);
-            otto_tre.setVisible(false);
-            otto_quattro.setVisible(false);
-            otto_cinque.setVisible(false);
-            otto_sei.setVisible(false);
-            otto_sette.setVisible(false);
-            otto_otto.setVisible(false);
-            otto_nove.setVisible(false);
-            nove_zero.setVisible(false);
-            nove_uno.setVisible(false);
-            nove_due.setVisible(false);
-            nove_tre.setVisible(false);
-            nove_quattro.setVisible(false);
-            nove_cinque.setVisible(false);
-            nove_sei.setVisible(false);
-            nove_sette.setVisible(false);
-            nove_otto.setVisible(false);
-            nove_nove.setVisible(false);
-
-            zero_zero.setEnabled(false);
-            zero_uno.setEnabled(false);
-            zero_due.setEnabled(false);
-            zero_tre.setEnabled(false);
-            zero_quattro.setEnabled(false);
-            zero_cinque.setEnabled(false);
-            uno_zero.setEnabled(false);
-            uno_uno.setEnabled(false);
-            uno_due.setEnabled(false);
-            uno_tre.setEnabled(false);
-            uno_quattro.setEnabled(false);
-            uno_cinque.setEnabled(false);
-            due_zero.setEnabled(false);
-            due_uno.setEnabled(false);
-            due_due.setEnabled(false);
-            due_tre.setEnabled(false);
-            due_quattro.setEnabled(false);
-            due_cinque.setEnabled(false);
-            tre_zero.setEnabled(false);
-            tre_uno.setEnabled(false);
-            tre_due.setEnabled(false);
-            tre_tre.setEnabled(false);
-            tre_quattro.setEnabled(false);
-            tre_cinque.setEnabled(false);
-            quattro_zero.setEnabled(false);
-            quattro_uno.setEnabled(false);
-            quattro_due.setEnabled(false);
-            quattro_tre.setEnabled(false);
-            quattro_quattro.setEnabled(false);
-            quattro_cinque.setEnabled(false);
-            cinque_zero.setEnabled(false);
-            cinque_uno.setEnabled(false);
-            cinque_due.setEnabled(false);
-            cinque_tre.setEnabled(false);
-            cinque_quattro.setEnabled(false);
-            cinque_cinque.setEnabled(false);
-
-            zero_zero.setBackground(Color.white);
-            zero_uno.setBackground(Color.white);
-            zero_due.setBackground(Color.white);
-            zero_tre.setBackground(Color.white);
-            zero_quattro.setBackground(Color.white);
-            uno_zero.setBackground(Color.white);
-            uno_uno.setBackground(Color.white);
-            uno_due.setBackground(Color.white);
-            uno_tre.setBackground(Color.white);
-            uno_quattro.setBackground(Color.white);
-            due_zero.setBackground(Color.white);
-            due_uno.setBackground(Color.white);
-            due_due.setBackground(Color.white);
-            due_tre.setBackground(Color.white);
-            due_quattro.setBackground(Color.white);
-            tre_zero.setBackground(Color.white);
-            tre_uno.setBackground(Color.white);
-            tre_due.setBackground(Color.white);
-            tre_tre.setBackground(Color.white);
-            tre_quattro.setBackground(Color.white);
-            quattro_zero.setBackground(Color.white);
-            quattro_uno.setBackground(Color.white);
-            quattro_due.setBackground(Color.white);
-            quattro_tre.setBackground(Color.white);
-            quattro_quattro.setBackground(Color.white);
-        }
-        if (solitario.isSelected()) {
-
-            zero_zero1.setEnabled(false);
-            zero_uno1.setEnabled(false);
-            zero_due1.setEnabled(false);
-            zero_tre1.setEnabled(false);
-            zero_quattro1.setEnabled(false);
-            uno_zero1.setEnabled(false);
-            uno_uno1.setEnabled(false);
-            uno_due1.setEnabled(false);
-            uno_tre1.setEnabled(false);
-            uno_quattro1.setEnabled(false);
-            due_zero1.setEnabled(false);
-            due_uno1.setEnabled(false);
-            due_due1.setEnabled(false);
-            due_tre1.setEnabled(false);
-            due_quattro1.setEnabled(false);
-            tre_zero1.setEnabled(false);
-            tre_uno1.setEnabled(false);
-            tre_due1.setEnabled(false);
-            tre_tre1.setEnabled(false);
-            tre_quattro1.setEnabled(false);
-            quattro_zero1.setEnabled(false);
-            quattro_uno1.setEnabled(false);
-            quattro_due1.setEnabled(false);
-            quattro_tre1.setEnabled(false);
-            quattro_quattro1.setEnabled(false);
-
-            zero_cinque1.setEnabled(false);
-            zero_sei1.setEnabled(false);
-            zero_sette1.setEnabled(false);
-            zero_otto1.setEnabled(false);
-            zero_nove1.setEnabled(false);
-            uno_cinque1.setEnabled(false);
-            uno_sei1.setEnabled(false);
-            uno_sette1.setEnabled(false);
-            uno_otto1.setEnabled(false);
-            uno_nove1.setEnabled(false);
-            due_cinque1.setEnabled(false);
-            due_sei1.setEnabled(false);
-            due_sette1.setEnabled(false);
-            due_otto1.setEnabled(false);
-            due_nove1.setEnabled(false);
-            tre_cinque1.setEnabled(false);
-            tre_sei1.setEnabled(false);
-            tre_sette1.setEnabled(false);
-            tre_otto1.setEnabled(false);
-            tre_nove1.setEnabled(false);
-            quattro_cinque1.setEnabled(false);
-            quattro_sei1.setEnabled(false);
-            quattro_sette1.setEnabled(false);
-            quattro_otto1.setEnabled(false);
-            quattro_nove1.setEnabled(false);
-            cinque_zero1.setEnabled(false);
-            cinque_uno1.setEnabled(false);
-            cinque_due1.setEnabled(false);
-            cinque_tre1.setEnabled(false);
-            cinque_quattro1.setEnabled(false);
-            cinque_cinque1.setEnabled(false);
-            cinque_sei1.setEnabled(false);
-            cinque_sette1.setEnabled(false);
-            cinque_otto1.setEnabled(false);
-            cinque_nove1.setEnabled(false);
-            sei_zero1.setEnabled(false);
-            sei_uno1.setEnabled(false);
-            sei_due1.setEnabled(false);
-            sei_tre1.setEnabled(false);
-            sei_quattro1.setEnabled(false);
-            sei_cinque1.setEnabled(false);
-            sei_sei1.setEnabled(false);
-            sei_sette1.setEnabled(false);
-            sei_otto1.setEnabled(false);
-            sei_nove1.setEnabled(false);
-            sette_zero1.setEnabled(false);
-            sette_uno1.setEnabled(false);
-            sette_due1.setEnabled(false);
-            sette_tre1.setEnabled(false);
-            sette_quattro1.setEnabled(false);
-            sette_cinque1.setEnabled(false);
-            sette_sei1.setEnabled(false);
-            sette_sette1.setEnabled(false);
-            sette_otto1.setEnabled(false);
-            sette_nove1.setEnabled(false);
-            otto_zero1.setEnabled(false);
-            otto_uno1.setEnabled(false);
-            otto_due1.setEnabled(false);
-            otto_tre1.setEnabled(false);
-            otto_quattro1.setEnabled(false);
-            otto_cinque1.setEnabled(false);
-            otto_sei1.setEnabled(false);
-            otto_sette1.setEnabled(false);
-            otto_otto1.setEnabled(false);
-            otto_nove1.setEnabled(false);
-            nove_zero1.setEnabled(false);
-            nove_uno1.setEnabled(false);
-            nove_due1.setEnabled(false);
-            nove_tre1.setEnabled(false);
-            nove_quattro1.setEnabled(false);
-            nove_cinque1.setEnabled(false);
-            nove_sei1.setEnabled(false);
-            nove_sette1.setEnabled(false);
-            nove_otto1.setEnabled(false);
-            nove_nove1.setEnabled(false);
-
-            zero_zero1.setVisible(false);
-            zero_uno1.setVisible(false);
-            zero_due1.setVisible(false);
-            zero_tre1.setVisible(false);
-            zero_quattro1.setVisible(false);
-            uno_zero1.setVisible(false);
-            uno_uno1.setVisible(false);
-            uno_due1.setVisible(false);
-            uno_tre1.setVisible(false);
-            uno_quattro1.setVisible(false);
-            due_zero1.setVisible(false);
-            due_uno1.setVisible(false);
-            due_due1.setVisible(false);
-            due_tre1.setVisible(false);
-            due_quattro1.setVisible(false);
-            tre_zero1.setVisible(false);
-            tre_uno1.setVisible(false);
-            tre_due1.setVisible(false);
-            tre_tre1.setVisible(false);
-            tre_quattro1.setVisible(false);
-            quattro_zero1.setVisible(false);
-            quattro_uno1.setVisible(false);
-            quattro_due1.setVisible(false);
-            quattro_tre1.setVisible(false);
-            quattro_quattro1.setVisible(false);
-
-            zero_cinque1.setVisible(false);
-            zero_sei1.setVisible(false);
-            zero_sette1.setVisible(false);
-            zero_otto1.setVisible(false);
-            zero_nove1.setVisible(false);
-            uno_cinque1.setVisible(false);
-            uno_sei1.setVisible(false);
-            uno_sette1.setVisible(false);
-            uno_otto1.setVisible(false);
-            uno_nove1.setVisible(false);
-            due_cinque1.setVisible(false);
-            due_sei1.setVisible(false);
-            due_sette1.setVisible(false);
-            due_otto1.setVisible(false);
-            due_nove1.setVisible(false);
-            tre_cinque1.setVisible(false);
-            tre_sei1.setVisible(false);
-            tre_sette1.setVisible(false);
-            tre_otto1.setVisible(false);
-            tre_nove1.setVisible(false);
-            quattro_cinque1.setVisible(false);
-            quattro_sei1.setVisible(false);
-            quattro_sette1.setVisible(false);
-            quattro_otto1.setVisible(false);
-            quattro_nove1.setVisible(false);
-            cinque_zero1.setVisible(false);
-            cinque_uno1.setVisible(false);
-            cinque_due1.setVisible(false);
-            cinque_tre1.setVisible(false);
-            cinque_quattro1.setVisible(false);
-            cinque_cinque1.setVisible(false);
-            cinque_sei1.setVisible(false);
-            cinque_sette1.setVisible(false);
-            cinque_otto1.setVisible(false);
-            cinque_nove1.setVisible(false);
-            sei_zero1.setVisible(false);
-            sei_uno1.setVisible(false);
-            sei_due1.setVisible(false);
-            sei_tre1.setVisible(false);
-            sei_quattro1.setVisible(false);
-            sei_cinque1.setVisible(false);
-            sei_sei1.setVisible(false);
-            sei_sette1.setVisible(false);
-            sei_otto1.setVisible(false);
-            sei_nove1.setVisible(false);
-            sette_zero1.setVisible(false);
-            sette_uno1.setVisible(false);
-            sette_due1.setVisible(false);
-            sette_tre1.setVisible(false);
-            sette_quattro1.setVisible(false);
-            sette_cinque1.setVisible(false);
-            sette_sei1.setVisible(false);
-            sette_sette1.setVisible(false);
-            sette_otto1.setVisible(false);
-            sette_nove1.setVisible(false);
-            otto_zero1.setVisible(false);
-            otto_uno1.setVisible(false);
-            otto_due1.setVisible(false);
-            otto_tre1.setVisible(false);
-            otto_quattro1.setVisible(false);
-            otto_cinque1.setVisible(false);
-            otto_sei1.setVisible(false);
-            otto_sette1.setVisible(false);
-            otto_otto1.setVisible(false);
-            otto_nove1.setVisible(false);
-            nove_zero1.setVisible(false);
-            nove_uno1.setVisible(false);
-            nove_due1.setVisible(false);
-            nove_tre1.setVisible(false);
-            nove_quattro1.setVisible(false);
-            nove_cinque1.setVisible(false);
-            nove_sei1.setVisible(false);
-            nove_sette1.setVisible(false);
-            nove_otto1.setVisible(false);
-            nove_nove1.setVisible(false);
-            A1.setVisible(false);
-            B1.setVisible(false);
-            C1.setVisible(false);
-            D1.setVisible(false);
-            E1.setVisible(false);
-            F1.setVisible(false);
-            G1.setVisible(false);
-            H1.setVisible(false);
-            I1.setVisible(false);
-            J1.setVisible(false);
-            _1.setVisible(false);
-            _2.setVisible(false);
-            _3.setVisible(false);
-            _4.setVisible(false);
-            _5.setVisible(false);
-            _6.setVisible(false);
-            _7.setVisible(false);
-            _8.setVisible(false);
-            _9.setVisible(false);
-            _10.setVisible(false);
-        } else {
-            J.setVisible(false);
-            F.setVisible(false);
-            G.setVisible(false);
-            H.setVisible(false);
-            I.setVisible(false);
-            dieci.setVisible(false);
-            nove.setVisible(false);
-            otto.setVisible(false);
-            sette.setVisible(false);
-            sei.setVisible(false);
-            zero_cinque.setVisible(false);
-            zero_sei.setVisible(false);
-            zero_sette.setVisible(false);
-            zero_otto.setVisible(false);
-            zero_nove.setVisible(false);
-            uno_cinque.setVisible(false);
-            uno_sei.setVisible(false);
-            uno_sette.setVisible(false);
-            uno_otto.setVisible(false);
-            uno_nove.setVisible(false);
-            due_cinque.setVisible(false);
-            due_sei.setVisible(false);
-            due_sette.setVisible(false);
-            due_otto.setVisible(false);
-            due_nove.setVisible(false);
-            tre_cinque.setVisible(false);
-            tre_sei.setVisible(false);
-            tre_sette.setVisible(false);
-            tre_otto.setVisible(false);
-            tre_nove.setVisible(false);
-            quattro_cinque.setVisible(false);
-            quattro_sei.setVisible(false);
-            quattro_sette.setVisible(false);
-            quattro_otto.setVisible(false);
-            quattro_nove.setVisible(false);
-            cinque_zero.setVisible(false);
-            cinque_uno.setVisible(false);
-            cinque_due.setVisible(false);
-            cinque_tre.setVisible(false);
-            cinque_quattro.setVisible(false);
-            cinque_cinque.setVisible(false);
-            cinque_sei.setVisible(false);
-            cinque_sette.setVisible(false);
-            cinque_otto.setVisible(false);
-            cinque_nove.setVisible(false);
-            sei_zero.setVisible(false);
-            sei_uno.setVisible(false);
-            sei_due.setVisible(false);
-            sei_tre.setVisible(false);
-            sei_quattro.setVisible(false);
-            sei_cinque.setVisible(false);
-            sei_sei.setVisible(false);
-            sei_sette.setVisible(false);
-            sei_otto.setVisible(false);
-            sei_nove.setVisible(false);
-            sette_zero.setVisible(false);
-            sette_uno.setVisible(false);
-            sette_due.setVisible(false);
-            sette_tre.setVisible(false);
-            sette_quattro.setVisible(false);
-            sette_cinque.setVisible(false);
-            sette_sei.setVisible(false);
-            sette_sette.setVisible(false);
-            sette_otto.setVisible(false);
-            sette_nove.setVisible(false);
-            otto_zero.setVisible(false);
-            otto_uno.setVisible(false);
-            otto_due.setVisible(false);
-            otto_tre.setVisible(false);
-            otto_quattro.setVisible(false);
-            otto_cinque.setVisible(false);
-            otto_sei.setVisible(false);
-            otto_sette.setVisible(false);
-            otto_otto.setVisible(false);
-            otto_nove.setVisible(false);
-            nove_zero.setVisible(false);
-            nove_uno.setVisible(false);
-            nove_due.setVisible(false);
-            nove_tre.setVisible(false);
-            nove_quattro.setVisible(false);
-            nove_cinque.setVisible(false);
-            nove_sei.setVisible(false);
-            nove_sette.setVisible(false);
-            nove_otto.setVisible(false);
-            nove_nove.setVisible(false);
-        }
+        win.setVisible(false);
+        jPanel2.setVisible(false);
+        setAll(di._10x10, false, false);
+        setAll(di._5x5, true, false);
+        ok.setVisible(false);
+          
     }
 
     /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
+     * This method is cabMatrice = new JButton [10][10];lled from within the
+     * constructor to initialize the form. WARNING: Do NOT modify this code. The
+     * content of this method is always regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        stop = new javax.swing.JButton();
-        start = new javax.swing.JButton();
-        testomosse = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -539,7 +73,7 @@ public class interfaccia extends javax.swing.JFrame {
         H = new javax.swing.JLabel();
         I = new javax.swing.JLabel();
         J = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        uno = new javax.swing.JLabel();
         zero_zero = new javax.swing.JButton();
         zero_uno = new javax.swing.JButton();
         zero_due = new javax.swing.JButton();
@@ -550,7 +84,7 @@ public class interfaccia extends javax.swing.JFrame {
         zero_sette = new javax.swing.JButton();
         zero_otto = new javax.swing.JButton();
         zero_nove = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        due = new javax.swing.JLabel();
         uno_zero = new javax.swing.JButton();
         uno_uno = new javax.swing.JButton();
         uno_due = new javax.swing.JButton();
@@ -649,9 +183,6 @@ public class interfaccia extends javax.swing.JFrame {
         nove_sette = new javax.swing.JButton();
         nove_otto = new javax.swing.JButton();
         nove_nove = new javax.swing.JButton();
-        Lmosse = new javax.swing.JLabel();
-        punti = new javax.swing.JLabel();
-        testoPunti = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         A1 = new javax.swing.JLabel();
@@ -769,90 +300,96 @@ public class interfaccia extends javax.swing.JFrame {
         nove_due1 = new javax.swing.JButton();
         nove_tre1 = new javax.swing.JButton();
         nove_quattro1 = new javax.swing.JButton();
-        nove_cinque1 = new javax.swing.JButton();
-        nove_sei1 = new javax.swing.JButton();
-        nove_sette1 = new javax.swing.JButton();
-        nove_otto1 = new javax.swing.JButton();
-        nove_nove1 = new javax.swing.JButton();
+        nine_five1 = new javax.swing.JButton();
+        nine_six1 = new javax.swing.JButton();
+        nine_seven1 = new javax.swing.JButton();
+        nine_eight1 = new javax.swing.JButton();
+        nine_nine1 = new javax.swing.JButton();
         insert = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        win = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        start = new javax.swing.JButton();
+        stop = new javax.swing.JButton();
+        Lmosse = new javax.swing.JLabel();
+        testomosse = new javax.swing.JLabel();
+        punti = new javax.swing.JLabel();
+        testoPunti = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        ok = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         opzioni = new javax.swing.JMenu();
-        limiteMosse = new javax.swing.JCheckBoxMenuItem();
+        lingua = new javax.swing.JMenu();
+        italiano = new javax.swing.JMenuItem();
+        English = new javax.swing.JMenuItem();
         difficolta = new javax.swing.JMenu();
         facile = new javax.swing.JRadioButtonMenuItem();
         medio = new javax.swing.JRadioButtonMenuItem();
         difficile = new javax.swing.JRadioButtonMenuItem();
-        lingua = new javax.swing.JMenu();
-        italiano = new javax.swing.JMenuItem();
-        English = new javax.swing.JMenuItem();
+        limiteMosse = new javax.swing.JCheckBoxMenuItem();
         solitario = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Una PseudoBattaglia Navale");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        stop.setBackground(new java.awt.Color(2, 123, 253));
-        stop.setText("ferma");
-        stop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stopActionPerformed(evt);
-            }
-        });
-
-        start.setBackground(new java.awt.Color(0, 152, 255));
-        start.setForeground(new java.awt.Color(1, 1, 1));
-        start.setText("avvia");
-        start.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startActionPerformed(evt);
-            }
-        });
-
-        testomosse.setText("0");
-
+        jPanel1.setBackground(new java.awt.Color(1, 1, 1));
+        jPanel1.setForeground(new java.awt.Color(255, 250, 250));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setLayout(new java.awt.GridLayout(11, 11, -4, -4));
+        jPanel1.setPreferredSize(new java.awt.Dimension(400, 400));
+        jPanel1.setLayout(new java.awt.GridLayout(11, 11, 2, 2));
 
         jLabel8.setText(" ");
         jPanel1.add(jLabel8);
 
-        jLabel1.setText("        A");
+        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setText("    A");
         jPanel1.add(jLabel1);
 
-        jLabel2.setText("       B");
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setText("    B");
         jPanel1.add(jLabel2);
 
-        jLabel3.setText("       C");
+        jLabel3.setForeground(new java.awt.Color(255, 245, 245));
+        jLabel3.setText("    C");
         jPanel1.add(jLabel3);
 
-        jLabel4.setText("       D");
+        jLabel4.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel4.setText("    D");
         jPanel1.add(jLabel4);
 
-        jLabel5.setText("       E");
+        jLabel5.setForeground(new java.awt.Color(255, 245, 245));
+        jLabel5.setText("    E");
         jPanel1.add(jLabel5);
 
-        F.setText("        F");
+        F.setForeground(new java.awt.Color(254, 254, 254));
+        F.setText("     F");
         jPanel1.add(F);
 
-        G.setText("       G");
+        G.setForeground(new java.awt.Color(254, 254, 254));
+        G.setText("    G");
         jPanel1.add(G);
 
-        H.setText("      H");
+        H.setForeground(new java.awt.Color(254, 247, 247));
+        H.setText("    H");
         jPanel1.add(H);
 
-        I.setText("        I");
+        I.setForeground(new java.awt.Color(254, 254, 254));
+        I.setText("    I");
         jPanel1.add(I);
 
-        J.setText("       J");
+        J.setForeground(new java.awt.Color(254, 254, 254));
+        J.setText("    J");
         jPanel1.add(J);
 
-        jLabel6.setText("1");
-        jPanel1.add(jLabel6);
+        uno.setForeground(new java.awt.Color(254, 247, 247));
+        uno.setText("1");
+        jPanel1.add(uno);
 
         zero_zero.setBackground(new java.awt.Color(247, 254, 254));
-        zero_zero.setForeground(new java.awt.Color(209, 67, 67));
         zero_zero.setText(" ");
-        zero_zero.setBorderPainted(false);
+        zero_zero.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(254, 254, 254), null));
         zero_zero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         zero_zero.setEnabled(false);
         zero_zero.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -908,6 +445,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(zero_quattro);
 
         zero_cinque.setText(" ");
+        zero_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         zero_cinque.setEnabled(false);
         zero_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -917,6 +455,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(zero_cinque);
 
         zero_sei.setText(" ");
+        zero_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         zero_sei.setEnabled(false);
         zero_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -926,6 +465,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(zero_sei);
 
         zero_sette.setText(" ");
+        zero_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         zero_sette.setEnabled(false);
         zero_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -935,6 +475,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(zero_sette);
 
         zero_otto.setText(" ");
+        zero_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         zero_otto.setEnabled(false);
         zero_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -944,6 +485,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(zero_otto);
 
         zero_nove.setText(" ");
+        zero_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         zero_nove.setEnabled(false);
         zero_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -952,8 +494,9 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(zero_nove);
 
-        jLabel7.setText("2");
-        jPanel1.add(jLabel7);
+        due.setForeground(new java.awt.Color(254, 247, 247));
+        due.setText("2");
+        jPanel1.add(due);
 
         uno_zero.setText(" ");
         uno_zero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1006,6 +549,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(uno_quattro);
 
         uno_cinque.setText(" ");
+        uno_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uno_cinque.setEnabled(false);
         uno_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1015,6 +559,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(uno_cinque);
 
         uno_sei.setText(" ");
+        uno_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uno_sei.setEnabled(false);
         uno_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1024,6 +569,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(uno_sei);
 
         uno_sette.setText(" ");
+        uno_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uno_sette.setEnabled(false);
         uno_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1033,6 +579,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(uno_sette);
 
         uno_otto.setText(" ");
+        uno_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uno_otto.setEnabled(false);
         uno_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1042,6 +589,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(uno_otto);
 
         uno_nove.setText(" ");
+        uno_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uno_nove.setEnabled(false);
         uno_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1050,6 +598,7 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(uno_nove);
 
+        tre.setForeground(new java.awt.Color(253, 251, 251));
         tre.setText("3");
         jPanel1.add(tre);
 
@@ -1104,6 +653,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(due_quattro);
 
         due_cinque.setText(" ");
+        due_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         due_cinque.setEnabled(false);
         due_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1113,6 +663,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(due_cinque);
 
         due_sei.setText(" ");
+        due_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         due_sei.setEnabled(false);
         due_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1122,6 +673,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(due_sei);
 
         due_sette.setText(" ");
+        due_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         due_sette.setEnabled(false);
         due_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1131,6 +683,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(due_sette);
 
         due_otto.setText(" ");
+        due_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         due_otto.setEnabled(false);
         due_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1140,6 +693,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(due_otto);
 
         due_nove.setText(" ");
+        due_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         due_nove.setEnabled(false);
         due_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1148,6 +702,7 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(due_nove);
 
+        quattro.setForeground(new java.awt.Color(255, 250, 250));
         quattro.setText("4");
         jPanel1.add(quattro);
 
@@ -1202,6 +757,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(tre_quattro);
 
         tre_cinque.setText(" ");
+        tre_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tre_cinque.setEnabled(false);
         tre_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1211,6 +767,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(tre_cinque);
 
         tre_sei.setText(" ");
+        tre_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tre_sei.setEnabled(false);
         tre_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1220,6 +777,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(tre_sei);
 
         tre_sette.setText(" ");
+        tre_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tre_sette.setEnabled(false);
         tre_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1229,6 +787,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(tre_sette);
 
         tre_otto.setText(" ");
+        tre_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tre_otto.setEnabled(false);
         tre_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1238,6 +797,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(tre_otto);
 
         tre_nove.setText(" ");
+        tre_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tre_nove.setEnabled(false);
         tre_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1246,6 +806,7 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(tre_nove);
 
+        cinque.setForeground(new java.awt.Color(254, 254, 254));
         cinque.setText("5");
         jPanel1.add(cinque);
 
@@ -1300,6 +861,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(quattro_quattro);
 
         quattro_cinque.setText(" ");
+        quattro_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         quattro_cinque.setEnabled(false);
         quattro_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1309,6 +871,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(quattro_cinque);
 
         quattro_sei.setText(" ");
+        quattro_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         quattro_sei.setEnabled(false);
         quattro_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1318,6 +881,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(quattro_sei);
 
         quattro_sette.setText(" ");
+        quattro_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         quattro_sette.setEnabled(false);
         quattro_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1327,6 +891,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(quattro_sette);
 
         quattro_otto.setText(" ");
+        quattro_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         quattro_otto.setEnabled(false);
         quattro_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1336,6 +901,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(quattro_otto);
 
         quattro_nove.setText(" ");
+        quattro_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         quattro_nove.setEnabled(false);
         quattro_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1344,10 +910,12 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(quattro_nove);
 
+        sei.setForeground(new java.awt.Color(254, 254, 254));
         sei.setText("6");
         jPanel1.add(sei);
 
         cinque_zero.setText(" ");
+        cinque_zero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_zero.setEnabled(false);
         cinque_zero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1357,6 +925,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_zero);
 
         cinque_uno.setText(" ");
+        cinque_uno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_uno.setEnabled(false);
         cinque_uno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1366,6 +935,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_uno);
 
         cinque_due.setText(" ");
+        cinque_due.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_due.setEnabled(false);
         cinque_due.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1375,6 +945,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_due);
 
         cinque_tre.setText(" ");
+        cinque_tre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_tre.setEnabled(false);
         cinque_tre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1384,6 +955,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_tre);
 
         cinque_quattro.setText(" ");
+        cinque_quattro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_quattro.setEnabled(false);
         cinque_quattro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1393,6 +965,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_quattro);
 
         cinque_cinque.setText(" ");
+        cinque_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_cinque.setEnabled(false);
         cinque_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1402,6 +975,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_cinque);
 
         cinque_sei.setText(" ");
+        cinque_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_sei.setEnabled(false);
         cinque_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1411,6 +985,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_sei);
 
         cinque_sette.setText(" ");
+        cinque_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_sette.setEnabled(false);
         cinque_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1420,6 +995,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_sette);
 
         cinque_otto.setText(" ");
+        cinque_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_otto.setEnabled(false);
         cinque_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1429,6 +1005,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(cinque_otto);
 
         cinque_nove.setText(" ");
+        cinque_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cinque_nove.setEnabled(false);
         cinque_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1437,10 +1014,12 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(cinque_nove);
 
+        sette.setForeground(new java.awt.Color(254, 254, 254));
         sette.setText("7");
         jPanel1.add(sette);
 
         sei_zero.setText(" ");
+        sei_zero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_zero.setEnabled(false);
         sei_zero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1450,6 +1029,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_zero);
 
         sei_uno.setText(" ");
+        sei_uno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_uno.setEnabled(false);
         sei_uno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1459,6 +1039,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_uno);
 
         sei_due.setText(" ");
+        sei_due.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_due.setEnabled(false);
         sei_due.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1468,6 +1049,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_due);
 
         sei_tre.setText(" ");
+        sei_tre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_tre.setEnabled(false);
         sei_tre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1477,6 +1059,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_tre);
 
         sei_quattro.setText(" ");
+        sei_quattro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_quattro.setEnabled(false);
         sei_quattro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1486,6 +1069,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_quattro);
 
         sei_cinque.setText(" ");
+        sei_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_cinque.setEnabled(false);
         sei_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1495,6 +1079,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_cinque);
 
         sei_sei.setText(" ");
+        sei_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_sei.setEnabled(false);
         sei_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1504,6 +1089,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_sei);
 
         sei_sette.setText(" ");
+        sei_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_sette.setEnabled(false);
         sei_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1513,6 +1099,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sei_sette);
 
         sei_otto.setText(" ");
+        sei_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_otto.setEnabled(false);
         sei_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1521,6 +1108,7 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(sei_otto);
 
+        sei_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sei_nove.setEnabled(false);
         sei_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1529,10 +1117,12 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(sei_nove);
 
+        otto.setForeground(new java.awt.Color(254, 254, 254));
         otto.setText("8");
         jPanel1.add(otto);
 
         sette_zero.setText(" ");
+        sette_zero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_zero.setEnabled(false);
         sette_zero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1542,6 +1132,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_zero);
 
         sette_uno.setText(" ");
+        sette_uno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_uno.setEnabled(false);
         sette_uno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1551,6 +1142,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_uno);
 
         sette_due.setText(" ");
+        sette_due.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_due.setEnabled(false);
         sette_due.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1560,6 +1152,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_due);
 
         sette_tre.setText(" ");
+        sette_tre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_tre.setEnabled(false);
         sette_tre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1569,6 +1162,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_tre);
 
         sette_quattro.setText(" ");
+        sette_quattro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_quattro.setEnabled(false);
         sette_quattro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1578,6 +1172,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_quattro);
 
         sette_cinque.setText(" ");
+        sette_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_cinque.setEnabled(false);
         sette_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1587,6 +1182,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_cinque);
 
         sette_sei.setText(" ");
+        sette_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_sei.setEnabled(false);
         sette_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1596,6 +1192,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_sei);
 
         sette_sette.setText(" ");
+        sette_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_sette.setEnabled(false);
         sette_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1605,6 +1202,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_sette);
 
         sette_otto.setText(" ");
+        sette_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_otto.setEnabled(false);
         sette_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1614,6 +1212,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(sette_otto);
 
         sette_nove.setText(" ");
+        sette_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sette_nove.setEnabled(false);
         sette_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1622,10 +1221,12 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(sette_nove);
 
+        nove.setForeground(new java.awt.Color(254, 254, 254));
         nove.setText("9");
         jPanel1.add(nove);
 
         otto_zero.setText(" ");
+        otto_zero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_zero.setEnabled(false);
         otto_zero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1635,6 +1236,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_zero);
 
         otto_uno.setText(" ");
+        otto_uno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_uno.setEnabled(false);
         otto_uno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1644,6 +1246,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_uno);
 
         otto_due.setText(" ");
+        otto_due.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_due.setEnabled(false);
         otto_due.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1653,6 +1256,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_due);
 
         otto_tre.setText(" ");
+        otto_tre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_tre.setEnabled(false);
         otto_tre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1662,6 +1266,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_tre);
 
         otto_quattro.setText(" ");
+        otto_quattro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_quattro.setEnabled(false);
         otto_quattro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1671,6 +1276,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_quattro);
 
         otto_cinque.setText(" ");
+        otto_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_cinque.setEnabled(false);
         otto_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1680,6 +1286,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_cinque);
 
         otto_sei.setText(" ");
+        otto_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_sei.setEnabled(false);
         otto_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1689,6 +1296,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_sei);
 
         otto_sette.setText(" ");
+        otto_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_sette.setEnabled(false);
         otto_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1698,6 +1306,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_sette);
 
         otto_otto.setText(" ");
+        otto_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_otto.setEnabled(false);
         otto_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1707,6 +1316,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(otto_otto);
 
         otto_nove.setText(" ");
+        otto_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         otto_nove.setEnabled(false);
         otto_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1715,10 +1325,12 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(otto_nove);
 
+        dieci.setForeground(new java.awt.Color(254, 254, 254));
         dieci.setText("10");
         jPanel1.add(dieci);
 
         nove_zero.setText(" ");
+        nove_zero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_zero.setEnabled(false);
         nove_zero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1728,6 +1340,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_zero);
 
         nove_uno.setText(" ");
+        nove_uno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_uno.setEnabled(false);
         nove_uno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1737,6 +1350,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_uno);
 
         nove_due.setText(" ");
+        nove_due.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_due.setEnabled(false);
         nove_due.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1746,6 +1360,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_due);
 
         nove_tre.setText(" ");
+        nove_tre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_tre.setEnabled(false);
         nove_tre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1755,6 +1370,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_tre);
 
         nove_quattro.setText(" ");
+        nove_quattro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_quattro.setEnabled(false);
         nove_quattro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1764,6 +1380,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_quattro);
 
         nove_cinque.setText(" ");
+        nove_cinque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_cinque.setEnabled(false);
         nove_cinque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1773,6 +1390,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_cinque);
 
         nove_sei.setText(" ");
+        nove_sei.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_sei.setEnabled(false);
         nove_sei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1782,6 +1400,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_sei);
 
         nove_sette.setText(" ");
+        nove_sette.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_sette.setEnabled(false);
         nove_sette.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1791,6 +1410,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_sette);
 
         nove_otto.setText(" ");
+        nove_otto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_otto.setEnabled(false);
         nove_otto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1800,6 +1420,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel1.add(nove_otto);
 
         nove_nove.setText(" ");
+        nove_nove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nove_nove.setEnabled(false);
         nove_nove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1808,56 +1429,66 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel1.add(nove_nove);
 
-        Lmosse.setText("mosse:");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 58, 410, 400));
 
-        punti.setText("punti:");
-
-        testoPunti.setText("0");
-
+        jPanel2.setBackground(new java.awt.Color(1, 1, 1));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.setLayout(new java.awt.GridLayout(11, 11, -4, -4));
+        jPanel2.setLayout(new java.awt.GridLayout(11, 11, 2, 2));
 
         jLabel9.setText(" ");
         jPanel2.add(jLabel9);
 
+        A1.setForeground(new java.awt.Color(254, 254, 254));
         A1.setText("        A");
         jPanel2.add(A1);
 
+        B1.setForeground(new java.awt.Color(254, 254, 254));
         B1.setText("       B");
         jPanel2.add(B1);
 
+        C1.setForeground(new java.awt.Color(254, 254, 254));
         C1.setText("       C");
         jPanel2.add(C1);
 
+        D1.setForeground(new java.awt.Color(254, 254, 254));
         D1.setText("       D");
         jPanel2.add(D1);
 
+        E1.setForeground(new java.awt.Color(254, 254, 254));
         E1.setText("       E");
         jPanel2.add(E1);
 
+        F1.setForeground(new java.awt.Color(254, 254, 254));
         F1.setText("        F");
         jPanel2.add(F1);
 
+        G1.setForeground(new java.awt.Color(254, 254, 254));
         G1.setText("       G");
         jPanel2.add(G1);
 
+        H1.setForeground(new java.awt.Color(254, 254, 254));
         H1.setText("      H");
         jPanel2.add(H1);
 
+        I1.setForeground(new java.awt.Color(254, 254, 254));
         I1.setText("        I");
         jPanel2.add(I1);
 
+        J1.setForeground(new java.awt.Color(254, 254, 254));
         J1.setText("       J");
         jPanel2.add(J1);
 
+        _1.setBackground(new java.awt.Color(254, 254, 254));
+        _1.setForeground(new java.awt.Color(254, 254, 254));
         _1.setText("1");
         jPanel2.add(_1);
 
         zero_zero1.setBackground(new java.awt.Color(247, 254, 254));
         zero_zero1.setForeground(new java.awt.Color(209, 67, 67));
         zero_zero1.setText(" ");
+        zero_zero1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         zero_zero1.setBorderPainted(false);
-        zero_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        zero_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_zero1.setEnabled(false);
         zero_zero1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -1872,7 +1503,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(zero_zero1);
 
         zero_uno1.setText(" ");
-        zero_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        zero_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_uno1.setEnabled(false);
         zero_uno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1882,7 +1513,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(zero_uno1);
 
         zero_due1.setText(" ");
-        zero_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        zero_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_due1.setEnabled(false);
         zero_due1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1892,7 +1523,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(zero_due1);
 
         zero_tre1.setText(" ");
-        zero_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        zero_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_tre1.setEnabled(false);
         zero_tre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1902,7 +1533,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(zero_tre1);
 
         zero_quattro1.setText(" ");
-        zero_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        zero_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_quattro1.setEnabled(false);
         zero_quattro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1912,6 +1543,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(zero_quattro1);
 
         zero_cinque1.setText(" ");
+        zero_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_cinque1.setEnabled(false);
         zero_cinque1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1921,18 +1553,22 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(zero_cinque1);
 
         zero_sei1.setText(" ");
+        zero_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_sei1.setEnabled(false);
         jPanel2.add(zero_sei1);
 
         zero_sette1.setText(" ");
+        zero_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_sette1.setEnabled(false);
         jPanel2.add(zero_sette1);
 
         zero_otto1.setText(" ");
+        zero_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_otto1.setEnabled(false);
         jPanel2.add(zero_otto1);
 
         zero_nove1.setText(" ");
+        zero_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         zero_nove1.setEnabled(false);
         zero_nove1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1941,11 +1577,12 @@ public class interfaccia extends javax.swing.JFrame {
         });
         jPanel2.add(zero_nove1);
 
+        _2.setForeground(new java.awt.Color(254, 254, 254));
         _2.setText("2");
         jPanel2.add(_2);
 
         uno_zero1.setText(" ");
-        uno_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uno_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_zero1.setEnabled(false);
         uno_zero1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1955,7 +1592,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(uno_zero1);
 
         uno_uno1.setText(" ");
-        uno_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uno_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_uno1.setEnabled(false);
         uno_uno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1965,7 +1602,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(uno_uno1);
 
         uno_due1.setText(" ");
-        uno_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uno_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_due1.setEnabled(false);
         uno_due1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1975,7 +1612,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(uno_due1);
 
         uno_tre1.setText(" ");
-        uno_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uno_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_tre1.setEnabled(false);
         uno_tre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1985,7 +1622,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(uno_tre1);
 
         uno_quattro1.setText(" ");
-        uno_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uno_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_quattro1.setEnabled(false);
         uno_quattro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1995,6 +1632,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(uno_quattro1);
 
         uno_cinque1.setText(" ");
+        uno_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_cinque1.setEnabled(false);
         uno_cinque1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2004,26 +1642,31 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(uno_cinque1);
 
         uno_sei1.setText(" ");
+        uno_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_sei1.setEnabled(false);
         jPanel2.add(uno_sei1);
 
         uno_sette1.setText(" ");
+        uno_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_sette1.setEnabled(false);
         jPanel2.add(uno_sette1);
 
         uno_otto1.setText(" ");
+        uno_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_otto1.setEnabled(false);
         jPanel2.add(uno_otto1);
 
         uno_nove1.setText(" ");
+        uno_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         uno_nove1.setEnabled(false);
         jPanel2.add(uno_nove1);
 
+        _3.setForeground(new java.awt.Color(254, 254, 254));
         _3.setText("3");
         jPanel2.add(_3);
 
         due_zero1.setText(" ");
-        due_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        due_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_zero1.setEnabled(false);
         due_zero1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2033,7 +1676,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(due_zero1);
 
         due_uno1.setText(" ");
-        due_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        due_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_uno1.setEnabled(false);
         due_uno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2043,7 +1686,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(due_uno1);
 
         due_due1.setText(" ");
-        due_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        due_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_due1.setEnabled(false);
         due_due1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2053,7 +1696,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(due_due1);
 
         due_tre1.setText(" ");
-        due_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        due_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_tre1.setEnabled(false);
         due_tre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2063,7 +1706,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(due_tre1);
 
         due_quattro1.setText(" ");
-        due_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        due_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_quattro1.setEnabled(false);
         due_quattro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2073,6 +1716,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(due_quattro1);
 
         due_cinque1.setText(" ");
+        due_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_cinque1.setEnabled(false);
         due_cinque1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2082,26 +1726,31 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(due_cinque1);
 
         due_sei1.setText(" ");
+        due_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_sei1.setEnabled(false);
         jPanel2.add(due_sei1);
 
         due_sette1.setText(" ");
+        due_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_sette1.setEnabled(false);
         jPanel2.add(due_sette1);
 
         due_otto1.setText(" ");
+        due_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_otto1.setEnabled(false);
         jPanel2.add(due_otto1);
 
         due_nove1.setText(" ");
+        due_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         due_nove1.setEnabled(false);
         jPanel2.add(due_nove1);
 
+        _4.setForeground(new java.awt.Color(254, 254, 254));
         _4.setText("4");
         jPanel2.add(_4);
 
         tre_zero1.setText(" ");
-        tre_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tre_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_zero1.setEnabled(false);
         tre_zero1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2111,7 +1760,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(tre_zero1);
 
         tre_uno1.setText(" ");
-        tre_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tre_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_uno1.setEnabled(false);
         tre_uno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2121,7 +1770,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(tre_uno1);
 
         tre_due1.setText(" ");
-        tre_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tre_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_due1.setEnabled(false);
         tre_due1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2131,7 +1780,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(tre_due1);
 
         tre_tre1.setText(" ");
-        tre_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tre_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_tre1.setEnabled(false);
         tre_tre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2141,7 +1790,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(tre_tre1);
 
         tre_quattro1.setText(" ");
-        tre_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tre_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_quattro1.setEnabled(false);
         tre_quattro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2151,30 +1800,36 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(tre_quattro1);
 
         tre_cinque1.setText(" ");
+        tre_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_cinque1.setEnabled(false);
         jPanel2.add(tre_cinque1);
 
         tre_sei1.setText(" ");
+        tre_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_sei1.setEnabled(false);
         jPanel2.add(tre_sei1);
 
         tre_sette1.setText(" ");
+        tre_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_sette1.setEnabled(false);
         jPanel2.add(tre_sette1);
 
         tre_otto1.setText(" ");
+        tre_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_otto1.setEnabled(false);
         jPanel2.add(tre_otto1);
 
         tre_nove1.setText(" ");
+        tre_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         tre_nove1.setEnabled(false);
         jPanel2.add(tre_nove1);
 
+        _5.setForeground(new java.awt.Color(254, 254, 254));
         _5.setText("5");
         jPanel2.add(_5);
 
         quattro_zero1.setText(" ");
-        quattro_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quattro_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_zero1.setEnabled(false);
         quattro_zero1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2184,7 +1839,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(quattro_zero1);
 
         quattro_uno1.setText(" ");
-        quattro_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quattro_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_uno1.setEnabled(false);
         quattro_uno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2194,7 +1849,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(quattro_uno1);
 
         quattro_due1.setText(" ");
-        quattro_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quattro_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_due1.setEnabled(false);
         quattro_due1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2204,7 +1859,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(quattro_due1);
 
         quattro_tre1.setText(" ");
-        quattro_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quattro_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_tre1.setEnabled(false);
         quattro_tre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2214,7 +1869,7 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(quattro_tre1);
 
         quattro_quattro1.setText(" ");
-        quattro_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quattro_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_quattro1.setEnabled(false);
         quattro_quattro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2224,243 +1879,305 @@ public class interfaccia extends javax.swing.JFrame {
         jPanel2.add(quattro_quattro1);
 
         quattro_cinque1.setText(" ");
+        quattro_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_cinque1.setEnabled(false);
         jPanel2.add(quattro_cinque1);
 
         quattro_sei1.setText(" ");
+        quattro_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_sei1.setEnabled(false);
         jPanel2.add(quattro_sei1);
 
         quattro_sette1.setText(" ");
+        quattro_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_sette1.setEnabled(false);
         jPanel2.add(quattro_sette1);
 
         quattro_otto1.setText(" ");
+        quattro_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_otto1.setEnabled(false);
         jPanel2.add(quattro_otto1);
 
         quattro_nove1.setText(" ");
+        quattro_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         quattro_nove1.setEnabled(false);
         jPanel2.add(quattro_nove1);
 
+        _6.setForeground(new java.awt.Color(254, 254, 254));
         _6.setText("6");
         jPanel2.add(_6);
 
         cinque_zero1.setText(" ");
+        cinque_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_zero1.setEnabled(false);
         jPanel2.add(cinque_zero1);
 
         cinque_uno1.setText(" ");
+        cinque_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_uno1.setEnabled(false);
         jPanel2.add(cinque_uno1);
 
         cinque_due1.setText(" ");
+        cinque_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_due1.setEnabled(false);
         jPanel2.add(cinque_due1);
 
         cinque_tre1.setText(" ");
+        cinque_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_tre1.setEnabled(false);
         jPanel2.add(cinque_tre1);
 
         cinque_quattro1.setText(" ");
+        cinque_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_quattro1.setEnabled(false);
         jPanel2.add(cinque_quattro1);
 
         cinque_cinque1.setText(" ");
+        cinque_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_cinque1.setEnabled(false);
         jPanel2.add(cinque_cinque1);
 
         cinque_sei1.setText(" ");
+        cinque_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_sei1.setEnabled(false);
         jPanel2.add(cinque_sei1);
 
         cinque_sette1.setText(" ");
+        cinque_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_sette1.setEnabled(false);
         jPanel2.add(cinque_sette1);
 
         cinque_otto1.setText(" ");
+        cinque_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_otto1.setEnabled(false);
         jPanel2.add(cinque_otto1);
 
         cinque_nove1.setText(" ");
+        cinque_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         cinque_nove1.setEnabled(false);
         jPanel2.add(cinque_nove1);
 
+        _7.setForeground(new java.awt.Color(254, 254, 254));
         _7.setText("7");
         jPanel2.add(_7);
 
         sei_zero1.setText(" ");
+        sei_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_zero1.setEnabled(false);
         jPanel2.add(sei_zero1);
 
         sei_uno1.setText(" ");
+        sei_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_uno1.setEnabled(false);
         jPanel2.add(sei_uno1);
 
         sei_due1.setText(" ");
+        sei_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_due1.setEnabled(false);
         jPanel2.add(sei_due1);
 
         sei_tre1.setText(" ");
+        sei_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_tre1.setEnabled(false);
         jPanel2.add(sei_tre1);
 
         sei_quattro1.setText(" ");
+        sei_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_quattro1.setEnabled(false);
         jPanel2.add(sei_quattro1);
 
         sei_cinque1.setText(" ");
+        sei_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_cinque1.setEnabled(false);
         jPanel2.add(sei_cinque1);
 
         sei_sei1.setText(" ");
+        sei_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_sei1.setEnabled(false);
         jPanel2.add(sei_sei1);
 
         sei_sette1.setText(" ");
+        sei_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_sette1.setEnabled(false);
         jPanel2.add(sei_sette1);
 
         sei_otto1.setText(" ");
+        sei_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_otto1.setEnabled(false);
         jPanel2.add(sei_otto1);
 
+        sei_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sei_nove1.setEnabled(false);
         jPanel2.add(sei_nove1);
 
+        _8.setForeground(new java.awt.Color(254, 254, 254));
         _8.setText("8");
         jPanel2.add(_8);
 
         sette_zero1.setText(" ");
+        sette_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_zero1.setEnabled(false);
         jPanel2.add(sette_zero1);
 
         sette_uno1.setText(" ");
+        sette_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_uno1.setEnabled(false);
         jPanel2.add(sette_uno1);
 
         sette_due1.setText(" ");
+        sette_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_due1.setEnabled(false);
         jPanel2.add(sette_due1);
 
         sette_tre1.setText(" ");
+        sette_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_tre1.setEnabled(false);
         jPanel2.add(sette_tre1);
 
         sette_quattro1.setText(" ");
+        sette_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_quattro1.setEnabled(false);
         jPanel2.add(sette_quattro1);
 
         sette_cinque1.setText(" ");
+        sette_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_cinque1.setEnabled(false);
         jPanel2.add(sette_cinque1);
 
         sette_sei1.setText(" ");
+        sette_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_sei1.setEnabled(false);
         jPanel2.add(sette_sei1);
 
         sette_sette1.setText(" ");
+        sette_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_sette1.setEnabled(false);
         jPanel2.add(sette_sette1);
 
         sette_otto1.setText(" ");
+        sette_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_otto1.setEnabled(false);
         jPanel2.add(sette_otto1);
 
         sette_nove1.setText(" ");
+        sette_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         sette_nove1.setEnabled(false);
         jPanel2.add(sette_nove1);
 
+        _9.setForeground(new java.awt.Color(254, 254, 254));
         _9.setText("9");
         jPanel2.add(_9);
 
         otto_zero1.setText(" ");
+        otto_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_zero1.setEnabled(false);
         jPanel2.add(otto_zero1);
 
         otto_uno1.setText(" ");
+        otto_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_uno1.setEnabled(false);
         jPanel2.add(otto_uno1);
 
         otto_due1.setText(" ");
+        otto_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_due1.setEnabled(false);
         jPanel2.add(otto_due1);
 
         otto_tre1.setText(" ");
+        otto_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_tre1.setEnabled(false);
         jPanel2.add(otto_tre1);
 
         otto_quattro1.setText(" ");
+        otto_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_quattro1.setEnabled(false);
         jPanel2.add(otto_quattro1);
 
         otto_cinque1.setText(" ");
+        otto_cinque1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_cinque1.setEnabled(false);
         jPanel2.add(otto_cinque1);
 
         otto_sei1.setText(" ");
+        otto_sei1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_sei1.setEnabled(false);
         jPanel2.add(otto_sei1);
 
         otto_sette1.setText(" ");
+        otto_sette1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_sette1.setEnabled(false);
         jPanel2.add(otto_sette1);
 
         otto_otto1.setText(" ");
+        otto_otto1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_otto1.setEnabled(false);
         jPanel2.add(otto_otto1);
 
         otto_nove1.setText(" ");
+        otto_nove1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         otto_nove1.setEnabled(false);
         jPanel2.add(otto_nove1);
 
+        _10.setForeground(new java.awt.Color(254, 254, 254));
         _10.setText("10");
         jPanel2.add(_10);
 
         nove_zero1.setText(" ");
+        nove_zero1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         nove_zero1.setEnabled(false);
         jPanel2.add(nove_zero1);
 
         nove_uno1.setText(" ");
+        nove_uno1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         nove_uno1.setEnabled(false);
         jPanel2.add(nove_uno1);
 
         nove_due1.setText(" ");
+        nove_due1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         nove_due1.setEnabled(false);
         jPanel2.add(nove_due1);
 
         nove_tre1.setText(" ");
+        nove_tre1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         nove_tre1.setEnabled(false);
         jPanel2.add(nove_tre1);
 
         nove_quattro1.setText(" ");
+        nove_quattro1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         nove_quattro1.setEnabled(false);
         jPanel2.add(nove_quattro1);
 
-        nove_cinque1.setText(" ");
-        nove_cinque1.setEnabled(false);
-        jPanel2.add(nove_cinque1);
+        nine_five1.setText(" ");
+        nine_five1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        nine_five1.setEnabled(false);
+        jPanel2.add(nine_five1);
 
-        nove_sei1.setText(" ");
-        nove_sei1.setEnabled(false);
-        jPanel2.add(nove_sei1);
+        nine_six1.setText(" ");
+        nine_six1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        nine_six1.setEnabled(false);
+        jPanel2.add(nine_six1);
 
-        nove_sette1.setText(" ");
-        nove_sette1.setEnabled(false);
-        jPanel2.add(nove_sette1);
+        nine_seven1.setText(" ");
+        nine_seven1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        nine_seven1.setEnabled(false);
+        jPanel2.add(nine_seven1);
 
-        nove_otto1.setText(" ");
-        nove_otto1.setEnabled(false);
-        jPanel2.add(nove_otto1);
+        nine_eight1.setText(" ");
+        nine_eight1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        nine_eight1.setEnabled(false);
+        jPanel2.add(nine_eight1);
 
-        nove_nove1.setText(" ");
-        nove_nove1.setEnabled(false);
-        nove_nove1.addActionListener(new java.awt.event.ActionListener() {
+        nine_nine1.setText(" ");
+        nine_nine1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        nine_nine1.setEnabled(false);
+        nine_nine1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nove_nove1ActionPerformed(evt);
+                nine_nine1ActionPerformed(evt);
             }
         });
-        jPanel2.add(nove_nove1);
+        jPanel2.add(nine_nine1);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 58, 440, 400));
 
         insert.setText("inserisci navi");
         insert.setEnabled(false);
@@ -2469,56 +2186,140 @@ public class interfaccia extends javax.swing.JFrame {
                 insertActionPerformed(evt);
             }
         });
+        getContentPane().add(insert, new org.netbeans.lib.awtextra.AbsoluteConstraints(848, 102, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        win.setBackground(new java.awt.Color(8, 5, 2));
+        win.setForeground(new java.awt.Color(255, 244, 29));
+        win.setText("HAI TROVATO TUTTE LE NAVI !!!");
+        getContentPane().add(win, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 473, 227, 41));
+
+        jPanel4.setBackground(new java.awt.Color(1, 1, 1));
+
+        start.setBackground(new java.awt.Color(0, 152, 255));
+        start.setForeground(new java.awt.Color(1, 1, 1));
+        start.setText("avvia");
+        start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startActionPerformed(evt);
+            }
+        });
+
+        stop.setBackground(new java.awt.Color(2, 123, 253));
+        stop.setText("ferma");
+        stop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopActionPerformed(evt);
+            }
+        });
+
+        Lmosse.setForeground(new java.awt.Color(255, 250, 250));
+        Lmosse.setText("mosse:");
+
+        testomosse.setForeground(new java.awt.Color(255, 250, 250));
+        testomosse.setText("0");
+
+        punti.setForeground(new java.awt.Color(254, 254, 254));
+        punti.setText("punti:");
+
+        testoPunti.setForeground(new java.awt.Color(255, 250, 250));
+        testoPunti.setText("0");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stop, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Lmosse, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(testomosse, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(punti)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(testoPunti, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 23, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stop, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lmosse, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(testomosse)
+                    .addComponent(punti)
+                    .addComponent(testoPunti)))
         );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
+
+        jPanel5.setBackground(new java.awt.Color(1, 1, 1));
+
+        ok.setText("ok");
+        ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(ok)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(ok)
+                .addContainerGap(299, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, 120, 470));
+
+        jPanel6.setBackground(new java.awt.Color(1, 1, 1));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 410, 470));
+
+        jPanel7.setBackground(new java.awt.Color(1, 1, 1));
+        jPanel7.setAutoscrolls(true);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 440, 470));
+
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         opzioni.setText("opzioni");
-
-        limiteMosse.setText("limite mosse");
-        limiteMosse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limiteMosseActionPerformed(evt);
-            }
-        });
-        opzioni.add(limiteMosse);
-
-        difficolta.setText("difficoltà");
-
-        facile.setSelected(true);
-        facile.setText("bassa");
-        facile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facileActionPerformed(evt);
-            }
-        });
-        difficolta.add(facile);
-
-        medio.setText("media");
-        medio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medioActionPerformed(evt);
-            }
-        });
-        difficolta.add(medio);
-
-        difficile.setText("alta");
-        difficile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                difficileActionPerformed(evt);
-            }
-        });
-        difficolta.add(difficile);
-
-        opzioni.add(difficolta);
 
         lingua.setText("lingua");
 
@@ -2540,6 +2341,43 @@ public class interfaccia extends javax.swing.JFrame {
 
         opzioni.add(lingua);
 
+        difficolta.setText("griglia");
+
+        facile.setSelected(true);
+        facile.setText("5x5");
+        facile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facileActionPerformed(evt);
+            }
+        });
+        difficolta.add(facile);
+
+        medio.setText("8x8");
+        medio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medioActionPerformed(evt);
+            }
+        });
+        difficolta.add(medio);
+
+        difficile.setText("10x10");
+        difficile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                difficileActionPerformed(evt);
+            }
+        });
+        difficolta.add(difficile);
+
+        opzioni.add(difficolta);
+
+        limiteMosse.setText("limite mosse");
+        limiteMosse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limiteMosseActionPerformed(evt);
+            }
+        });
+        opzioni.add(limiteMosse);
+
         solitario.setSelected(true);
         solitario.setText("solitario");
         solitario.addActionListener(new java.awt.event.ActionListener() {
@@ -2553,2508 +2391,415 @@ public class interfaccia extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stop, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Lmosse, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(testomosse, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(punti)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(testoPunti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(148, 148, 148))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(insert)
-                                .addGap(36, 36, 36)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(72, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(stop, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                                .addComponent(Lmosse, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(testomosse)
-                                .addComponent(punti)
-                                .addComponent(testoPunti))
-                            .addComponent(start, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(insert)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void uno_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_unoActionPerformed
-        // TODO add your handling code here:
-        if (acqua[1][1] == 0) {
-            uno_uno.setBackground(Color.cyan);
-        } else if (acqua[1][1] == 1) {
-            uno_uno.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(uno_uno);
-        /*if(fineGioco==5)
-         {
-         for (int j = 0; j < 5 ; j++)// riempimento matrice 
-         {
-         for(int j2 = 0; j2 < 5; j2++ )
-         {
-         acqua [j][j2] = 2;
-         }
-         }
-         }
-         else
-         {
-         boolean clik= click.contains("uno_uno");
-         if(clik==false)
-         {
-         mosse++;
-         testomosse.setText(Integer.toString(mosse));
-         click.add("uno_uno");
-         if(uno_uno.getBackground()==(Color .black))
-         {
-         punteggio+=5000;
-         testoPunti.setText(Integer.toString(punteggio));
-         }
-         else
-         {
-         punteggio-=1250;
-         testoPunti.setText(Integer.toString((punteggio)));
-         }
-         }
-         }*/
-
-
-
-
+        Comportamento(1, 1, uno_uno);
     }//GEN-LAST:event_uno_unoActionPerformed
 
     private void uno_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_dueActionPerformed
-        // TODO add your handling code here:
-        if (acqua[1][2] == 0) {
-            uno_due.setBackground(Color.cyan);
-        } else if (acqua[1][2] == 1) {
-//            fineGioco++;
-            uno_due.setBackground(Color.black);
-        }
-        Comportamento(uno_due);
-        /*if(fineGioco==5)
-         {
-         for (int j = 0; j < 5 ; j++)// riempimento matrice 
-         {
-         for(int j2 = 0; j2 < 5; j2++ )
-         {
-         acqua [j][j2] = 2;
-         }
-         }
-         }
-         else
-         {
-         boolean clik= click.contains("uno_due");
-         if(clik==false)
-         {
-         mosse++;
-         testomosse.setText(Integer.toString(mosse));
-         click.add("uno_due");
-         if(uno_due.getBackground()==(Color .black))
-         {
-         punteggio+=5000;
-         testoPunti.setText(Integer.toString(punteggio));
-         }
-         else
-         {
-         punteggio-=1250;
-         testoPunti.setText(Integer.toString((punteggio)));
-         }
-         }
-         }*/
-
+        Comportamento(1, 2, uno_due);
     }//GEN-LAST:event_uno_dueActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-        // TODO add your handling code here:
-        run = 1;
+        int contaNavi = 0;
+        Random random = new Random();
+        begin = 1;
 
-        if (run == 1) {
+        if (begin == 1) {
             if (linguaggio == 1) {
                 start.setText("riavvia");
             } else if (linguaggio == 2) {
                 start.setText("restart");
             }
         }
+
         //reset
         click.clear();
-        punteggio = 0;
+        scores = 0;
         testoPunti.setText("0");
         fineGioco = 0;
-        if (limiteMosse.isSelected() == true) {
-            mosse = 10;
-            testomosse.setText("10");
+        win.setVisible(false);
+        //
+        if (limiteMosse.isSelected() == true) { //reset mosse
+            if (facile.isSelected() == true) {
+                mosse = 10;
+            } else if (medio.isSelected() == true) {
+                mosse = 15;
+            } else if (difficile.isSelected() == true) {
+                mosse = 20;
+            }
+            testomosse.setText(Integer.toString(mosse));
         } else {
             mosse = 0;
             testomosse.setText("0");
-        }
-        zero_zero.setEnabled(true);
-        zero_uno.setEnabled(true);
-        zero_due.setEnabled(true);
-        zero_tre.setEnabled(true);
-        zero_quattro.setEnabled(true);
-        uno_zero.setEnabled(true);
-        uno_uno.setEnabled(true);
-        uno_due.setEnabled(true);
-        uno_tre.setEnabled(true);
-        uno_quattro.setEnabled(true);
-        due_zero.setEnabled(true);
-        due_uno.setEnabled(true);
-        due_due.setEnabled(true);
-        due_tre.setEnabled(true);
-        due_quattro.setEnabled(true);
-        tre_zero.setEnabled(true);
-        tre_uno.setEnabled(true);
-        tre_due.setEnabled(true);
-        tre_tre.setEnabled(true);
-        tre_quattro.setEnabled(true);
-        quattro_zero.setEnabled(true);
-        quattro_uno.setEnabled(true);
-        quattro_due.setEnabled(true);
-        quattro_tre.setEnabled(true);
-        quattro_quattro.setEnabled(true);
-
-        zero_zero.setBackground(Color.white);
-        zero_uno.setBackground(Color.white);
-        zero_due.setBackground(Color.white);
-        zero_tre.setBackground(Color.white);
-        zero_quattro.setBackground(Color.white);
-        uno_zero.setBackground(Color.white);
-        uno_uno.setBackground(Color.white);
-        uno_due.setBackground(Color.white);
-        uno_tre.setBackground(Color.white);
-        uno_quattro.setBackground(Color.white);
-        due_zero.setBackground(Color.white);
-        due_uno.setBackground(Color.white);
-        due_due.setBackground(Color.white);
-        due_tre.setBackground(Color.white);
-        due_quattro.setBackground(Color.white);
-        tre_zero.setBackground(Color.white);
-        tre_uno.setBackground(Color.white);
-        tre_due.setBackground(Color.white);
-        tre_tre.setBackground(Color.white);
-        tre_quattro.setBackground(Color.white);
-        quattro_zero.setBackground(Color.white);
-        quattro_uno.setBackground(Color.white);
-        quattro_due.setBackground(Color.white);
-        quattro_tre.setBackground(Color.white);
-        quattro_quattro.setBackground(Color.white);
+        }//
 
         if (medio.isSelected() == true) {
+            numeroNavi = 8;
+            setAll(di._8x8, true, true);
+            if (solitario.isSelected() == true) {
+                setAll1(di._8x8, true, true);
+            }
+        } else if (difficile.isSelected() == true) {
+            numeroNavi = 10;
+            setAll(di._10x10, true, true);
             if (solitario.isSelected() == false) {
-                sette_zero1.setEnabled(true);
-                sette_uno1.setEnabled(true);
-                sette_due1.setEnabled(true);
-                sette_tre1.setEnabled(true);
-                sette_quattro1.setEnabled(true);
-                sette_cinque1.setEnabled(true);
-                sette_sei1.setEnabled(true);
-                sette_sette1.setEnabled(true);
-                zero_cinque1.setEnabled(true);
-                zero_sei1.setEnabled(true);
-                zero_sette1.setEnabled(true);
-                uno_cinque1.setEnabled(true);
-                uno_sei1.setEnabled(true);
-                uno_sette1.setEnabled(true);
-                due_cinque1.setEnabled(true);
-                due_sei1.setEnabled(true);
-                due_sette1.setEnabled(true);
-                tre_cinque1.setEnabled(true);
-                tre_sei1.setEnabled(true);
-                tre_sette1.setEnabled(true);
-                quattro_cinque1.setEnabled(true);
-                quattro_sei1.setEnabled(true);
-                quattro_sette1.setEnabled(true);
-                cinque_zero1.setEnabled(true);
-                cinque_uno1.setEnabled(true);
-                cinque_due1.setEnabled(true);
-                cinque_tre1.setEnabled(true);
-                cinque_quattro1.setEnabled(true);
-                cinque_cinque1.setEnabled(true);
-                cinque_sei1.setEnabled(true);
-                cinque_sette1.setEnabled(true);
-                sei_zero1.setEnabled(true);
-                sei_uno1.setEnabled(true);
-                sei_due1.setEnabled(true);
-                sei_tre1.setEnabled(true);
-                sei_quattro1.setEnabled(true);
-                sei_cinque1.setEnabled(true);
-                sei_sei1.setEnabled(true);
-                sei_sette1.setEnabled(true);
-
-                zero_zero1.setEnabled(false);
-                zero_uno1.setEnabled(false);
-                zero_due1.setEnabled(false);
-                zero_tre1.setEnabled(false);
-                zero_quattro1.setEnabled(false);
-                uno_zero1.setEnabled(false);
-                uno_uno1.setEnabled(false);
-                uno_due1.setEnabled(false);
-                uno_tre1.setEnabled(false);
-                uno_quattro1.setEnabled(false);
-                due_zero1.setEnabled(false);
-                due_uno1.setEnabled(false);
-                due_due1.setEnabled(false);
-                due_tre1.setEnabled(false);
-                due_quattro1.setEnabled(false);
-                tre_zero1.setEnabled(false);
-                tre_uno1.setEnabled(false);
-                tre_due1.setEnabled(false);
-                tre_tre1.setEnabled(false);
-                tre_quattro1.setEnabled(false);
-                quattro_zero1.setEnabled(false);
-                quattro_uno1.setEnabled(false);
-                quattro_due1.setEnabled(false);
-                quattro_tre1.setEnabled(false);
-                quattro_quattro1.setEnabled(false);
-
-                zero_zero1.setVisible(true);
-                zero_uno1.setVisible(true);
-                zero_due1.setVisible(true);
-                zero_tre1.setVisible(true);
-                zero_quattro1.setVisible(true);
-                zero_cinque1.setVisible(true);
-                zero_sei1.setVisible(true);
-                zero_sette1.setVisible(true);
-                uno_zero1.setVisible(true);
-                uno_uno1.setVisible(true);
-                uno_due1.setVisible(true);
-                uno_tre1.setVisible(true);
-                uno_quattro1.setVisible(true);
-                uno_cinque1.setVisible(true);
-                uno_sei1.setVisible(true);
-                uno_sette1.setVisible(true);
-                due_zero1.setVisible(true);
-                due_uno1.setVisible(true);
-                due_due1.setVisible(true);
-                due_tre1.setVisible(true);
-                due_quattro1.setVisible(true);
-                due_cinque1.setVisible(true);
-                due_sei1.setVisible(true);
-                due_sette1.setVisible(true);
-                tre_zero1.setVisible(true);
-                tre_uno1.setVisible(true);
-                tre_due1.setVisible(true);
-                tre_tre1.setVisible(true);
-                tre_quattro1.setVisible(true);
-                tre_cinque1.setVisible(true);
-                tre_sei1.setVisible(true);
-                tre_sette1.setVisible(true);
-                quattro_zero1.setVisible(true);
-                quattro_uno1.setVisible(true);
-                quattro_due1.setVisible(true);
-                quattro_tre1.setVisible(true);
-                quattro_quattro1.setVisible(true);
-                quattro_cinque1.setVisible(true);
-                quattro_sei1.setVisible(true);
-                quattro_sette1.setVisible(true);
-                cinque_zero1.setVisible(true);
-                cinque_uno1.setVisible(true);
-                cinque_due1.setVisible(true);
-                cinque_tre1.setVisible(true);
-                cinque_quattro1.setVisible(true);
-                cinque_cinque1.setVisible(true);
-                cinque_sei1.setVisible(true);
-                cinque_sette1.setVisible(true);
-                sei_zero1.setVisible(true);
-                sei_uno1.setVisible(true);
-                sei_due1.setVisible(true);
-                sei_tre1.setVisible(true);
-                sei_quattro1.setVisible(true);
-                sei_cinque1.setVisible(true);
-                sei_sei1.setVisible(true);
-                sei_sette1.setVisible(true);
-                sette_zero1.setVisible(true);
-                sette_uno1.setVisible(true);
-                sette_due1.setVisible(true);
-                sette_tre1.setVisible(true);
-                sette_quattro1.setVisible(true);
-                sette_cinque1.setVisible(true);
-                sette_sei1.setVisible(true);
-                sette_sette1.setVisible(true);
-                A1.setVisible(true);
-                B1.setVisible(true);
-                C1.setVisible(true);
-                D1.setVisible(true);
-                E1.setVisible(true);
-                F1.setVisible(true);
-                G1.setVisible(true);
-                H1.setVisible(true);
-                _1.setVisible(true);
-                _2.setVisible(true);
-                _3.setVisible(true);
-                _4.setVisible(true);
-                _5.setVisible(true);
-                _6.setVisible(true);
-                _7.setVisible(true);
-                _8.setVisible(true);
-
-
-                zero_otto1.setVisible(false);
-                zero_nove1.setVisible(false);
-
-                uno_otto1.setVisible(false);
-                uno_nove1.setVisible(false);
-
-                due_otto1.setVisible(false);
-                due_nove1.setVisible(false);
-
-                tre_otto1.setVisible(false);
-                tre_nove1.setVisible(false);
-
-                quattro_otto1.setVisible(false);
-                quattro_nove1.setVisible(false);
-
-                cinque_otto1.setVisible(false);
-                cinque_nove1.setVisible(false);
-
-                sei_otto1.setVisible(false);
-                sei_nove1.setVisible(false);
-
-                sette_otto1.setVisible(false);
-                sette_nove1.setVisible(false);
-                otto_zero1.setVisible(false);
-                otto_uno1.setVisible(false);
-                otto_due1.setVisible(false);
-                otto_tre1.setVisible(false);
-                otto_quattro1.setVisible(false);
-                otto_cinque1.setVisible(false);
-                otto_sei1.setVisible(false);
-                otto_sette1.setVisible(false);
-                otto_otto1.setVisible(false);
-                otto_nove1.setVisible(false);
-                nove_zero1.setVisible(false);
-                nove_uno1.setVisible(false);
-                nove_due1.setVisible(false);
-                nove_tre1.setVisible(false);
-                nove_quattro1.setVisible(false);
-                nove_cinque1.setVisible(false);
-                nove_sei1.setVisible(false);
-                nove_sette1.setVisible(false);
-                nove_otto1.setVisible(false);
-                nove_nove1.setVisible(false);
-
-                I1.setVisible(false);
-                J1.setVisible(false);
-
-                _9.setVisible(false);
-                _10.setVisible(false);
-
-
-                zero_zero1.setBackground(Color.white);
-                zero_uno1.setBackground(Color.white);
-                zero_due1.setBackground(Color.white);
-                zero_tre1.setBackground(Color.white);
-                zero_quattro1.setBackground(Color.white);
-                zero_cinque1.setBackground(Color.white);
-                zero_sei1.setBackground(Color.white);
-                zero_sette1.setBackground(Color.white);
-                uno_zero1.setBackground(Color.white);
-                uno_uno1.setBackground(Color.white);
-                uno_due1.setBackground(Color.white);
-                uno_tre1.setBackground(Color.white);
-                uno_quattro1.setBackground(Color.white);
-                uno_cinque1.setBackground(Color.white);
-                uno_sei1.setBackground(Color.white);
-                uno_sette1.setBackground(Color.white);
-                due_zero1.setBackground(Color.white);
-                due_uno1.setBackground(Color.white);
-                due_due1.setBackground(Color.white);
-                due_tre1.setBackground(Color.white);
-                due_quattro1.setBackground(Color.white);
-                due_cinque1.setBackground(Color.white);
-                due_sei1.setBackground(Color.white);
-                due_sette1.setBackground(Color.white);
-                tre_zero1.setBackground(Color.white);
-                tre_uno1.setBackground(Color.white);
-                tre_due1.setBackground(Color.white);
-                tre_tre1.setBackground(Color.white);
-                tre_quattro1.setBackground(Color.white);
-                tre_cinque1.setBackground(Color.white);
-                tre_sei1.setBackground(Color.white);
-                tre_sette1.setBackground(Color.white);
-                quattro_zero1.setBackground(Color.white);
-                quattro_uno1.setBackground(Color.white);
-                quattro_due1.setBackground(Color.white);
-                quattro_tre1.setBackground(Color.white);
-                quattro_quattro1.setBackground(Color.white);
-                quattro_cinque1.setBackground(Color.white);
-                quattro_sei1.setBackground(Color.white);
-                quattro_sette1.setBackground(Color.white);
-                cinque_zero1.setBackground(Color.white);
-                cinque_uno1.setBackground(Color.white);
-                cinque_due1.setBackground(Color.white);
-                cinque_tre1.setBackground(Color.white);
-                cinque_quattro1.setBackground(Color.white);
-                cinque_cinque1.setBackground(Color.white);
-                cinque_sei1.setBackground(Color.white);
-                cinque_sette1.setBackground(Color.white);
-                sei_zero1.setBackground(Color.white);
-                sei_uno1.setBackground(Color.white);
-                sei_due1.setBackground(Color.white);
-                sei_tre1.setBackground(Color.white);
-                sei_quattro1.setBackground(Color.white);
-                sei_cinque1.setBackground(Color.white);
-                sei_sei1.setBackground(Color.white);
-                sei_sette1.setBackground(Color.white);
-                sette_zero1.setBackground(Color.white);
-                sette_uno1.setBackground(Color.white);
-                sette_due1.setBackground(Color.white);
-                sette_tre1.setBackground(Color.white);
-                sette_quattro1.setBackground(Color.white);
-                sette_cinque1.setBackground(Color.white);
-                sette_sei1.setBackground(Color.white);
-                sette_sette1.setBackground(Color.white);
+                setAll1(di._10x10, true, true);
             }
-            sette_zero.setEnabled(true);
-            sette_uno.setEnabled(true);
-            sette_due.setEnabled(true);
-            sette_tre.setEnabled(true);
-            sette_quattro.setEnabled(true);
-            sette_cinque.setEnabled(true);
-            sette_sei.setEnabled(true);
-            sette_sette.setEnabled(true);
-            zero_cinque.setEnabled(true);
-            zero_sei.setEnabled(true);
-            zero_sette.setEnabled(true);
-            uno_cinque.setEnabled(true);
-            uno_sei.setEnabled(true);
-            uno_sette.setEnabled(true);
-            due_cinque.setEnabled(true);
-            due_sei.setEnabled(true);
-            due_sette.setEnabled(true);
-            tre_cinque.setEnabled(true);
-            tre_sei.setEnabled(true);
-            tre_sette.setEnabled(true);
-            quattro_cinque.setEnabled(true);
-            quattro_sei.setEnabled(true);
-            quattro_sette.setEnabled(true);
-            cinque_zero.setEnabled(true);
-            cinque_uno.setEnabled(true);
-            cinque_due.setEnabled(true);
-            cinque_tre.setEnabled(true);
-            cinque_quattro.setEnabled(true);
-            cinque_cinque.setEnabled(true);
-            cinque_sei.setEnabled(true);
-            cinque_sette.setEnabled(true);
-            sei_zero.setEnabled(true);
-            sei_uno.setEnabled(true);
-            sei_due.setEnabled(true);
-            sei_tre.setEnabled(true);
-            sei_quattro.setEnabled(true);
-            sei_cinque.setEnabled(true);
-            sei_sei.setEnabled(true);
-            sei_sette.setEnabled(true);
-
-            zero_zero.setBackground(Color.white);
-            zero_uno.setBackground(Color.white);
-            zero_due.setBackground(Color.white);
-            zero_tre.setBackground(Color.white);
-            zero_quattro.setBackground(Color.white);
-            zero_cinque.setBackground(Color.white);
-            zero_sei.setBackground(Color.white);
-            zero_sette.setBackground(Color.white);
-            uno_zero.setBackground(Color.white);
-            uno_uno.setBackground(Color.white);
-            uno_due.setBackground(Color.white);
-            uno_tre.setBackground(Color.white);
-            uno_quattro.setBackground(Color.white);
-            uno_cinque.setBackground(Color.white);
-            uno_sei.setBackground(Color.white);
-            uno_sette.setBackground(Color.white);
-            due_zero.setBackground(Color.white);
-            due_uno.setBackground(Color.white);
-            due_due.setBackground(Color.white);
-            due_tre.setBackground(Color.white);
-            due_quattro.setBackground(Color.white);
-            due_cinque.setBackground(Color.white);
-            due_sei.setBackground(Color.white);
-            due_sette.setBackground(Color.white);
-            tre_zero.setBackground(Color.white);
-            tre_uno.setBackground(Color.white);
-            tre_due.setBackground(Color.white);
-            tre_tre.setBackground(Color.white);
-            tre_quattro.setBackground(Color.white);
-            tre_cinque.setBackground(Color.white);
-            tre_sei.setBackground(Color.white);
-            tre_sette.setBackground(Color.white);
-            quattro_zero.setBackground(Color.white);
-            quattro_uno.setBackground(Color.white);
-            quattro_due.setBackground(Color.white);
-            quattro_tre.setBackground(Color.white);
-            quattro_quattro.setBackground(Color.white);
-            quattro_cinque.setBackground(Color.white);
-            quattro_sei.setBackground(Color.white);
-            quattro_sette.setBackground(Color.white);
-            cinque_zero.setBackground(Color.white);
-            cinque_uno.setBackground(Color.white);
-            cinque_due.setBackground(Color.white);
-            cinque_tre.setBackground(Color.white);
-            cinque_quattro.setBackground(Color.white);
-            cinque_cinque.setBackground(Color.white);
-            cinque_sei.setBackground(Color.white);
-            cinque_sette.setBackground(Color.white);
-            sei_zero.setBackground(Color.white);
-            sei_uno.setBackground(Color.white);
-            sei_due.setBackground(Color.white);
-            sei_tre.setBackground(Color.white);
-            sei_quattro.setBackground(Color.white);
-            sei_cinque.setBackground(Color.white);
-            sei_sei.setBackground(Color.white);
-            sei_sette.setBackground(Color.white);
-            sette_zero.setBackground(Color.white);
-            sette_uno.setBackground(Color.white);
-            sette_due.setBackground(Color.white);
-            sette_tre.setBackground(Color.white);
-            sette_quattro.setBackground(Color.white);
-            sette_cinque.setBackground(Color.white);
-            sette_sei.setBackground(Color.white);
-            sette_sette.setBackground(Color.white);
-        }
-        if (difficile.isSelected() == true) {
-            sette_zero.setEnabled(true);
-            sette_uno.setEnabled(true);
-            sette_due.setEnabled(true);
-            sette_tre.setEnabled(true);
-            sette_quattro.setEnabled(true);
-            sette_cinque.setEnabled(true);
-            sette_sei.setEnabled(true);
-            sette_sette.setEnabled(true);
-            sette_otto.setEnabled(true);
-            sette_nove.setEnabled(true);
-            zero_cinque.setEnabled(true);
-            zero_sei.setEnabled(true);
-            zero_sette.setEnabled(true);
-            zero_otto.setEnabled(true);
-            zero_nove.setEnabled(true);
-            uno_cinque.setEnabled(true);
-            uno_sei.setEnabled(true);
-            uno_sette.setEnabled(true);
-            uno_otto.setEnabled(true);
-            uno_nove.setEnabled(true);
-            due_cinque.setEnabled(true);
-            due_sei.setEnabled(true);
-            due_sette.setEnabled(true);
-            due_otto.setEnabled(true);
-            due_nove.setEnabled(true);
-            tre_cinque.setEnabled(true);
-            tre_sei.setEnabled(true);
-            tre_sette.setEnabled(true);
-            tre_otto.setEnabled(true);
-            tre_nove.setEnabled(true);
-            quattro_cinque.setEnabled(true);
-            quattro_sei.setEnabled(true);
-            quattro_sette.setEnabled(true);
-            quattro_otto.setEnabled(true);
-            quattro_nove.setEnabled(true);
-            cinque_zero.setEnabled(true);
-            cinque_uno.setEnabled(true);
-            cinque_due.setEnabled(true);
-            cinque_tre.setEnabled(true);
-            cinque_quattro.setEnabled(true);
-            cinque_cinque.setEnabled(true);
-            cinque_sei.setEnabled(true);
-            cinque_sette.setEnabled(true);
-            cinque_otto.setEnabled(true);
-            cinque_nove.setEnabled(true);
-            sei_zero.setEnabled(true);
-            sei_uno.setEnabled(true);
-            sei_due.setEnabled(true);
-            sei_tre.setEnabled(true);
-            sei_quattro.setEnabled(true);
-            sei_cinque.setEnabled(true);
-            sei_sei.setEnabled(true);
-            sei_sette.setEnabled(true);
-            sei_otto.setEnabled(true);
-            sei_nove.setEnabled(true);
-            otto_zero.setEnabled(true);
-            otto_uno.setEnabled(true);
-            otto_due.setEnabled(true);
-            otto_tre.setEnabled(true);
-            otto_quattro.setEnabled(true);
-            otto_cinque.setEnabled(true);
-            otto_sei.setEnabled(true);
-            otto_sette.setEnabled(true);
-            otto_otto.setEnabled(true);
-            otto_nove.setEnabled(true);
-            nove_zero.setEnabled(true);
-            nove_uno.setEnabled(true);
-            nove_due.setEnabled(true);
-            nove_tre.setEnabled(true);
-            nove_quattro.setEnabled(true);
-            nove_cinque.setEnabled(true);
-            nove_sei.setEnabled(true);
-            nove_sette.setEnabled(true);
-            nove_otto.setEnabled(true);
-            nove_nove.setEnabled(true);
-
-            zero_zero.setBackground(Color.white);
-            zero_uno.setBackground(Color.white);
-            zero_due.setBackground(Color.white);
-            zero_tre.setBackground(Color.white);
-            zero_quattro.setBackground(Color.white);
-            zero_cinque.setBackground(Color.white);
-            zero_sei.setBackground(Color.white);
-            zero_sette.setBackground(Color.white);
-            zero_otto.setBackground(Color.white);
-            zero_nove.setBackground(Color.white);
-            uno_zero.setBackground(Color.white);
-            uno_uno.setBackground(Color.white);
-            uno_due.setBackground(Color.white);
-            uno_tre.setBackground(Color.white);
-            uno_quattro.setBackground(Color.white);
-            uno_cinque.setBackground(Color.white);
-            uno_sei.setBackground(Color.white);
-            uno_sette.setBackground(Color.white);
-            uno_otto.setBackground(Color.white);
-            uno_nove.setBackground(Color.white);
-            due_zero.setBackground(Color.white);
-            due_uno.setBackground(Color.white);
-            due_due.setBackground(Color.white);
-            due_tre.setBackground(Color.white);
-            due_quattro.setBackground(Color.white);
-            due_cinque.setBackground(Color.white);
-            due_sei.setBackground(Color.white);
-            due_sette.setBackground(Color.white);
-            due_otto.setBackground(Color.white);
-            due_nove.setBackground(Color.white);
-            tre_zero.setBackground(Color.white);
-            tre_uno.setBackground(Color.white);
-            tre_due.setBackground(Color.white);
-            tre_tre.setBackground(Color.white);
-            tre_quattro.setBackground(Color.white);
-            tre_cinque.setBackground(Color.white);
-            tre_sei.setBackground(Color.white);
-            tre_sette.setBackground(Color.white);
-            tre_otto.setBackground(Color.white);
-            tre_nove.setBackground(Color.white);
-            quattro_zero.setBackground(Color.white);
-            quattro_uno.setBackground(Color.white);
-            quattro_due.setBackground(Color.white);
-            quattro_tre.setBackground(Color.white);
-            quattro_quattro.setBackground(Color.white);
-            quattro_cinque.setBackground(Color.white);
-            quattro_sei.setBackground(Color.white);
-            quattro_sette.setBackground(Color.white);
-            quattro_otto.setBackground(Color.white);
-            quattro_nove.setBackground(Color.white);
-            sette_zero.setBackground(Color.white);
-            sette_uno.setBackground(Color.white);
-            sette_due.setBackground(Color.white);
-            sette_tre.setBackground(Color.white);
-            sette_quattro.setBackground(Color.white);
-            sette_cinque.setBackground(Color.white);
-            sette_sei.setBackground(Color.white);
-            sette_sette.setBackground(Color.white);
-            sette_otto.setBackground(Color.white);
-            sette_nove.setBackground(Color.white);
-            cinque_zero.setBackground(Color.white);
-            cinque_uno.setBackground(Color.white);
-            cinque_due.setBackground(Color.white);
-            cinque_tre.setBackground(Color.white);
-            cinque_quattro.setBackground(Color.white);
-            cinque_cinque.setBackground(Color.white);
-            cinque_sei.setBackground(Color.white);
-            cinque_sette.setBackground(Color.white);
-            cinque_otto.setBackground(Color.white);
-            cinque_nove.setBackground(Color.white);
-            sei_zero.setBackground(Color.white);
-            sei_uno.setBackground(Color.white);
-            sei_due.setBackground(Color.white);
-            sei_tre.setBackground(Color.white);
-            sei_quattro.setBackground(Color.white);
-            sei_cinque.setBackground(Color.white);
-            sei_sei.setBackground(Color.white);
-            sei_sette.setBackground(Color.white);
-            sei_otto.setBackground(Color.white);
-            sei_nove.setBackground(Color.white);
-            otto_zero.setBackground(Color.white);
-            otto_uno.setBackground(Color.white);
-            otto_due.setBackground(Color.white);
-            otto_tre.setBackground(Color.white);
-            otto_quattro.setBackground(Color.white);
-            otto_cinque.setBackground(Color.white);
-            otto_sei.setBackground(Color.white);
-            otto_sette.setBackground(Color.white);
-            otto_otto.setBackground(Color.white);
-            otto_nove.setBackground(Color.white);
-            nove_zero.setBackground(Color.white);
-            nove_uno.setBackground(Color.white);
-            nove_due.setBackground(Color.white);
-            nove_tre.setBackground(Color.white);
-            nove_quattro.setBackground(Color.white);
-            nove_cinque.setBackground(Color.white);
-            nove_sei.setBackground(Color.white);
-            nove_sette.setBackground(Color.white);
-            nove_otto.setBackground(Color.white);
-            nove_nove.setBackground(Color.white);
+        } else {
+            setAll(di._5x5, true, true);
+            numeroNavi = 5;
+            if (solitario.isSelected() == false) {
+                setAll1(di._5x5, true, true);
+            }
         }
 
-        zero_zero1.setEnabled(true);
-        zero_uno1.setEnabled(true);
-        zero_due1.setEnabled(true);
-        zero_tre1.setEnabled(true);
-        zero_quattro1.setEnabled(true);
-        uno_zero1.setEnabled(true);
-        uno_uno1.setEnabled(true);
-        uno_due1.setEnabled(true);
-        uno_tre1.setEnabled(true);
-        uno_quattro1.setEnabled(true);
-        due_zero1.setEnabled(true);
-        due_uno1.setEnabled(true);
-        due_due1.setEnabled(true);
-        due_tre1.setEnabled(true);
-        due_quattro1.setEnabled(true);
-        tre_zero1.setEnabled(true);
-        tre_uno1.setEnabled(true);
-        tre_due1.setEnabled(true);
-        tre_tre1.setEnabled(true);
-        tre_quattro1.setEnabled(true);
-        quattro_zero1.setEnabled(true);
-        quattro_uno1.setEnabled(true);
-        quattro_due1.setEnabled(true);
-        quattro_tre1.setEnabled(true);
-        quattro_quattro1.setEnabled(true);
-
-        zero_zero1.setBackground(Color.white);
-        zero_uno1.setBackground(Color.white);
-        zero_due1.setBackground(Color.white);
-        zero_tre1.setBackground(Color.white);
-        zero_quattro1.setBackground(Color.white);
-        uno_zero1.setBackground(Color.white);
-        uno_uno1.setBackground(Color.white);
-        uno_due1.setBackground(Color.white);
-        uno_tre1.setBackground(Color.white);
-        uno_quattro1.setBackground(Color.white);
-        due_zero1.setBackground(Color.white);
-        due_uno1.setBackground(Color.white);
-        due_due1.setBackground(Color.white);
-        due_tre1.setBackground(Color.white);
-        due_quattro1.setBackground(Color.white);
-        tre_zero1.setBackground(Color.white);
-        tre_uno1.setBackground(Color.white);
-        tre_due1.setBackground(Color.white);
-        tre_tre1.setBackground(Color.white);
-        tre_quattro1.setBackground(Color.white);
-        quattro_zero1.setBackground(Color.white);
-        quattro_uno1.setBackground(Color.white);
-        quattro_due1.setBackground(Color.white);
-        quattro_tre1.setBackground(Color.white);
-        quattro_quattro1.setBackground(Color.white);
-
-
-        if (difficile.isSelected() == true) {
-            sette_zero1.setEnabled(true);
-            sette_uno1.setEnabled(true);
-            sette_due1.setEnabled(true);
-            sette_tre1.setEnabled(true);
-            sette_quattro1.setEnabled(true);
-            sette_cinque1.setEnabled(true);
-            sette_sei1.setEnabled(true);
-            sette_sette1.setEnabled(true);
-            sette_otto1.setEnabled(true);
-            sette_nove1.setEnabled(true);
-            zero_cinque1.setEnabled(true);
-            zero_sei1.setEnabled(true);
-            zero_sette1.setEnabled(true);
-            zero_otto1.setEnabled(true);
-            zero_nove1.setEnabled(true);
-            uno_cinque1.setEnabled(true);
-            uno_sei1.setEnabled(true);
-            uno_sette1.setEnabled(true);
-            uno_otto1.setEnabled(true);
-            uno_nove1.setEnabled(true);
-            due_cinque1.setEnabled(true);
-            due_sei1.setEnabled(true);
-            due_sette1.setEnabled(true);
-            due_otto1.setEnabled(true);
-            due_nove1.setEnabled(true);
-            tre_cinque1.setEnabled(true);
-            tre_sei1.setEnabled(true);
-            tre_sette1.setEnabled(true);
-            tre_otto1.setEnabled(true);
-            tre_nove1.setEnabled(true);
-            quattro_cinque1.setEnabled(true);
-            quattro_sei1.setEnabled(true);
-            quattro_sette1.setEnabled(true);
-            quattro_otto1.setEnabled(true);
-            quattro_nove1.setEnabled(true);
-            cinque_zero1.setEnabled(true);
-            cinque_uno1.setEnabled(true);
-            cinque_due1.setEnabled(true);
-            cinque_tre1.setEnabled(true);
-            cinque_quattro1.setEnabled(true);
-            cinque_cinque1.setEnabled(true);
-            cinque_sei1.setEnabled(true);
-            cinque_sette1.setEnabled(true);
-            cinque_otto1.setEnabled(true);
-            cinque_nove1.setEnabled(true);
-            sei_zero1.setEnabled(true);
-            sei_uno1.setEnabled(true);
-            sei_due1.setEnabled(true);
-            sei_tre1.setEnabled(true);
-            sei_quattro1.setEnabled(true);
-            sei_cinque1.setEnabled(true);
-            sei_sei1.setEnabled(true);
-            sei_sette1.setEnabled(true);
-            sei_otto1.setEnabled(true);
-            sei_nove1.setEnabled(true);
-            otto_zero1.setEnabled(true);
-            otto_uno1.setEnabled(true);
-            otto_due1.setEnabled(true);
-            otto_tre1.setEnabled(true);
-            otto_quattro1.setEnabled(true);
-            otto_cinque1.setEnabled(true);
-            otto_sei1.setEnabled(true);
-            otto_sette1.setEnabled(true);
-            otto_otto1.setEnabled(true);
-            otto_nove1.setEnabled(true);
-            nove_zero1.setEnabled(true);
-            nove_uno1.setEnabled(true);
-            nove_due1.setEnabled(true);
-            nove_tre1.setEnabled(true);
-            nove_quattro1.setEnabled(true);
-            nove_cinque1.setEnabled(true);
-            nove_sei1.setEnabled(true);
-            nove_sette1.setEnabled(true);
-            nove_otto1.setEnabled(true);
-            nove_nove1.setEnabled(true);
-
-            zero_zero1.setBackground(Color.white);
-            zero_uno1.setBackground(Color.white);
-            zero_due1.setBackground(Color.white);
-            zero_tre1.setBackground(Color.white);
-            zero_quattro1.setBackground(Color.white);
-            zero_cinque1.setBackground(Color.white);
-            zero_sei1.setBackground(Color.white);
-            zero_sette1.setBackground(Color.white);
-            zero_otto1.setBackground(Color.white);
-            zero_nove1.setBackground(Color.white);
-            uno_zero1.setBackground(Color.white);
-            uno_uno1.setBackground(Color.white);
-            uno_due1.setBackground(Color.white);
-            uno_tre1.setBackground(Color.white);
-            uno_quattro1.setBackground(Color.white);
-            uno_cinque1.setBackground(Color.white);
-            uno_sei1.setBackground(Color.white);
-            uno_sette1.setBackground(Color.white);
-            uno_otto1.setBackground(Color.white);
-            uno_nove1.setBackground(Color.white);
-            due_zero1.setBackground(Color.white);
-            due_uno1.setBackground(Color.white);
-            due_due1.setBackground(Color.white);
-            due_tre1.setBackground(Color.white);
-            due_quattro1.setBackground(Color.white);
-            due_cinque1.setBackground(Color.white);
-            due_sei1.setBackground(Color.white);
-            due_sette1.setBackground(Color.white);
-            due_otto1.setBackground(Color.white);
-            due_nove1.setBackground(Color.white);
-            tre_zero1.setBackground(Color.white);
-            tre_uno1.setBackground(Color.white);
-            tre_due1.setBackground(Color.white);
-            tre_tre1.setBackground(Color.white);
-            tre_quattro1.setBackground(Color.white);
-            tre_cinque1.setBackground(Color.white);
-            tre_sei1.setBackground(Color.white);
-            tre_sette1.setBackground(Color.white);
-            tre_otto1.setBackground(Color.white);
-            tre_nove1.setBackground(Color.white);
-            quattro_zero1.setBackground(Color.white);
-            quattro_uno1.setBackground(Color.white);
-            quattro_due1.setBackground(Color.white);
-            quattro_tre1.setBackground(Color.white);
-            quattro_quattro1.setBackground(Color.white);
-            quattro_cinque1.setBackground(Color.white);
-            quattro_sei1.setBackground(Color.white);
-            quattro_sette1.setBackground(Color.white);
-            quattro_otto1.setBackground(Color.white);
-            quattro_nove1.setBackground(Color.white);
-            sette_zero1.setBackground(Color.white);
-            sette_uno1.setBackground(Color.white);
-            sette_due1.setBackground(Color.white);
-            sette_tre1.setBackground(Color.white);
-            sette_quattro1.setBackground(Color.white);
-            sette_cinque1.setBackground(Color.white);
-            sette_sei1.setBackground(Color.white);
-            sette_sette1.setBackground(Color.white);
-            sette_otto1.setBackground(Color.white);
-            sette_nove1.setBackground(Color.white);
-            cinque_zero1.setBackground(Color.white);
-            cinque_uno1.setBackground(Color.white);
-            cinque_due1.setBackground(Color.white);
-            cinque_tre1.setBackground(Color.white);
-            cinque_quattro1.setBackground(Color.white);
-            cinque_cinque1.setBackground(Color.white);
-            cinque_sei1.setBackground(Color.white);
-            cinque_sette1.setBackground(Color.white);
-            cinque_otto1.setBackground(Color.white);
-            cinque_nove1.setBackground(Color.white);
-            sei_zero1.setBackground(Color.white);
-            sei_uno1.setBackground(Color.white);
-            sei_due1.setBackground(Color.white);
-            sei_tre1.setBackground(Color.white);
-            sei_quattro1.setBackground(Color.white);
-            sei_cinque1.setBackground(Color.white);
-            sei_sei1.setBackground(Color.white);
-            sei_sette1.setBackground(Color.white);
-            sei_otto1.setBackground(Color.white);
-            sei_nove1.setBackground(Color.white);
-            otto_zero1.setBackground(Color.white);
-            otto_uno1.setBackground(Color.white);
-            otto_due1.setBackground(Color.white);
-            otto_tre1.setBackground(Color.white);
-            otto_quattro1.setBackground(Color.white);
-            otto_cinque1.setBackground(Color.white);
-            otto_sei1.setBackground(Color.white);
-            otto_sette1.setBackground(Color.white);
-            otto_otto1.setBackground(Color.white);
-            otto_nove1.setBackground(Color.white);
-            nove_zero1.setBackground(Color.white);
-            nove_uno1.setBackground(Color.white);
-            nove_due1.setBackground(Color.white);
-            nove_tre1.setBackground(Color.white);
-            nove_quattro1.setBackground(Color.white);
-            nove_cinque1.setBackground(Color.white);
-            nove_sei1.setBackground(Color.white);
-            nove_sette1.setBackground(Color.white);
-            nove_otto1.setBackground(Color.white);
-            nove_nove1.setBackground(Color.white);
-        }
-        numeroNavi = (acqua.length * acqua.length) / 7;
-        int contaNavi = 0;
-        Random casuale = new Random();
-        for (int j = 0; j < lMat; j++)// riempimento matrice 
+        for (int j = 0; j < 10; j++)// reset matrice 
         {
-            for (int j2 = 0; j2 < lMat; j2++) {
-                acqua[j][j2] = 0;
+            for (int j2 = 0; j2 < 10; j2++) {
+                water[j][j2] = 0;
             }
         }
-
-        while (numeroNavi != contaNavi) {
-            int riga = casuale.nextInt(acqua.length - 1);
-            int colonna = casuale.nextInt(acqua.length - 1);
-            if (acqua[riga][colonna] == 0) {
-                if (contaNavi == 0) {
-                    acqua[riga][colonna] = 1;
+        //posizionamento navi
+        while (numeroNavi > contaNavi) {
+            int row;
+            int column;
+            if (medio.isSelected() == true) {
+                row = random.nextInt(7); //numero casuale generato in base alla griglia
+                column = random.nextInt(7);
+            } else if (difficile.isSelected() == true) {
+                row = random.nextInt(9);
+                column = random.nextInt(9);
+            } else {
+                row = random.nextInt(4);
+                column = random.nextInt(4);
+            }
+            if (water[row][column] == 0) {
+                if (contaNavi < 4) {// 4 navi da una cella
+                    water[row][column] = 1;
                     contaNavi++;
                 } else {
-                    int dove = casuale.nextInt(4);
-                    if (dove == 0 && riga != 0) {
-                        if (acqua[riga - 1][colonna] == 0) {
-                            acqua[riga][colonna] = 1;
-                            acqua[riga - 1][colonna] = 1;
-                            contaNavi++;
-                        }
-                    } else if (dove == 1 && riga != acqua.length) {
-                        if (acqua[riga + 1][colonna] == 0) {
-                            acqua[riga][colonna] = 1;
-                            acqua[riga + 1][colonna] = 1;
-                            contaNavi++;
-                        }
+                    int direction = random.nextInt(4);// scelta casuale della direzione
+                    if (direction == 0 && (row - 2) > 0) {
+                        if (contaNavi > 6&& contaNavi <=8) { //max 4 navi da 3
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {//controllo che tutte le celle siano vuote
+                                if (water[row - again][column] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        water[row - 2][column] = 3;
+                                        water[row - 1][column] = 3;
+                                        water[row][column] = 3;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        } else if (contaNavi >8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (water[row - again][column] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        water[row - 3][column] = 4;
+                                        water[row - 2][column] = 4;
+                                        water[row - 1][column] = 4;
+                                        water[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
 
-                    } else if (dove == 2 && colonna != 0) {
-                        if (acqua[riga][colonna - 1] == 0) {
-                            acqua[riga][colonna] = 1;
-                            acqua[riga][colonna - 1] = 1;
+                        } else if(contaNavi>=4&& contaNavi <=6) {//max 3 navi da 2
+                            if (water[row - 1][column] == 0) {
+                            water[row][column] = 2;
+                            water[row - 1][column] = 2;
                             contaNavi++;
                         }
-                    } else if (dove == 3 && colonna != acqua.length) {
-                        if (acqua[riga][colonna + 1] == 0) {
-                            acqua[riga][colonna] = 1;
-                            acqua[riga][colonna + 1] = 1;
+                        }
+                    } else if (direction == 1 && row + 2 < (water.length-1)) {
+                        if (contaNavi > 6&& contaNavi <=8) {
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {
+                                if (water[row + again][column] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        water[row + 2][column] = 3;
+                                        water[row + 1][column] = 3;
+                                        water[row][column] = 3;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        }else if (contaNavi >8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (water[row + again][column] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        water[row + 3][column] = 4;
+                                        water[row + 2][column] = 4;
+                                        water[row + 1][column] = 4;
+                                        water[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        }else if(contaNavi>=4&& contaNavi <=6) {if (water[row + 1][column] == 0) {
+                            water[row][column] = 2;
+                            water[row + 1][column] = 2;
                             contaNavi++;
                         }
-                    }
+                        }
+                    } else if (direction == 2 && column - 2 > 0) {
+                        if (contaNavi > 6&& contaNavi <=8) {
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {
+                                if (water[row][column - again] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        water[row][column - 2] =3;
+                                        water[row][column - 1] = 3;
+                                        water[row][column] = 3;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        } else if (contaNavi >8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (water[row][column-again] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        water[row - 3][column] = 4;
+                                        water[row - 2][column] = 4;
+                                        water[row - 1][column] = 4;
+                                        water[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+
+                        }
+                        else if(contaNavi>=4&&contaNavi <=6) {
+                            if (water[row][column - 1] == 0) {
+                            water[row][column - 1] = 2;
+                            water[row][column] = 2;
+                            contaNavi++;
+                        }
+                        }
+                    } else if (direction == 3 && column + 2 < (water.length-1)) {
+                        if (contaNavi > 6&& contaNavi <=8) {
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {
+                                if (water[row][column + 1] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        water[row][column + 2] = 3;
+                                        water[row][column] = 3;
+                                        water[row][column + 1] = 3;
+                                        contaNavi++;
+                                    }
+
+                                }
+                            }
+                        }
+                        else if (contaNavi > 8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (water[row][column+again] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        water[row][column+3] = 4;
+                                        water[row][column+2] = 4;
+                                        water[row][column+1] = 4;
+                                        water[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+
+                        }else if(contaNavi>=4&& contaNavi <=6) { if (water[row][column + 1] == 0) {
+                            water[row][column] = 2;
+                            water[row][column + 1] = 2;
+                            contaNavi++;
+                        }
+                    }}
 
                 }
 
             }
-
         }
-
+        
+//reset contatori
+        numeroNavi = 0;
+        contaNavi = 0;
     }//GEN-LAST:event_startActionPerformed
 
     private void stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopActionPerformed
-        // TODO add your handling code here:
-        run = 0;
+        begin = 0;
+        win.setVisible(false);
         if (linguaggio == 1) {
             start.setText("avvia");
         } else if (linguaggio == 2) {
             start.setText("start");
         }
-
-        zero_zero1.setEnabled(false);
-        zero_uno1.setEnabled(false);
-        zero_due1.setEnabled(false);
-        zero_tre1.setEnabled(false);
-        zero_quattro1.setEnabled(false);
-        uno_zero1.setEnabled(false);
-        uno_uno1.setEnabled(false);
-        uno_due1.setEnabled(false);
-        uno_tre1.setEnabled(false);
-        uno_quattro1.setEnabled(false);
-        due_zero1.setEnabled(false);
-        due_uno1.setEnabled(false);
-        due_due1.setEnabled(false);
-        due_tre1.setEnabled(false);
-        due_quattro1.setEnabled(false);
-        tre_zero1.setEnabled(false);
-        tre_uno1.setEnabled(false);
-        tre_due1.setEnabled(false);
-        tre_tre1.setEnabled(false);
-        tre_quattro1.setEnabled(false);
-        quattro_zero1.setEnabled(false);
-        quattro_uno1.setEnabled(false);
-        quattro_due1.setEnabled(false);
-        quattro_tre1.setEnabled(false);
-        quattro_quattro1.setEnabled(false);
-
-        zero_cinque1.setEnabled(false);
-        zero_sei1.setEnabled(false);
-        zero_sette1.setEnabled(false);
-        zero_otto1.setEnabled(false);
-        zero_nove1.setEnabled(false);
-        uno_cinque1.setEnabled(false);
-        uno_sei1.setEnabled(false);
-        uno_sette1.setEnabled(false);
-        uno_otto1.setEnabled(false);
-        uno_nove1.setEnabled(false);
-        due_cinque1.setEnabled(false);
-        due_sei1.setEnabled(false);
-        due_sette1.setEnabled(false);
-        due_otto1.setEnabled(false);
-        due_nove1.setEnabled(false);
-        tre_cinque1.setEnabled(false);
-        tre_sei1.setEnabled(false);
-        tre_sette1.setEnabled(false);
-        tre_otto1.setEnabled(false);
-        tre_nove1.setEnabled(false);
-        quattro_cinque1.setEnabled(false);
-        quattro_sei1.setEnabled(false);
-        quattro_sette1.setEnabled(false);
-        quattro_otto1.setEnabled(false);
-        quattro_nove1.setEnabled(false);
-        cinque_zero1.setEnabled(false);
-        cinque_uno1.setEnabled(false);
-        cinque_due1.setEnabled(false);
-        cinque_tre1.setEnabled(false);
-        cinque_quattro1.setEnabled(false);
-        cinque_cinque1.setEnabled(false);
-        cinque_sei1.setEnabled(false);
-        cinque_sette1.setEnabled(false);
-        cinque_otto1.setEnabled(false);
-        cinque_nove1.setEnabled(false);
-        sei_zero1.setEnabled(false);
-        sei_uno1.setEnabled(false);
-        sei_due1.setEnabled(false);
-        sei_tre1.setEnabled(false);
-        sei_quattro1.setEnabled(false);
-        sei_cinque1.setEnabled(false);
-        sei_sei1.setEnabled(false);
-        sei_sette1.setEnabled(false);
-        sei_otto1.setEnabled(false);
-        sei_nove1.setEnabled(false);
-        sette_zero1.setEnabled(false);
-        sette_uno1.setEnabled(false);
-        sette_due1.setEnabled(false);
-        sette_tre1.setEnabled(false);
-        sette_quattro1.setEnabled(false);
-        sette_cinque1.setEnabled(false);
-        sette_sei1.setEnabled(false);
-        sette_sette1.setEnabled(false);
-        sette_otto1.setEnabled(false);
-        sette_nove1.setEnabled(false);
-        otto_zero1.setEnabled(false);
-        otto_uno1.setEnabled(false);
-        otto_due1.setEnabled(false);
-        otto_tre1.setEnabled(false);
-        otto_quattro1.setEnabled(false);
-        otto_cinque1.setEnabled(false);
-        otto_sei1.setEnabled(false);
-        otto_sette1.setEnabled(false);
-        otto_otto1.setEnabled(false);
-        otto_nove1.setEnabled(false);
-        nove_zero1.setEnabled(false);
-        nove_uno1.setEnabled(false);
-        nove_due1.setEnabled(false);
-        nove_tre1.setEnabled(false);
-        nove_quattro1.setEnabled(false);
-        nove_cinque1.setEnabled(false);
-        nove_sei1.setEnabled(false);
-        nove_sette1.setEnabled(false);
-        nove_otto1.setEnabled(false);
-        nove_nove1.setEnabled(false);
-
-        zero_zero.setEnabled(false);
-        zero_uno.setEnabled(false);
-        zero_due.setEnabled(false);
-        zero_tre.setEnabled(false);
-        zero_quattro.setEnabled(false);
-        uno_zero.setEnabled(false);
-        uno_uno.setEnabled(false);
-        uno_due.setEnabled(false);
-        uno_tre.setEnabled(false);
-        uno_quattro.setEnabled(false);
-        due_zero.setEnabled(false);
-        due_uno.setEnabled(false);
-        due_due.setEnabled(false);
-        due_tre.setEnabled(false);
-        due_quattro.setEnabled(false);
-        tre_zero.setEnabled(false);
-        tre_uno.setEnabled(false);
-        tre_due.setEnabled(false);
-        tre_tre.setEnabled(false);
-        tre_quattro.setEnabled(false);
-        quattro_zero.setEnabled(false);
-        quattro_uno.setEnabled(false);
-        quattro_due.setEnabled(false);
-        quattro_tre.setEnabled(false);
-        quattro_quattro.setEnabled(false);
-
-        zero_cinque.setEnabled(false);
-        zero_sei.setEnabled(false);
-        zero_sette.setEnabled(false);
-        zero_otto.setEnabled(false);
-        zero_nove.setEnabled(false);
-        uno_cinque.setEnabled(false);
-        uno_sei.setEnabled(false);
-        uno_sette.setEnabled(false);
-        uno_otto.setEnabled(false);
-        uno_nove.setEnabled(false);
-        due_cinque.setEnabled(false);
-        due_sei.setEnabled(false);
-        due_sette.setEnabled(false);
-        due_otto.setEnabled(false);
-        due_nove.setEnabled(false);
-        tre_cinque.setEnabled(false);
-        tre_sei.setEnabled(false);
-        tre_sette.setEnabled(false);
-        tre_otto.setEnabled(false);
-        tre_nove.setEnabled(false);
-        quattro_cinque.setEnabled(false);
-        quattro_sei.setEnabled(false);
-        quattro_sette.setEnabled(false);
-        quattro_otto.setEnabled(false);
-        quattro_nove.setEnabled(false);
-        cinque_zero.setEnabled(false);
-        cinque_uno.setEnabled(false);
-        cinque_due.setEnabled(false);
-        cinque_tre.setEnabled(false);
-        cinque_quattro.setEnabled(false);
-        cinque_cinque.setEnabled(false);
-        cinque_sei.setEnabled(false);
-        cinque_sette.setEnabled(false);
-        cinque_otto.setEnabled(false);
-        cinque_nove.setEnabled(false);
-        sei_zero.setEnabled(false);
-        sei_uno.setEnabled(false);
-        sei_due.setEnabled(false);
-        sei_tre.setEnabled(false);
-        sei_quattro.setEnabled(false);
-        sei_cinque.setEnabled(false);
-        sei_sei.setEnabled(false);
-        sei_sette.setEnabled(false);
-        sei_otto.setEnabled(false);
-        sei_nove.setEnabled(false);
-        sette_zero.setEnabled(false);
-        sette_uno.setEnabled(false);
-        sette_due.setEnabled(false);
-        sette_tre.setEnabled(false);
-        sette_quattro.setEnabled(false);
-        sette_cinque.setEnabled(false);
-        sette_sei.setEnabled(false);
-        sette_sette.setEnabled(false);
-        sette_otto.setEnabled(false);
-        sette_nove.setEnabled(false);
-        otto_zero.setEnabled(false);
-        otto_uno.setEnabled(false);
-        otto_due.setEnabled(false);
-        otto_tre.setEnabled(false);
-        otto_quattro.setEnabled(false);
-        otto_cinque.setEnabled(false);
-        otto_sei.setEnabled(false);
-        otto_sette.setEnabled(false);
-        otto_otto.setEnabled(false);
-        otto_nove.setEnabled(false);
-        nove_zero.setEnabled(false);
-        nove_uno.setEnabled(false);
-        nove_due.setEnabled(false);
-        nove_tre.setEnabled(false);
-        nove_quattro.setEnabled(false);
-        nove_cinque.setEnabled(false);
-        nove_sei.setEnabled(false);
-        nove_sette.setEnabled(false);
-        nove_otto.setEnabled(false);
-        nove_nove.setEnabled(false);
+        if (facile.isSelected() == true) {
+            setAll(di._5x5, true, false);
+        } else if (medio.isSelected() == true) {
+            setAll(di._8x8, true, false);
+        } else {
+            setAll(di._10x10, true, false);
+        }
     }//GEN-LAST:event_stopActionPerformed
 
     private void zero_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_zeroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[0][0] == 0) {
-            zero_zero.setBackground(Color.cyan);
-        } else if (acqua[0][0] == 1) {
-            zero_zero.setBackground(Color.black);
-            //fineGioco++;
-        }
-        Comportamento(zero_zero);
+        Comportamento(0, 0, zero_zero);
     }//GEN-LAST:event_zero_zeroActionPerformed
 
     private void zero_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_unoActionPerformed
-        // TODO add your handling code here:
-        if (acqua[0][1] == 0) {
-            zero_uno.setBackground(Color.cyan);
-        } else if (acqua[0][1] == 1) {
-            //fineGioco++;
-            zero_uno.setBackground(Color.black);
-        }
-        Comportamento(zero_uno);
+        Comportamento(0, 1, zero_uno);
     }//GEN-LAST:event_zero_unoActionPerformed
 
     private void zero_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_dueActionPerformed
-        // TODO add your handling code here:
-        if (acqua[0][2] == 0) {
-            zero_due.setBackground(Color.cyan);
-        } else if (acqua[0][2] == 1) {
-            zero_due.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(zero_due);
+        Comportamento(0, 2, zero_due);
     }//GEN-LAST:event_zero_dueActionPerformed
 
     private void zero_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_treActionPerformed
-        // TODO add your handling code here:
-        if (acqua[0][3] == 0) {
-            zero_tre.setBackground(Color.cyan);
-        } else if (acqua[0][3] == 1) {
-            zero_tre.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(zero_tre);
-
+        Comportamento(0, 3, zero_tre);
     }//GEN-LAST:event_zero_treActionPerformed
 
     private void zero_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_quattroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[0][4] == 0) {
-            zero_quattro.setBackground(Color.cyan);
-        } else if (acqua[0][4] == 1) {
-            zero_quattro.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(zero_quattro);
-
+        Comportamento(0, 4, zero_quattro);
     }//GEN-LAST:event_zero_quattroActionPerformed
 
     private void uno_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_zeroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[1][0] == 0) {
-            uno_zero.setBackground(Color.cyan);
-        } else if (acqua[1][0] == 1) {
-            uno_zero.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(uno_zero);
+        Comportamento(1, 0, uno_zero);
     }//GEN-LAST:event_uno_zeroActionPerformed
 
     private void uno_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_treActionPerformed
-        // TODO add your handling code here:
-        if (acqua[1][3] == 0) {
-            uno_tre.setBackground(Color.cyan);
-        } else if (acqua[1][3] == 1) {
-            uno_tre.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(uno_tre);
-
+        Comportamento(1, 3, uno_tre);
     }//GEN-LAST:event_uno_treActionPerformed
 
     private void uno_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_quattroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[1][4] == 0) {
-            uno_quattro.setBackground(Color.cyan);
-        } else if (acqua[1][4] == 1) {
-//            fineGioco++;
-            uno_quattro.setBackground(Color.black);
-        }
-        Comportamento(uno_quattro);
-
+        Comportamento(1, 4, uno_quattro);
     }//GEN-LAST:event_uno_quattroActionPerformed
 
     private void due_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_zeroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[2][0] == 0) {
-            due_zero.setBackground(Color.cyan);
-        } else if (acqua[2][0] == 1) {
-//            fineGioco++;
-            due_zero.setBackground(Color.black);
-        }
-        Comportamento(due_zero);
-
+        Comportamento(2, 0, due_zero);
     }//GEN-LAST:event_due_zeroActionPerformed
 
     private void due_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_unoActionPerformed
-        // TODO add your handling code here:
-        if (acqua[2][1] == 0) {
-            due_uno.setBackground(Color.cyan);
-        } else if (acqua[2][1] == 1) {
-            due_uno.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(due_uno);
-
+        Comportamento(2, 1, due_uno);
     }//GEN-LAST:event_due_unoActionPerformed
-
     private void due_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_dueActionPerformed
-        // TODO add your handling code here:
-        if (acqua[2][2] == 0) {
-            due_due.setBackground(Color.cyan);
-        } else if (acqua[2][2] == 1) {
-            due_due.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(due_due);
-
+        Comportamento(2, 2, due_due);
     }//GEN-LAST:event_due_dueActionPerformed
 
     private void due_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_treActionPerformed
-        // TODO add your handling code here:
-        if (acqua[2][3] == 0) {
-            due_tre.setBackground(Color.cyan);
-        } else if (acqua[2][3] == 1) {
-            due_tre.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(due_tre);
-
+        Comportamento(2, 3, due_tre);
     }//GEN-LAST:event_due_treActionPerformed
 
     private void due_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_quattroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[2][4] == 0) {
-            due_quattro.setBackground(Color.cyan);
-        } else if (acqua[2][4] == 1) {
-            due_quattro.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(due_quattro);
-
+        Comportamento(2, 4, due_quattro);
     }//GEN-LAST:event_due_quattroActionPerformed
 
     private void tre_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_zeroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[3][0] == 0) {
-            tre_zero.setBackground(Color.cyan);
-        } else if (acqua[3][0] == 1) {
-            tre_zero.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(tre_zero);
-
+        Comportamento(3, 0, tre_zero);
     }//GEN-LAST:event_tre_zeroActionPerformed
 
     private void tre_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_unoActionPerformed
-        // TODO add your handling code here:
-        if (acqua[3][1] == 0) {
-            tre_uno.setBackground(Color.cyan);
-        } else if (acqua[3][1] == 1) {
-            tre_uno.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(tre_uno);
-
+        Comportamento(3, 1, tre_uno);
     }//GEN-LAST:event_tre_unoActionPerformed
 
     private void tre_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_dueActionPerformed
-        // TODO add your handling code here:
-        if (acqua[3][2] == 0) {
-            tre_due.setBackground(Color.cyan);
-        } else if (acqua[3][2] == 1) {
-            tre_due.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(tre_due);
-
+        Comportamento(3, 2, tre_due);
     }//GEN-LAST:event_tre_dueActionPerformed
 
     private void tre_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_treActionPerformed
-        // TODO add your handling code here:
-        if (acqua[3][3] == 0) {
-            tre_tre.setBackground(Color.cyan);
-        } else if (acqua[3][3] == 1) {
-            tre_tre.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(tre_tre);
-
+        Comportamento(3, 3, tre_tre);
     }//GEN-LAST:event_tre_treActionPerformed
 
     private void tre_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_quattroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[3][4] == 0) {
-            tre_quattro.setBackground(Color.cyan);
-        } else if (acqua[3][4] == 1) {
-            tre_quattro.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(tre_quattro);
-
+        Comportamento(3, 4, tre_quattro);
     }//GEN-LAST:event_tre_quattroActionPerformed
-
     private void quattro_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_zeroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[4][0] == 0) {
-            quattro_zero.setBackground(Color.cyan);
-        } else if (acqua[4][0] == 1) {
-            quattro_zero.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(quattro_zero);
-
+        Comportamento(4, 0, quattro_zero);
     }//GEN-LAST:event_quattro_zeroActionPerformed
 
     private void quattro_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_unoActionPerformed
-        // TODO add your handling code here:
-        if (acqua[4][1] == 0) {
-            quattro_uno.setBackground(Color.cyan);
-        } else if (acqua[4][1] == 1) {
-//            fineGioco++;
-            quattro_uno.setBackground(Color.black);
-        }
-        Comportamento(quattro_uno);
-
+        Comportamento(4, 1, quattro_uno);
     }//GEN-LAST:event_quattro_unoActionPerformed
 
     private void quattro_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_dueActionPerformed
-        // TODO add your handling code here:
-        if (acqua[4][2] == 0) {
-            quattro_due.setBackground(Color.cyan);
-        } else if (acqua[4][2] == 1) {
-            quattro_due.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(quattro_due);
-
+        Comportamento(4, 2, quattro_due);
     }//GEN-LAST:event_quattro_dueActionPerformed
 
     private void quattro_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_treActionPerformed
-        // TODO add your handling code here:
-        if (acqua[4][3] == 0) {
-            quattro_tre.setBackground(Color.cyan);
-        } else if (acqua[4][3] == 1) {
-            quattro_tre.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(quattro_tre);
-
+        Comportamento(4, 3, quattro_tre);
     }//GEN-LAST:event_quattro_treActionPerformed
 
     private void quattro_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_quattroActionPerformed
-        // TODO add your handling code here:
-        if (acqua[4][4] == 0) {
-            quattro_quattro.setBackground(Color.cyan);
-        } else if (acqua[4][4] == 1) {
-            quattro_quattro.setBackground(Color.black);
-//            fineGioco++;
-        }
-        Comportamento(quattro_quattro);
-
+        Comportamento(4, 4, quattro_quattro);
     }//GEN-LAST:event_quattro_quattroActionPerformed
-
     private void zero_zeroMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_zero_zeroMouseMoved
-        // TODO add your handling code here:
     }//GEN-LAST:event_zero_zeroMouseMoved
-
     private void facileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facileActionPerformed
-        // TODO add your handling code here:
-
+        //radioButton
+        //facile = 5x5
         if (facile.isSelected() == true) {
             medio.setSelected(false);
             difficile.setSelected(false);
         }
-        if(solitario.isSelected()==false)
-        {
-            A1.setVisible(true);
-                B1.setVisible(true);
-                C1.setVisible(true);
-                D1.setVisible(true);
-                E1.setVisible(true);
-                _1.setVisible(true);
-                _2.setVisible(true);
-                _3.setVisible(true);
-                _4.setVisible(true);
-                _5.setVisible(true);
-                zero_zero1.setVisible(true);
-                zero_uno1.setVisible(true);
-                zero_due1.setVisible(true);
-                zero_tre1.setVisible(true);
-                zero_quattro1.setVisible(true);
-                uno_zero1.setVisible(true);
-                uno_uno1.setVisible(true);
-                uno_due1.setVisible(true);
-                uno_tre1.setVisible(true);
-                uno_quattro1.setVisible(true);
-                due_zero1.setVisible(true);
-                due_uno1.setVisible(true);
-                due_due1.setVisible(true);
-                due_tre1.setVisible(true);
-                due_quattro1.setVisible(true);
-                tre_zero1.setVisible(true);
-                tre_uno1.setVisible(true);
-                tre_due1.setVisible(true);
-                tre_tre1.setVisible(true);
-                tre_quattro1.setVisible(true);
-                quattro_zero1.setVisible(true);
-                quattro_uno1.setVisible(true);
-                quattro_due1.setVisible(true);
-                quattro_tre1.setVisible(true);
-                quattro_quattro1.setVisible(true);
-               zero_cinque1.setVisible(false);
-        zero_sei1.setVisible(false);
-        zero_sette1.setVisible(false);
-        uno_cinque1.setVisible(false);
-        uno_sei1.setVisible(false);
-        uno_sette1.setVisible(false);
-        due_cinque1.setVisible(false);
-        due_sei1.setVisible(false);
-        due_sette1.setVisible(false);
-        tre_cinque1.setVisible(false);
-        tre_sei1.setVisible(false);
-        tre_sette1.setVisible(false);
-         quattro_cinque1.setVisible(false);
-        quattro_sei1.setVisible(false);
-        quattro_sette1.setVisible(false);
-                cinque_zero1.setVisible(false);
-                cinque_uno1.setVisible(false);
-                cinque_due1.setVisible(false);
-                cinque_tre1.setVisible(false);
-                cinque_quattro1.setVisible(false);
-              cinque_cinque1.setVisible(false);
-                cinque_sei1.setVisible(false);
-        cinque_sette1.setVisible(false);
-        sei_zero1.setVisible(false);
-        sei_uno1.setVisible(false);
-        sei_due1.setVisible(false);
-        sei_tre1.setVisible(false);
-        sei_quattro1.setVisible(false);
-        sei_cinque1.setVisible(false);
-        sei_sei1.setVisible(false);
-        sei_sette1.setVisible(false);
-        sette_zero1.setVisible(false);
-        sette_uno1.setVisible(false);
-        sette_due1.setVisible(false);
-        sette_tre1.setVisible(false);
-        sette_quattro1.setVisible(false);
-        sette_cinque1.setVisible(false);
-        sette_sei1.setVisible(false);
-        sette_sette1.setVisible(false);
-        sette_otto1.setVisible(false);
 
-        J1.setVisible(false);
-        I1.setVisible(false);
-
-        _10.setVisible(false);
-        _9.setVisible(false);
-        _8.setVisible(true);
-
-        zero_otto1.setVisible(false);
-        zero_nove1.setVisible(false);
-        uno_cinque1.setVisible(false);
-        uno_otto1.setVisible(false);
-        uno_nove1.setVisible(false);
-        due_otto1.setVisible(false);
-        due_nove1.setVisible(false);
-        tre_otto1.setVisible(false);
-        tre_nove1.setVisible(false);
-        quattro_otto1.setVisible(false);
-        quattro_nove1.setVisible(false);
-        cinque_otto1.setVisible(false);
-        cinque_nove1.setVisible(false);
-        sei_otto1.setVisible(false);
-        sei_nove1.setVisible(false);
-        sette_otto1.setVisible(false);
-        sette_nove1.setVisible(false);
-        otto_zero1.setVisible(false);
-        otto_uno1.setVisible(false);
-        otto_due1.setVisible(false);
-        otto_tre1.setVisible(false);
-        otto_quattro1.setVisible(false);
-        otto_cinque1.setVisible(false);
-        otto_sei1.setVisible(false);
-        otto_sette1.setVisible(false);
-        otto_otto1.setVisible(false);
-        otto_nove1.setVisible(false);
-        
-        nove_zero1.setVisible(false);
-        nove_uno1.setVisible(false);
-        nove_due1.setVisible(false);
-        nove_tre1.setVisible(false);
-        nove_quattro1.setVisible(false);
-        nove_cinque1.setVisible(false);
-        nove_sei1.setVisible(false);
-        nove_sette1.setVisible(false);
-        nove_otto1.setVisible(false);
-        nove_nove1.setVisible(false);
-
+        setAll(di._10x10, false, false);
+        setAll(di._5x5, true, false);
+        if (solitario.isSelected() == false) {
+            setAll1(di._10x10, false, false);
+            setAll1(di._5x5, true, false);
         }
-        J.setVisible(false);
-        F.setVisible(false);
-        G.setVisible(false);
-        H.setVisible(false);
-        I.setVisible(false);
-        dieci.setVisible(false);
-        nove.setVisible(false);
-        otto.setVisible(false);
-        sette.setVisible(false);
-        sei.setVisible(false);
-        zero_cinque.setVisible(false);
-        zero_sei.setVisible(false);
-        zero_sette.setVisible(false);
-        zero_otto.setVisible(false);
-        zero_nove.setVisible(false);
-        uno_cinque.setVisible(false);
-        uno_sei.setVisible(false);
-        uno_sette.setVisible(false);
-        uno_otto.setVisible(false);
-        uno_nove.setVisible(false);
-        due_cinque.setVisible(false);
-        due_sei.setVisible(false);
-        due_sette.setVisible(false);
-        due_otto.setVisible(false);
-        due_nove.setVisible(false);
-        tre_cinque.setVisible(false);
-        tre_sei.setVisible(false);
-        tre_sette.setVisible(false);
-        tre_otto.setVisible(false);
-        tre_nove.setVisible(false);
-        quattro_cinque.setVisible(false);
-        quattro_sei.setVisible(false);
-        quattro_sette.setVisible(false);
-        quattro_otto.setVisible(false);
-        quattro_nove.setVisible(false);
-        cinque_zero.setVisible(false);
-        cinque_uno.setVisible(false);
-        cinque_due.setVisible(false);
-        cinque_tre.setVisible(false);
-        cinque_quattro.setVisible(false);
-        cinque_cinque.setVisible(false);
-        cinque_sei.setVisible(false);
-        cinque_sette.setVisible(false);
-        cinque_otto.setVisible(false);
-        cinque_nove.setVisible(false);
-        sei_zero.setVisible(false);
-        sei_uno.setVisible(false);
-        sei_due.setVisible(false);
-        sei_tre.setVisible(false);
-        sei_quattro.setVisible(false);
-        sei_cinque.setVisible(false);
-        sei_sei.setVisible(false);
-        sei_sette.setVisible(false);
-        sei_otto.setVisible(false);
-        sei_nove.setVisible(false);
-        sette_zero.setVisible(false);
-        sette_uno.setVisible(false);
-        sette_due.setVisible(false);
-        sette_tre.setVisible(false);
-        sette_quattro.setVisible(false);
-        sette_cinque.setVisible(false);
-        sette_sei.setVisible(false);
-        sette_sette.setVisible(false);
-        sette_otto.setVisible(false);
-        sette_nove.setVisible(false);
-        otto_zero.setVisible(false);
-        otto_uno.setVisible(false);
-        otto_due.setVisible(false);
-        otto_tre.setVisible(false);
-        otto_quattro.setVisible(false);
-        otto_cinque.setVisible(false);
-        otto_sei.setVisible(false);
-        otto_sette.setVisible(false);
-        otto_otto.setVisible(false);
-        otto_nove.setVisible(false);
-        nove_zero.setVisible(false);
-        nove_uno.setVisible(false);
-        nove_due.setVisible(false);
-        nove_tre.setVisible(false);
-        nove_quattro.setVisible(false);
-        nove_cinque.setVisible(false);
-        nove_sei.setVisible(false);
-        nove_sette.setVisible(false);
-        nove_otto.setVisible(false);
-        nove_nove.setVisible(false);
-
-        zero_zero.setEnabled(false);
-        zero_uno.setEnabled(false);
-        zero_due.setEnabled(false);
-        zero_tre.setEnabled(false);
-        zero_quattro.setEnabled(false);
-        zero_cinque.setEnabled(false);
-        uno_zero.setEnabled(false);
-        uno_uno.setEnabled(false);
-        uno_due.setEnabled(false);
-        uno_tre.setEnabled(false);
-        uno_quattro.setEnabled(false);
-        uno_cinque.setEnabled(false);
-        due_zero.setEnabled(false);
-        due_uno.setEnabled(false);
-        due_due.setEnabled(false);
-        due_tre.setEnabled(false);
-        due_quattro.setEnabled(false);
-        due_cinque.setEnabled(false);
-        tre_zero.setEnabled(false);
-        tre_uno.setEnabled(false);
-        tre_due.setEnabled(false);
-        tre_tre.setEnabled(false);
-        tre_quattro.setEnabled(false);
-        tre_cinque.setEnabled(false);
-        quattro_zero.setEnabled(false);
-        quattro_uno.setEnabled(false);
-        quattro_due.setEnabled(false);
-        quattro_tre.setEnabled(false);
-        quattro_quattro.setEnabled(false);
-        quattro_cinque.setEnabled(false);
-        cinque_zero.setEnabled(false);
-        cinque_uno.setEnabled(false);
-        cinque_due.setEnabled(false);
-        cinque_tre.setEnabled(false);
-        cinque_quattro.setEnabled(false);
-        cinque_cinque.setEnabled(false);
-
-        zero_zero.setBackground(Color.white);
-        zero_uno.setBackground(Color.white);
-        zero_due.setBackground(Color.white);
-        zero_tre.setBackground(Color.white);
-        zero_quattro.setBackground(Color.white);
-        uno_zero.setBackground(Color.white);
-        uno_uno.setBackground(Color.white);
-        uno_due.setBackground(Color.white);
-        uno_tre.setBackground(Color.white);
-        uno_quattro.setBackground(Color.white);
-        due_zero.setBackground(Color.white);
-        due_uno.setBackground(Color.white);
-        due_due.setBackground(Color.white);
-        due_tre.setBackground(Color.white);
-        due_quattro.setBackground(Color.white);
-        tre_zero.setBackground(Color.white);
-        tre_uno.setBackground(Color.white);
-        tre_due.setBackground(Color.white);
-        tre_tre.setBackground(Color.white);
-        tre_quattro.setBackground(Color.white);
-        quattro_zero.setBackground(Color.white);
-        quattro_uno.setBackground(Color.white);
-        quattro_due.setBackground(Color.white);
-        quattro_tre.setBackground(Color.white);
-        quattro_quattro.setBackground(Color.white);
     }//GEN-LAST:event_facileActionPerformed
 
     private void medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medioActionPerformed
-        // TODO add your handling code here:
+       //radioButton
+        //medio = 8x8
         if (medio.isSelected() == true) {
             facile.setSelected(false);
             difficile.setSelected(false);
         }
-
-        F.setVisible(true);
-        G.setVisible(true);
-        H.setVisible(true);
-        I.setVisible(true);
-        J.setVisible(true);
-        sette_zero.setVisible(true);
-        sette_uno.setVisible(true);
-        sette_due.setVisible(true);
-        sette_tre.setVisible(true);
-        sette_quattro.setVisible(true);
-        sette_cinque.setVisible(true);
-        sette_sei.setVisible(true);
-        sette_sette.setVisible(true);
-        sette.setVisible(true);
-        sei.setVisible(true);
-        otto.setVisible(true);
-        zero_cinque.setVisible(true);
-        zero_sei.setVisible(true);
-        zero_sette.setVisible(true);
-        uno_sei.setVisible(true);
-        uno_sette.setVisible(true);
-        due_cinque.setVisible(true);
-        due_sei.setVisible(true);
-        due_sette.setVisible(true);
-        tre_cinque.setVisible(true);
-        tre_sei.setVisible(true);
-        tre_sette.setVisible(true);
-        quattro_cinque.setVisible(true);
-        quattro_sei.setVisible(true);
-        quattro_sette.setVisible(true);
-        cinque_zero.setVisible(true);
-        cinque_uno.setVisible(true);
-        cinque_due.setVisible(true);
-        cinque_tre.setVisible(true);
-        cinque_quattro.setVisible(true);
-        cinque_cinque.setVisible(true);
-        cinque_sei.setVisible(true);
-        cinque_sette.setVisible(true);
-        sei_zero.setVisible(true);
-        sei_uno.setVisible(true);
-        sei_due.setVisible(true);
-        sei_tre.setVisible(true);
-        sei_quattro.setVisible(true);
-        sei_cinque.setVisible(true);
-        sei_sei.setVisible(true);
-        sei_sette.setVisible(true);
-
-        J.setVisible(false);
-        I.setVisible(false);
-
-        dieci.setVisible(false);
-        nove.setVisible(false);
-        otto.setVisible(true);
-
-        zero_otto.setVisible(false);
-        zero_nove.setVisible(false);
-        uno_cinque.setVisible(true);
-        uno_otto.setVisible(false);
-        uno_nove.setVisible(false);
-        due_otto.setVisible(false);
-        due_nove.setVisible(false);
-        tre_otto.setVisible(false);
-        tre_nove.setVisible(false);
-        quattro_otto.setVisible(false);
-        quattro_nove.setVisible(false);
-        cinque_otto.setVisible(false);
-        cinque_nove.setVisible(false);
-        sei_otto.setVisible(false);
-        sei_nove.setVisible(false);
-        sette_otto.setVisible(false);
-        sette_nove.setVisible(false);
-        otto_zero.setVisible(false);
-        otto_uno.setVisible(false);
-        otto_due.setVisible(false);
-        otto_tre.setVisible(false);
-        otto_quattro.setVisible(false);
-        otto_cinque.setVisible(false);
-        otto_sei.setVisible(false);
-        otto_sette.setVisible(false);
-        otto_otto.setVisible(false);
-        otto_nove.setVisible(false);
-        nove_zero.setVisible(false);
-        nove_uno.setVisible(false);
-        nove_due.setVisible(false);
-        nove_tre.setVisible(false);
-        nove_quattro.setVisible(false);
-        nove_cinque.setVisible(false);
-        nove_sei.setVisible(false);
-        nove_sette.setVisible(false);
-        nove_otto.setVisible(false);
-        nove_nove.setVisible(false);
-
-        sette_zero.setEnabled(false);
-        sette_uno.setEnabled(false);
-        sette_due.setEnabled(false);
-        sette_tre.setEnabled(false);
-        sette_quattro.setEnabled(false);
-        sette_cinque.setEnabled(false);
-        sette_sei.setEnabled(false);
-        sette_sette.setEnabled(false);
-        zero_zero.setEnabled(false);
-        zero_uno.setEnabled(false);
-        zero_due.setEnabled(false);
-        zero_tre.setEnabled(false);
-        zero_quattro.setEnabled(false);
-        zero_cinque.setEnabled(false);
-        zero_sei.setEnabled(false);
-        zero_sette.setEnabled(false);
-        uno_zero.setEnabled(false);
-        uno_uno.setEnabled(false);
-        uno_due.setEnabled(false);
-        uno_tre.setEnabled(false);
-        uno_quattro.setEnabled(false);
-        uno_cinque.setEnabled(false);
-        uno_sei.setEnabled(false);
-        uno_sette.setEnabled(false);
-        due_zero.setEnabled(false);
-        due_uno.setEnabled(false);
-        due_due.setEnabled(false);
-        due_tre.setEnabled(false);
-        due_quattro.setEnabled(false);
-        due_cinque.setEnabled(false);
-        due_sei.setEnabled(false);
-        due_sette.setEnabled(false);
-        tre_zero.setEnabled(false);
-        tre_uno.setEnabled(false);
-        tre_due.setEnabled(false);
-        tre_tre.setEnabled(false);
-        tre_quattro.setEnabled(false);
-        tre_cinque.setEnabled(false);
-        tre_sei.setEnabled(false);
-        tre_sette.setEnabled(false);
-        quattro_zero.setEnabled(false);
-        quattro_uno.setEnabled(false);
-        quattro_due.setEnabled(false);
-        quattro_tre.setEnabled(false);
-        quattro_quattro.setEnabled(false);
-        quattro_cinque.setEnabled(false);
-        quattro_sei.setEnabled(false);
-        quattro_sette.setEnabled(false);
-        cinque_zero.setEnabled(false);
-        cinque_uno.setEnabled(false);
-        cinque_due.setEnabled(false);
-        cinque_tre.setEnabled(false);
-        cinque_quattro.setEnabled(false);
-        cinque_cinque.setEnabled(false);
-        cinque_sei.setEnabled(false);
-        cinque_sette.setEnabled(false);
-        sei_zero.setEnabled(false);
-        sei_uno.setEnabled(false);
-        sei_due.setEnabled(false);
-        sei_tre.setEnabled(false);
-        sei_quattro.setEnabled(false);
-        sei_cinque.setEnabled(false);
-        sei_sei.setEnabled(false);
-        sei_sette.setEnabled(false);
-
-        zero_zero.setBackground(Color.white);
-        zero_uno.setBackground(Color.white);
-        zero_due.setBackground(Color.white);
-        zero_tre.setBackground(Color.white);
-        zero_quattro.setBackground(Color.white);
-        uno_zero.setBackground(Color.white);
-        uno_uno.setBackground(Color.white);
-        uno_due.setBackground(Color.white);
-        uno_tre.setBackground(Color.white);
-        uno_quattro.setBackground(Color.white);
-        due_zero.setBackground(Color.white);
-        due_uno.setBackground(Color.white);
-        due_due.setBackground(Color.white);
-        due_tre.setBackground(Color.white);
-        due_quattro.setBackground(Color.white);
-        tre_zero.setBackground(Color.white);
-        tre_uno.setBackground(Color.white);
-        tre_due.setBackground(Color.white);
-        tre_tre.setBackground(Color.white);
-        tre_quattro.setBackground(Color.white);
-        quattro_zero.setBackground(Color.white);
-        quattro_uno.setBackground(Color.white);
-        quattro_due.setBackground(Color.white);
-        quattro_tre.setBackground(Color.white);
-        quattro_quattro.setBackground(Color.white);
-        sette_zero.setBackground(Color.white);
-        sette_uno.setBackground(Color.white);
-        sette_due.setBackground(Color.white);
-        sette_tre.setBackground(Color.white);
-        sette_quattro.setBackground(Color.white);
-        sette_cinque.setBackground(Color.white);
-        sette_sei.setBackground(Color.white);
-        sette_sette.setBackground(Color.white);
-        zero_cinque.setBackground(Color.white);
-        zero_sei.setBackground(Color.white);
-        zero_sette.setBackground(Color.white);
-        uno_cinque.setBackground(Color.white);
-        uno_sei.setBackground(Color.white);
-        uno_sette.setBackground(Color.white);
-        due_cinque.setBackground(Color.white);
-        due_sei.setBackground(Color.white);
-        due_sette.setBackground(Color.white);
-        tre_cinque.setBackground(Color.white);
-        tre_sei.setBackground(Color.white);
-        tre_sette.setBackground(Color.white);
-        quattro_cinque.setBackground(Color.white);
-        quattro_sei.setBackground(Color.white);
-        quattro_sette.setBackground(Color.white);
-        cinque_zero.setBackground(Color.white);
-        cinque_uno.setBackground(Color.white);
-        cinque_due.setBackground(Color.white);
-        cinque_tre.setBackground(Color.white);
-        cinque_quattro.setBackground(Color.white);
-        cinque_cinque.setBackground(Color.white);
-        cinque_sei.setBackground(Color.white);
-        cinque_sette.setBackground(Color.white);
-        sei_zero.setBackground(Color.white);
-        sei_uno.setBackground(Color.white);
-        sei_due.setBackground(Color.white);
-        sei_tre.setBackground(Color.white);
-        sei_quattro.setBackground(Color.white);
-        sei_cinque.setBackground(Color.white);
-        sei_sei.setBackground(Color.white);
-        sei_sette.setBackground(Color.white);
-        if (solitario.isSelected()==false) {
-            zero_zero1.setVisible(true);
-            zero_uno1.setVisible(true);
-            zero_due1.setVisible(true);
-            zero_tre1.setVisible(true);
-            zero_quattro1.setVisible(true);
-            uno_zero1.setVisible(true);
-            uno_uno1.setVisible(true);
-            uno_due1.setVisible(true);
-            uno_tre1.setVisible(true);
-            uno_quattro1.setVisible(true);
-            due_zero1.setVisible(true);
-            due_uno1.setVisible(true);
-            due_due1.setVisible(true);
-            due_tre1.setVisible(true);
-            due_quattro1.setVisible(true);
-            tre_zero1.setVisible(true);
-            tre_uno1.setVisible(true);
-            tre_due1.setVisible(true);
-            tre_tre1.setVisible(true);
-            tre_quattro1.setVisible(true);
-            quattro_zero1.setVisible(true);
-            quattro_uno1.setVisible(true);
-            quattro_due1.setVisible(true);
-            quattro_tre1.setVisible(true);
-            quattro_quattro1.setVisible(true);
-
-            zero_cinque1.setVisible(true);
-            zero_sei1.setVisible(true);
-            zero_sette1.setVisible(true);
-            zero_otto1.setVisible(false);
-            zero_nove1.setVisible(false);
-            uno_cinque1.setVisible(true);
-            uno_sei1.setVisible(true);
-            uno_sette1.setVisible(true);
-            uno_otto1.setVisible(false);
-            uno_nove1.setVisible(false);
-            due_cinque1.setVisible(true);
-            due_sei1.setVisible(true);
-            due_sette1.setVisible(true);
-            due_otto1.setVisible(false);
-            due_nove1.setVisible(false);
-            tre_cinque1.setVisible(true);
-            tre_sei1.setVisible(true);
-            tre_sette1.setVisible(true);
-            tre_otto1.setVisible(false);
-            tre_nove1.setVisible(false);
-            quattro_cinque1.setVisible(true);
-            quattro_sei1.setVisible(true);
-            quattro_sette1.setVisible(true);
-            quattro_otto1.setVisible(false);
-            quattro_nove1.setVisible(false);
-            cinque_zero1.setVisible(true);
-            cinque_uno1.setVisible(true);
-            cinque_due1.setVisible(true);
-            cinque_tre1.setVisible(true);
-            cinque_quattro1.setVisible(true);
-            cinque_cinque1.setVisible(true);
-            cinque_sei1.setVisible(true);
-            cinque_sette1.setVisible(true);
-            cinque_otto1.setVisible(false);
-            cinque_nove1.setVisible(false);
-            sei_zero1.setVisible(true);
-            sei_uno1.setVisible(true);
-            sei_due1.setVisible(true);
-            sei_tre1.setVisible(true);
-            sei_quattro1.setVisible(true);
-            sei_cinque1.setVisible(true);
-            sei_sei1.setVisible(true);
-            sei_sette1.setVisible(true);
-            sei_otto1.setVisible(false);
-            sei_nove1.setVisible(false);
-            sette_zero1.setVisible(true);
-            sette_uno1.setVisible(true);
-            sette_due1.setVisible(true);
-            sette_tre1.setVisible(true);
-            sette_quattro1.setVisible(true);
-            sette_cinque1.setVisible(true);
-            sette_sei1.setVisible(true);
-            sette_sette1.setVisible(true);
-            sette_otto1.setVisible(false);
-            sette_nove1.setVisible(false);
-            otto_zero1.setVisible(false);
-            otto_uno1.setVisible(false);
-            otto_due1.setVisible(false);
-            otto_tre1.setVisible(false);
-            otto_quattro1.setVisible(false);
-            otto_cinque1.setVisible(false);
-            otto_sei1.setVisible(false);
-            otto_sette1.setVisible(false);
-            otto_otto1.setVisible(false);
-            otto_nove1.setVisible(false);
-            nove_zero1.setVisible(false);
-            nove_uno1.setVisible(false);
-            nove_due1.setVisible(false);
-            nove_tre1.setVisible(false);
-            nove_quattro1.setVisible(false);
-            nove_cinque1.setVisible(false);
-            nove_sei1.setVisible(false);
-            nove_sette1.setVisible(false);
-            nove_otto1.setVisible(false);
-            nove_nove1.setVisible(false);
-            A1.setVisible(false);
-            B1.setVisible(false);
-            C1.setVisible(false);
-            D1.setVisible(false);
-            E1.setVisible(false);
-            F1.setVisible(false);
-            G1.setVisible(false);
-            H1.setVisible(false);
-            I1.setVisible(false);
-            J1.setVisible(false);
-            _1.setVisible(false);
-            _2.setVisible(false);
-            _3.setVisible(false);
-            _4.setVisible(false);
-            _5.setVisible(false);
-            _6.setVisible(false);
-            _7.setVisible(false);
-            _8.setVisible(false);
-            _9.setVisible(false);
-            _10.setVisible(false);
-}
+       
+        setAll(di._10x10, false, false);
+        setAll(di._8x8, true, false);
     }//GEN-LAST:event_medioActionPerformed
 
     private void difficileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficileActionPerformed
-        // TODO add your handling code here:
+        //radioButton
+        //difficile = 10x10
         if (difficile.isSelected() == true) {
             medio.setSelected(false);
             facile.setSelected(false);
         }
-        F.setVisible(true);
-        G.setVisible(true);
-        H.setVisible(true);
-        I.setVisible(true);
-        J.setVisible(true);
-        sette_zero.setVisible(true);
-        sette_uno.setVisible(true);
-        sette_due.setVisible(true);
-        sette_tre.setVisible(true);
-        sette_quattro.setVisible(true);
-        sette_cinque.setVisible(true);
-        sette_sei.setVisible(true);
-        sette_sette.setVisible(true);
-        sette_otto.setVisible(true);
-        sette_nove.setVisible(true);
-        sette.setVisible(true);
-        sei.setVisible(true);
-        otto.setVisible(true);
-        nove.setVisible(true);
-        dieci.setVisible(true);
-        zero_cinque.setVisible(true);
-        zero_sei.setVisible(true);
-        zero_sette.setVisible(true);
-        zero_otto.setVisible(true);
-        zero_nove.setVisible(true);
-        uno_cinque.setVisible(true);
-        uno_sei.setVisible(true);
-        uno_sette.setVisible(true);
-        uno_otto.setVisible(true);
-        uno_nove.setVisible(true);
-        due_cinque.setVisible(true);
-        due_sei.setVisible(true);
-        due_sette.setVisible(true);
-        due_otto.setVisible(true);
-        due_nove.setVisible(true);
-        tre_cinque.setVisible(true);
-        tre_sei.setVisible(true);
-        tre_sette.setVisible(true);
-        tre_otto.setVisible(true);
-        tre_nove.setVisible(true);
-        quattro_cinque.setVisible(true);
-        quattro_sei.setVisible(true);
-        quattro_sette.setVisible(true);
-        quattro_otto.setVisible(true);
-        quattro_nove.setVisible(true);
-        cinque_zero.setVisible(true);
-        cinque_uno.setVisible(true);
-        cinque_due.setVisible(true);
-        cinque_tre.setVisible(true);
-        cinque_quattro.setVisible(true);
-        cinque_cinque.setVisible(true);
-        cinque_sei.setVisible(true);
-        cinque_sette.setVisible(true);
-        cinque_otto.setVisible(true);
-        cinque_nove.setVisible(true);
-        sei_zero.setVisible(true);
-        sei_uno.setVisible(true);
-        sei_due.setVisible(true);
-        sei_tre.setVisible(true);
-        sei_quattro.setVisible(true);
-        sei_cinque.setVisible(true);
-        sei_sei.setVisible(true);
-        sei_sette.setVisible(true);
-        sei_otto.setVisible(true);
-        sei_nove.setVisible(true);
-
-        otto_zero.setVisible(true);
-        otto_uno.setVisible(true);
-        otto_due.setVisible(true);
-        otto_tre.setVisible(true);
-        otto_quattro.setVisible(true);
-        otto_cinque.setVisible(true);
-        otto_sei.setVisible(true);
-        otto_sette.setVisible(true);
-        otto_otto.setVisible(true);
-        otto_nove.setVisible(true);
-        nove_zero.setVisible(true);
-        nove_uno.setVisible(true);
-        nove_due.setVisible(true);
-        nove_tre.setVisible(true);
-        nove_quattro.setVisible(true);
-        nove_cinque.setVisible(true);
-        nove_sei.setVisible(true);
-        nove_sette.setVisible(true);
-        nove_otto.setVisible(true);
-        nove_nove.setVisible(true);
-        sette_zero.setEnabled(false);
-
-        sette_uno.setEnabled(false);
-        sette_due.setEnabled(false);
-        sette_tre.setEnabled(false);
-        sette_quattro.setEnabled(false);
-        sette_cinque.setEnabled(false);
-        sette_sei.setEnabled(false);
-        sette_sette.setEnabled(false);
-        zero_zero.setEnabled(false);
-        zero_uno.setEnabled(false);
-        zero_due.setEnabled(false);
-        zero_tre.setEnabled(false);
-        zero_quattro.setEnabled(false);
-        zero_cinque.setEnabled(false);
-        zero_sei.setEnabled(false);
-        zero_sette.setEnabled(false);
-        uno_zero.setEnabled(false);
-        uno_uno.setEnabled(false);
-        uno_due.setEnabled(false);
-        uno_tre.setEnabled(false);
-        uno_quattro.setEnabled(false);
-        uno_cinque.setEnabled(false);
-        uno_sei.setEnabled(false);
-        uno_sette.setEnabled(false);
-        due_zero.setEnabled(false);
-        due_uno.setEnabled(false);
-        due_due.setEnabled(false);
-        due_tre.setEnabled(false);
-        due_quattro.setEnabled(false);
-        due_cinque.setEnabled(false);
-        due_sei.setEnabled(false);
-        due_sette.setEnabled(false);
-        tre_zero.setEnabled(false);
-        tre_uno.setEnabled(false);
-        tre_due.setEnabled(false);
-        tre_tre.setEnabled(false);
-        tre_quattro.setEnabled(false);
-        tre_cinque.setEnabled(false);
-        tre_sei.setEnabled(false);
-        tre_sette.setEnabled(false);
-        quattro_zero.setEnabled(false);
-        quattro_uno.setEnabled(false);
-        quattro_due.setEnabled(false);
-        quattro_tre.setEnabled(false);
-        quattro_quattro.setEnabled(false);
-        quattro_cinque.setEnabled(false);
-        quattro_sei.setEnabled(false);
-        quattro_sette.setEnabled(false);
-        cinque_zero.setEnabled(false);
-        cinque_uno.setEnabled(false);
-        cinque_due.setEnabled(false);
-        cinque_tre.setEnabled(false);
-        cinque_quattro.setEnabled(false);
-        cinque_cinque.setEnabled(false);
-        cinque_sei.setEnabled(false);
-        cinque_sette.setEnabled(false);
-        sei_zero.setEnabled(false);
-        sei_uno.setEnabled(false);
-        sei_due.setEnabled(false);
-        sei_tre.setEnabled(false);
-        sei_quattro.setEnabled(false);
-        sei_cinque.setEnabled(false);
-        sei_sei.setEnabled(false);
-        sei_sette.setEnabled(false);
-        sette_zero.setEnabled(false);
-        sette_uno.setEnabled(false);
-        sette_due.setEnabled(false);
-        sette_tre.setEnabled(false);
-        sette_quattro.setEnabled(false);
-        sette_cinque.setEnabled(false);
-        sette_sei.setEnabled(false);
-        sette_sette.setEnabled(false);
-        sette_otto.setEnabled(false);
-        sette_nove.setEnabled(false);
-        zero_otto.setEnabled(false);
-        zero_nove.setEnabled(false);
-        uno_otto.setEnabled(false);
-        uno_nove.setEnabled(false);
-        due_otto.setEnabled(false);
-        due_nove.setEnabled(false);
-        tre_otto.setEnabled(false);
-        tre_nove.setEnabled(false);
-        quattro_otto.setEnabled(false);
-        quattro_nove.setEnabled(false);
-        cinque_otto.setEnabled(false);
-        cinque_nove.setEnabled(false);
-        sei_otto.setEnabled(false);
-        sei_nove.setEnabled(false);
-        otto_zero.setEnabled(false);
-        otto_uno.setEnabled(false);
-        otto_due.setEnabled(false);
-        otto_tre.setEnabled(false);
-        otto_quattro.setEnabled(false);
-        otto_cinque.setEnabled(false);
-        otto_sei.setEnabled(false);
-        otto_sette.setEnabled(false);
-        otto_otto.setEnabled(false);
-        otto_nove.setEnabled(false);
-        nove_zero.setEnabled(false);
-        nove_uno.setEnabled(false);
-        nove_due.setEnabled(false);
-        nove_tre.setEnabled(false);
-        nove_quattro.setEnabled(false);
-        nove_cinque.setEnabled(false);
-        nove_sei.setEnabled(false);
-        nove_sette.setEnabled(false);
-        nove_otto.setEnabled(false);
-        nove_nove.setEnabled(false);
-
-        zero_zero.setBackground(Color.white);
-        zero_uno.setBackground(Color.white);
-        zero_due.setBackground(Color.white);
-        zero_tre.setBackground(Color.white);
-        zero_quattro.setBackground(Color.white);
-        zero_cinque.setBackground(Color.white);
-        zero_sei.setBackground(Color.white);
-        zero_sette.setBackground(Color.white);
-        zero_otto.setBackground(Color.white);
-        zero_nove.setBackground(Color.white);
-        uno_zero.setBackground(Color.white);
-        uno_uno.setBackground(Color.white);
-        uno_due.setBackground(Color.white);
-        uno_tre.setBackground(Color.white);
-        uno_quattro.setBackground(Color.white);
-        uno_cinque.setBackground(Color.white);
-        uno_sei.setBackground(Color.white);
-        uno_sette.setBackground(Color.white);
-        uno_otto.setBackground(Color.white);
-        uno_nove.setBackground(Color.white);
-        due_zero.setBackground(Color.white);
-        due_uno.setBackground(Color.white);
-        due_due.setBackground(Color.white);
-        due_tre.setBackground(Color.white);
-        due_quattro.setBackground(Color.white);
-        due_cinque.setBackground(Color.white);
-        due_sei.setBackground(Color.white);
-        due_sette.setBackground(Color.white);
-        due_otto.setBackground(Color.white);
-        due_nove.setBackground(Color.white);
-        tre_zero.setBackground(Color.white);
-        tre_uno.setBackground(Color.white);
-        tre_due.setBackground(Color.white);
-        tre_tre.setBackground(Color.white);
-        tre_quattro.setBackground(Color.white);
-        tre_cinque.setBackground(Color.white);
-        tre_sei.setBackground(Color.white);
-        tre_sette.setBackground(Color.white);
-        tre_otto.setBackground(Color.white);
-        tre_nove.setBackground(Color.white);
-        quattro_zero.setBackground(Color.white);
-        quattro_uno.setBackground(Color.white);
-        quattro_due.setBackground(Color.white);
-        quattro_tre.setBackground(Color.white);
-        quattro_quattro.setBackground(Color.white);
-        quattro_cinque.setBackground(Color.white);
-        quattro_sei.setBackground(Color.white);
-        quattro_sette.setBackground(Color.white);
-        quattro_otto.setBackground(Color.white);
-        quattro_nove.setBackground(Color.white);
-        sette_zero.setBackground(Color.white);
-        sette_uno.setBackground(Color.white);
-        sette_due.setBackground(Color.white);
-        sette_tre.setBackground(Color.white);
-        sette_quattro.setBackground(Color.white);
-        sette_cinque.setBackground(Color.white);
-        sette_sei.setBackground(Color.white);
-        sette_sette.setBackground(Color.white);
-        sette_otto.setBackground(Color.white);
-        sette_nove.setBackground(Color.white);
-        cinque_zero.setBackground(Color.white);
-        cinque_uno.setBackground(Color.white);
-        cinque_due.setBackground(Color.white);
-        cinque_tre.setBackground(Color.white);
-        cinque_quattro.setBackground(Color.white);
-        cinque_cinque.setBackground(Color.white);
-        cinque_sei.setBackground(Color.white);
-        cinque_sette.setBackground(Color.white);
-        cinque_otto.setBackground(Color.white);
-        cinque_nove.setBackground(Color.white);
-        sei_zero.setBackground(Color.white);
-        sei_uno.setBackground(Color.white);
-        sei_due.setBackground(Color.white);
-        sei_tre.setBackground(Color.white);
-        sei_quattro.setBackground(Color.white);
-        sei_cinque.setBackground(Color.white);
-        sei_sei.setBackground(Color.white);
-        sei_sette.setBackground(Color.white);
-        sei_otto.setBackground(Color.white);
-        sei_nove.setBackground(Color.white);
-        otto_zero.setBackground(Color.white);
-        otto_uno.setBackground(Color.white);
-        otto_due.setBackground(Color.white);
-        otto_tre.setBackground(Color.white);
-        otto_quattro.setBackground(Color.white);
-        otto_cinque.setBackground(Color.white);
-        otto_sei.setBackground(Color.white);
-        otto_sette.setBackground(Color.white);
-        otto_otto.setBackground(Color.white);
-        otto_nove.setBackground(Color.white);
-        nove_zero.setBackground(Color.white);
-        nove_uno.setBackground(Color.white);
-        nove_due.setBackground(Color.white);
-        nove_tre.setBackground(Color.white);
-        nove_quattro.setBackground(Color.white);
-        nove_cinque.setBackground(Color.white);
-        nove_sei.setBackground(Color.white);
-        nove_sette.setBackground(Color.white);
-        nove_otto.setBackground(Color.white);
-        nove_nove.setBackground(Color.white);
-
+        /*else if(facile.isSelected()==false&&medio.isSelected()==false&&difficile.isSelected()==false)
+        {
+            difficile.setSelected(true);
+        }*/
+        setAll(di._10x10, true, false);
     }//GEN-LAST:event_difficileActionPerformed
 
     private void uno_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(uno_cinque);
+        Comportamento(1, 5, uno_cinque);
     }//GEN-LAST:event_uno_cinqueActionPerformed
 
     private void zero_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(zero_nove);
+        Comportamento(0, 9, zero_nove);
     }//GEN-LAST:event_zero_noveActionPerformed
 
     private void zero_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(zero_cinque);
+        Comportamento(0, 5, zero_cinque);
     }//GEN-LAST:event_zero_cinqueActionPerformed
 
     private void italianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_italianoActionPerformed
-        // TODO add your handling code here:
         linguaggio = 1;
         Lmosse.setText("mosse:");
         start.setText("avvia");
@@ -5070,7 +2815,6 @@ public class interfaccia extends javax.swing.JFrame {
     }//GEN-LAST:event_italianoActionPerformed
 
     private void EnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnglishActionPerformed
-        // TODO add your handling code here:
         linguaggio = 2;
         Lmosse.setText("moves:");
         start.setText("start");
@@ -5086,846 +2830,735 @@ public class interfaccia extends javax.swing.JFrame {
     }//GEN-LAST:event_EnglishActionPerformed
 
     private void nove_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_nove);
-        Colore(9,9,nove_nove);
+        Comportamento(9, 9, nove_nove);
     }//GEN-LAST:event_nove_noveActionPerformed
 
     private void limiteMosseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limiteMosseActionPerformed
     }//GEN-LAST:event_limiteMosseActionPerformed
 
     private void due_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(due_cinque);
+        Comportamento(2, 5, due_cinque);
     }//GEN-LAST:event_due_cinqueActionPerformed
-
     private void zero_zero1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_zero_zero1MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_zero_zero1MouseMoved
 
+    }//GEN-LAST:event_zero_zero1MouseMoved
     private void zero_zero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_zero1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(0, 0, zero_zero1);
     }//GEN-LAST:event_zero_zero1ActionPerformed
 
     private void zero_uno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_uno1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(0, 1, zero_uno1);
     }//GEN-LAST:event_zero_uno1ActionPerformed
 
     private void zero_due1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_due1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(0, 2, zero_due1);
     }//GEN-LAST:event_zero_due1ActionPerformed
 
     private void zero_tre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_tre1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(0, 3, zero_tre1);
     }//GEN-LAST:event_zero_tre1ActionPerformed
 
     private void zero_quattro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_quattro1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(0, 4, zero_quattro1);
     }//GEN-LAST:event_zero_quattro1ActionPerformed
 
     private void zero_cinque1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_cinque1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(0, 5, zero_cinque1);
     }//GEN-LAST:event_zero_cinque1ActionPerformed
 
     private void zero_nove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_nove1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(0, 9, zero_nove1);
     }//GEN-LAST:event_zero_nove1ActionPerformed
 
     private void uno_zero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_zero1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(1, 0, uno_zero1);
     }//GEN-LAST:event_uno_zero1ActionPerformed
 
     private void uno_uno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_uno1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(1, 1, uno_uno1);
     }//GEN-LAST:event_uno_uno1ActionPerformed
 
     private void uno_due1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_due1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(1, 2, uno_due1);
     }//GEN-LAST:event_uno_due1ActionPerformed
 
     private void uno_tre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_tre1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(1, 3, uno_tre1);
     }//GEN-LAST:event_uno_tre1ActionPerformed
 
     private void uno_quattro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_quattro1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(1, 4, uno_quattro1);
     }//GEN-LAST:event_uno_quattro1ActionPerformed
 
     private void uno_cinque1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_cinque1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(1, 5, uno_cinque1);
     }//GEN-LAST:event_uno_cinque1ActionPerformed
 
     private void due_zero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_zero1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(2, 0, due_zero1);
     }//GEN-LAST:event_due_zero1ActionPerformed
 
     private void due_uno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_uno1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(2, 1, due_uno1);
     }//GEN-LAST:event_due_uno1ActionPerformed
 
     private void due_due1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_due1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(2, 2, due_due1);
     }//GEN-LAST:event_due_due1ActionPerformed
 
     private void due_tre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_tre1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(2, 3, due_tre1);
     }//GEN-LAST:event_due_tre1ActionPerformed
 
     private void due_quattro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_quattro1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(2, 4, due_quattro1);
     }//GEN-LAST:event_due_quattro1ActionPerformed
 
     private void due_cinque1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_cinque1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(2, 5, due_cinque1);
     }//GEN-LAST:event_due_cinque1ActionPerformed
 
     private void tre_zero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_zero1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(3, 0, tre_zero1);
     }//GEN-LAST:event_tre_zero1ActionPerformed
 
     private void tre_uno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_uno1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(3, 1, tre_uno1);
     }//GEN-LAST:event_tre_uno1ActionPerformed
 
     private void tre_due1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_due1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(3, 2, tre_due1);
     }//GEN-LAST:event_tre_due1ActionPerformed
 
     private void tre_tre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_tre1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(3, 3, tre_tre1);
     }//GEN-LAST:event_tre_tre1ActionPerformed
 
     private void tre_quattro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_quattro1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(3, 4, tre_quattro1);
     }//GEN-LAST:event_tre_quattro1ActionPerformed
 
     private void quattro_zero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_zero1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(4, 0, quattro_zero1);
     }//GEN-LAST:event_quattro_zero1ActionPerformed
 
     private void quattro_uno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_uno1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(4, 1, quattro_uno1);
     }//GEN-LAST:event_quattro_uno1ActionPerformed
 
     private void quattro_due1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_due1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(4, 2, quattro_due1);
     }//GEN-LAST:event_quattro_due1ActionPerformed
 
     private void quattro_tre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_tre1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(4, 3, quattro_tre1);
     }//GEN-LAST:event_quattro_tre1ActionPerformed
 
     private void quattro_quattro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_quattro1ActionPerformed
-        // TODO add your handling code here:
+        Comportamento1(4, 4, quattro_quattro1);
     }//GEN-LAST:event_quattro_quattro1ActionPerformed
 
-    private void nove_nove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_nove1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nove_nove1ActionPerformed
+    private void nine_nine1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nine_nine1ActionPerformed
+        Comportamento1(9, 9, nove_nove);
+    }//GEN-LAST:event_nine_nine1ActionPerformed
 
     private void solitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solitarioActionPerformed
+        conta = 0;
         if (solitario.isSelected() == false) {
             start.setEnabled(false);
-           stop.setEnabled(true);
-           insert.setVisible(true);
+            stop.setEnabled(true);
+            insert.setVisible(true);
             insert.setEnabled(true);
-            if (medio.isSelected() == true) {
-
-                zero_zero1.setEnabled(false);
-                zero_uno1.setEnabled(false);
-                zero_due1.setEnabled(false);
-                zero_tre1.setEnabled(false);
-                zero_quattro1.setEnabled(false);
-                uno_zero1.setEnabled(false);
-                uno_uno1.setEnabled(false);
-                uno_due1.setEnabled(false);
-                uno_tre1.setEnabled(false);
-                uno_quattro1.setEnabled(false);
-                due_zero1.setEnabled(false);
-                due_uno1.setEnabled(false);
-                due_due1.setEnabled(false);
-                due_tre1.setEnabled(false);
-                due_quattro1.setEnabled(false);
-                tre_zero1.setEnabled(false);
-                tre_uno1.setEnabled(false);
-                tre_due1.setEnabled(false);
-                tre_tre1.setEnabled(false);
-                tre_quattro1.setEnabled(false);
-                quattro_zero1.setEnabled(false);
-                quattro_uno1.setEnabled(false);
-                quattro_due1.setEnabled(false);
-                quattro_tre1.setEnabled(false);
-                quattro_quattro1.setEnabled(false);
-
-                zero_zero1.setVisible(true);
-                zero_uno1.setVisible(true);
-                zero_due1.setVisible(true);
-                zero_tre1.setVisible(true);
-                zero_quattro1.setVisible(true);
-                zero_cinque1.setVisible(true);
-                zero_sei1.setVisible(true);
-                zero_sette1.setVisible(true);
-                uno_zero1.setVisible(true);
-                uno_uno1.setVisible(true);
-                uno_due1.setVisible(true);
-                uno_tre1.setVisible(true);
-                uno_quattro1.setVisible(true);
-                uno_cinque1.setVisible(true);
-                uno_sei1.setVisible(true);
-                uno_sette1.setVisible(true);
-                due_zero1.setVisible(true);
-                due_uno1.setVisible(true);
-                due_due1.setVisible(true);
-                due_tre1.setVisible(true);
-                due_quattro1.setVisible(true);
-                due_cinque1.setVisible(true);
-                due_sei1.setVisible(true);
-                due_sette1.setVisible(true);
-                tre_zero1.setVisible(true);
-                tre_uno1.setVisible(true);
-                tre_due1.setVisible(true);
-                tre_tre1.setVisible(true);
-                tre_quattro1.setVisible(true);
-                tre_cinque1.setVisible(true);
-                tre_sei1.setVisible(true);
-                tre_sette1.setVisible(true);
-                quattro_zero1.setVisible(true);
-                quattro_uno1.setVisible(true);
-                quattro_due1.setVisible(true);
-                quattro_tre1.setVisible(true);
-                quattro_quattro1.setVisible(true);
-                quattro_cinque1.setVisible(true);
-                quattro_sei1.setVisible(true);
-                quattro_sette1.setVisible(true);
-                cinque_zero1.setVisible(true);
-                cinque_uno1.setVisible(true);
-                cinque_due1.setVisible(true);
-                cinque_tre1.setVisible(true);
-                cinque_quattro1.setVisible(true);
-                cinque_cinque1.setVisible(true);
-                cinque_sei1.setVisible(true);
-                cinque_sette1.setVisible(true);
-                sei_zero1.setVisible(true);
-                sei_uno1.setVisible(true);
-                sei_due1.setVisible(true);
-                sei_tre1.setVisible(true);
-                sei_quattro1.setVisible(true);
-                sei_cinque1.setVisible(true);
-                sei_sei1.setVisible(true);
-                sei_sette1.setVisible(true);
-                sette_zero1.setVisible(true);
-                sette_uno1.setVisible(true);
-                sette_due1.setVisible(true);
-                sette_tre1.setVisible(true);
-                sette_quattro1.setVisible(true);
-                sette_cinque1.setVisible(true);
-                sette_sei1.setVisible(true);
-                sette_sette1.setVisible(true);
-                A1.setVisible(true);
-                B1.setVisible(true);
-                C1.setVisible(true);
-                D1.setVisible(true);
-                E1.setVisible(true);
-                F1.setVisible(true);
-                G1.setVisible(true);
-                H1.setVisible(true);
-                _1.setVisible(true);
-                _2.setVisible(true);
-                _3.setVisible(true);
-                _4.setVisible(true);
-                _5.setVisible(true);
-                _6.setVisible(true);
-                _7.setVisible(true);
-                _8.setVisible(true);
-
-
-                zero_otto1.setVisible(false);
-                zero_nove1.setVisible(false);
-
-                uno_otto1.setVisible(false);
-                uno_nove1.setVisible(false);
-
-                due_otto1.setVisible(false);
-                due_nove1.setVisible(false);
-
-                tre_otto1.setVisible(false);
-                tre_nove1.setVisible(false);
-
-                quattro_otto1.setVisible(false);
-                quattro_nove1.setVisible(false);
-
-                cinque_otto1.setVisible(false);
-                cinque_nove1.setVisible(false);
-
-                sei_otto1.setVisible(false);
-                sei_nove1.setVisible(false);
-
-                sette_otto1.setVisible(false);
-                sette_nove1.setVisible(false);
-                otto_zero1.setVisible(false);
-                otto_uno1.setVisible(false);
-                otto_due1.setVisible(false);
-                otto_tre1.setVisible(false);
-                otto_quattro1.setVisible(false);
-                otto_cinque1.setVisible(false);
-                otto_sei1.setVisible(false);
-                otto_sette1.setVisible(false);
-                otto_otto1.setVisible(false);
-                otto_nove1.setVisible(false);
-                nove_zero1.setVisible(false);
-                nove_uno1.setVisible(false);
-                nove_due1.setVisible(false);
-                nove_tre1.setVisible(false);
-                nove_quattro1.setVisible(false);
-                nove_cinque1.setVisible(false);
-                nove_sei1.setVisible(false);
-                nove_sette1.setVisible(false);
-                nove_otto1.setVisible(false);
-                nove_nove1.setVisible(false);
-
-                I1.setVisible(false);
-                J1.setVisible(false);
-
-                _9.setVisible(false);
-                _10.setVisible(false);
-            }
             if (facile.isSelected() == true) {
-                A1.setVisible(true);
+               /* A1.setVisible(true);
                 B1.setVisible(true);
                 C1.setVisible(true);
                 D1.setVisible(true);
                 E1.setVisible(true);
-                _1.setVisible(true);
-                _2.setVisible(true);
-                _3.setVisible(true);
-                _4.setVisible(true);
+                J1.setVisible(false);
+                I1.setVisible(false);
+                H1.setVisible(false);
+                G1.setVisible(false);
+                F1.setVisible(false);
+                _10.setVisible(false);
+                _9.setVisible(false);
+                _8.setVisible(false);
+                _7.setVisible(false);
+                _6.setVisible(false);
                 _5.setVisible(true);
-                zero_zero1.setVisible(true);
-                zero_uno1.setVisible(true);
-                zero_due1.setVisible(true);
-                zero_tre1.setVisible(true);
-                zero_quattro1.setVisible(true);
-                uno_zero1.setVisible(true);
-                uno_uno1.setVisible(true);
-                uno_due1.setVisible(true);
-                uno_tre1.setVisible(true);
-                uno_quattro1.setVisible(true);
-                due_zero1.setVisible(true);
-                due_uno1.setVisible(true);
-                due_due1.setVisible(true);
-                due_tre1.setVisible(true);
-                due_quattro1.setVisible(true);
-                tre_zero1.setVisible(true);
-                tre_uno1.setVisible(true);
-                tre_due1.setVisible(true);
-                tre_tre1.setVisible(true);
-                tre_quattro1.setVisible(true);
-                quattro_zero1.setVisible(true);
-                quattro_uno1.setVisible(true);
-                quattro_due1.setVisible(true);
-                quattro_tre1.setVisible(true);
-                quattro_quattro1.setVisible(true);
-            }
-            if (difficile.isSelected() == true) {
-                A1.setVisible(true);
+                _4.setVisible(true);
+                _3.setVisible(true);
+                _2.setVisible(true);
+                _1.setVisible(true);*/
+                setAll1(di._10x10, false, false);
+                setAll1(di._5x5, true, false);
+            } else if (medio.isSelected() == true) {
+                /*A1.setVisible(true);
                 B1.setVisible(true);
                 C1.setVisible(true);
                 D1.setVisible(true);
                 E1.setVisible(true);
-                F1.setVisible(true);
+                J1.setVisible(false);
+                I1.setVisible(false);
+                H1.setVisible(false);
                 G1.setVisible(true);
-                H1.setVisible(true);
-                J1.setVisible(true);
-                I1.setVisible(true);
-                _1.setVisible(true);
-                _2.setVisible(true);
-                _3.setVisible(true);
-                _4.setVisible(true);
-                _5.setVisible(true);
-                _6.setVisible(true);
-                _7.setVisible(true);
+                F1.setVisible(true);
+                _10.setVisible(false);
+                _9.setVisible(false);
                 _8.setVisible(true);
-                _9.setVisible(true);
-                _10.setVisible(true);
-                nove_zero1.setVisible(true);
-                nove_uno1.setVisible(true);
-                nove_due1.setVisible(true);
-                nove_tre1.setVisible(true);
-                nove_quattro1.setVisible(true);
-                nove_cinque1.setVisible(true);
-                nove_sei1.setVisible(true);
-                nove_sette1.setVisible(true);
-                nove_otto1.setVisible(true);
-                nove_nove1.setVisible(true);
-                otto_zero1.setVisible(true);
-                otto_uno1.setVisible(true);
-                otto_due1.setVisible(true);
-                otto_tre1.setVisible(true);
-                otto_quattro1.setVisible(true);
-                otto_cinque1.setVisible(true);
-                otto_sei1.setVisible(true);
-                otto_sette1.setVisible(true);
-                otto_otto1.setVisible(true);
-                otto_nove1.setVisible(true);
-                sette_zero1.setVisible(true);
-                sette_uno1.setVisible(true);
-                sette_due1.setVisible(true);
-                sette_tre1.setVisible(true);
-                sette_quattro1.setVisible(true);
-                sette_cinque1.setVisible(true);
-                sette_sei1.setVisible(true);
-                sette_sette1.setVisible(true);
-                sette_otto1.setVisible(true);
-                sette_nove1.setVisible(true);
-                sei_zero1.setVisible(true);
-                sei_uno1.setVisible(true);
-                sei_due1.setVisible(true);
-                sei_tre1.setVisible(true);
-                sei_quattro1.setVisible(true);
-                sei_cinque1.setVisible(true);
-                sei_sei1.setVisible(true);
-                sei_sette1.setVisible(true);
-                sei_otto1.setVisible(true);
-                sei_nove1.setVisible(true);
-                cinque_zero1.setVisible(true);
-                cinque_uno1.setVisible(true);
-                cinque_due1.setVisible(true);
-                cinque_tre1.setVisible(true);
-                cinque_quattro1.setVisible(true);
-                cinque_cinque1.setVisible(true);
-                cinque_sei1.setVisible(true);
-                cinque_sette1.setVisible(true);
-                cinque_otto1.setVisible(true);
-                cinque_nove1.setVisible(true);
-                quattro_zero1.setVisible(true);
-                quattro_uno1.setVisible(true);
-                quattro_due1.setVisible(true);
-                quattro_tre1.setVisible(true);
-                quattro_quattro1.setVisible(true);
-                quattro_cinque1.setVisible(true);
-                quattro_sei1.setVisible(true);
-                quattro_sette1.setVisible(true);
-                quattro_otto1.setVisible(true);
-                quattro_nove1.setVisible(true);
-                tre_zero1.setVisible(true);
-                tre_uno1.setVisible(true);
-                tre_due1.setVisible(true);
-                tre_tre1.setVisible(true);
-                tre_quattro1.setVisible(true);
-                tre_cinque1.setVisible(true);
-                tre_sei1.setVisible(true);
-                tre_sette1.setVisible(true);
-                tre_otto1.setVisible(true);
-                tre_nove1.setVisible(true);
-                due_zero1.setVisible(true);
-                due_uno1.setVisible(true);
-                due_due1.setVisible(true);
-                due_tre1.setVisible(true);
-                due_quattro1.setVisible(true);
-                due_cinque1.setVisible(true);
-                due_sei1.setVisible(true);
-                due_sette1.setVisible(true);
-                due_otto1.setVisible(true);
-                due_nove1.setVisible(true);
-                uno_zero1.setVisible(true);
-                uno_uno1.setVisible(true);
-                uno_due1.setVisible(true);
-                uno_tre1.setVisible(true);
-                uno_quattro1.setVisible(true);
-                uno_cinque1.setVisible(true);
-                uno_sei1.setVisible(true);
-                uno_sette1.setVisible(true);
-                uno_otto1.setVisible(true);
-                uno_nove1.setVisible(true);
-                zero_zero1.setVisible(true);
-                zero_uno1.setVisible(true);
-                zero_due1.setVisible(true);
-                zero_tre1.setVisible(true);
-                zero_quattro1.setVisible(true);
-                zero_cinque1.setVisible(true);
-                zero_sei1.setVisible(true);
-                zero_sette1.setVisible(true);
-                zero_otto1.setVisible(true);
-                zero_nove1.setVisible(true);
+                _7.setVisible(true);
+                _6.setVisible(true);
+                _5.setVisible(true);
+                _4.setVisible(true);
+                _3.setVisible(true);
+                _2.setVisible(true);
+                _1.setVisible(true);*/
 
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+                setAll1(di._10x10, false, false);
+                setAll1(di._8x8, true, false);
+            } else {
+                
+                setAll1(di._10x10, false, false);
+                setAll1(di._10x10, true, false);
             }
+            jPanel2.setVisible(true);
+        } else {
+            jPanel2.setVisible(false);
+            start.setEnabled(true);
+            insert.setVisible(false);
         }
     }//GEN-LAST:event_solitarioActionPerformed
 
     private void nove_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_otto);
+        Comportamento(9, 8, nove_otto);
     }//GEN-LAST:event_nove_ottoActionPerformed
 
     private void nove_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_sette);
+        Comportamento(9, 7, nove_sette);
     }//GEN-LAST:event_nove_setteActionPerformed
 
     private void nove_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_sei);
+        Comportamento(9, 6, nove_sei);
     }//GEN-LAST:event_nove_seiActionPerformed
 
     private void nove_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_cinque);
+        Comportamento(9, 5, nove_cinque);
     }//GEN-LAST:event_nove_cinqueActionPerformed
 
     private void nove_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_quattroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_quattro);
+        Comportamento(9, 4, nove_quattro);
     }//GEN-LAST:event_nove_quattroActionPerformed
 
     private void nove_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_treActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_tre);
+        Comportamento(9, 3, nove_tre);
     }//GEN-LAST:event_nove_treActionPerformed
 
     private void nove_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_dueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_due);
+        Comportamento(9, 2, nove_due);
     }//GEN-LAST:event_nove_dueActionPerformed
 
     private void nove_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_unoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_uno);
+        Comportamento(9, 1, nove_uno);
     }//GEN-LAST:event_nove_unoActionPerformed
 
     private void nove_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nove_zeroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(nove_zero);
+        Comportamento(9, 0, nove_zero);
     }//GEN-LAST:event_nove_zeroActionPerformed
 
     private void otto_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_nove);
+        Comportamento(8, 9, otto_nove);
     }//GEN-LAST:event_otto_noveActionPerformed
 
     private void otto_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_otto);
+        Comportamento(8, 8, otto_otto);
     }//GEN-LAST:event_otto_ottoActionPerformed
 
     private void otto_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_sette);
+        Comportamento(8, 7, otto_sette);
     }//GEN-LAST:event_otto_setteActionPerformed
 
     private void otto_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_sei);
+        Comportamento(8, 6, otto_sei);
     }//GEN-LAST:event_otto_seiActionPerformed
 
     private void otto_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_cinque);
+        Comportamento(8, 5, otto_cinque);
     }//GEN-LAST:event_otto_cinqueActionPerformed
 
     private void otto_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_quattroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_quattro);
+        Comportamento(8, 4, otto_quattro);
     }//GEN-LAST:event_otto_quattroActionPerformed
 
     private void otto_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_treActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_tre);
+        Comportamento(8, 3, otto_tre);
     }//GEN-LAST:event_otto_treActionPerformed
 
     private void otto_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_dueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_due);
+        Comportamento(8, 2, otto_due);
     }//GEN-LAST:event_otto_dueActionPerformed
 
     private void otto_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_unoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_uno);
+        Comportamento(8, 1, otto_uno);
     }//GEN-LAST:event_otto_unoActionPerformed
 
     private void otto_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otto_zeroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(otto_zero);
+        Comportamento(8, 0, otto_zero);
     }//GEN-LAST:event_otto_zeroActionPerformed
 
     private void sette_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_nove);
+        Comportamento(7, 9, sette_nove);
     }//GEN-LAST:event_sette_noveActionPerformed
 
     private void sette_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_otto);
+        Comportamento(7, 8, sette_otto);
     }//GEN-LAST:event_sette_ottoActionPerformed
 
     private void sette_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_sette);
+        Comportamento(7, 7, sette_sette);
     }//GEN-LAST:event_sette_setteActionPerformed
 
     private void sette_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_sei);
+        Comportamento(7, 6, sette_sei);
     }//GEN-LAST:event_sette_seiActionPerformed
 
     private void sette_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_cinque);
+        Comportamento(7, 5, sette_cinque);
     }//GEN-LAST:event_sette_cinqueActionPerformed
 
     private void sette_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_quattroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_quattro);
+        Comportamento(7, 4, sette_quattro);
     }//GEN-LAST:event_sette_quattroActionPerformed
 
     private void sette_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_treActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_tre);
+        Comportamento(7, 3, sette_tre);
     }//GEN-LAST:event_sette_treActionPerformed
 
     private void sette_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_dueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_due);
+        Comportamento(7, 2, sette_due);
     }//GEN-LAST:event_sette_dueActionPerformed
 
     private void sette_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_unoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_uno);
+        Comportamento(7, 1, sette_uno);
     }//GEN-LAST:event_sette_unoActionPerformed
 
     private void sette_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sette_zeroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sette_zero);
+        Comportamento(7, 0, sette_zero);
     }//GEN-LAST:event_sette_zeroActionPerformed
 
     private void sei_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_nove);
+        Comportamento(6, 9, sei_nove);
     }//GEN-LAST:event_sei_noveActionPerformed
 
     private void sei_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_otto);
+        Comportamento(6, 8, sei_otto);
     }//GEN-LAST:event_sei_ottoActionPerformed
 
     private void sei_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_sette);
+        Comportamento(6, 7, sei_sette);
     }//GEN-LAST:event_sei_setteActionPerformed
 
     private void sei_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_sei);
+        Comportamento(6, 6, sei_sei);
     }//GEN-LAST:event_sei_seiActionPerformed
 
     private void sei_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_cinque);
+        Comportamento(6, 5, sei_cinque);
     }//GEN-LAST:event_sei_cinqueActionPerformed
 
     private void sei_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_quattroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_quattro);
+        Comportamento(6, 4, sei_quattro);
     }//GEN-LAST:event_sei_quattroActionPerformed
 
     private void sei_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_treActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_tre);
+        Comportamento(6, 3, sei_tre);
     }//GEN-LAST:event_sei_treActionPerformed
 
     private void sei_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_dueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_due);
+        Comportamento(6, 2, sei_due);
     }//GEN-LAST:event_sei_dueActionPerformed
 
     private void sei_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_unoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_uno);
+        Comportamento(6, 1, sei_uno);
     }//GEN-LAST:event_sei_unoActionPerformed
 
     private void sei_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sei_zeroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(sei_zero);
+        Comportamento(6, 0, sei_zero);
     }//GEN-LAST:event_sei_zeroActionPerformed
 
     private void cinque_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_nove);
+        Comportamento(5, 9, cinque_nove);
     }//GEN-LAST:event_cinque_noveActionPerformed
 
     private void cinque_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_otto);
+        Comportamento(5, 8, cinque_otto);
     }//GEN-LAST:event_cinque_ottoActionPerformed
 
     private void cinque_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_sette);
+        Comportamento(5, 7, cinque_sette);
     }//GEN-LAST:event_cinque_setteActionPerformed
 
     private void cinque_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_sei);
+        Comportamento(5, 6, cinque_sei);
     }//GEN-LAST:event_cinque_seiActionPerformed
 
     private void cinque_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_cinque);
+        Comportamento(5, 5, cinque_cinque);
     }//GEN-LAST:event_cinque_cinqueActionPerformed
 
     private void cinque_quattroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_quattroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_quattro);
+        Comportamento(5, 4, cinque_quattro);
     }//GEN-LAST:event_cinque_quattroActionPerformed
 
     private void cinque_treActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_treActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_tre);
+        Comportamento(5, 3, cinque_tre);
     }//GEN-LAST:event_cinque_treActionPerformed
 
     private void cinque_dueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_dueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_due);
+        Comportamento(5, 2, cinque_due);
     }//GEN-LAST:event_cinque_dueActionPerformed
 
     private void cinque_unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_unoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_uno);
+        Comportamento(5, 1, cinque_uno);
     }//GEN-LAST:event_cinque_unoActionPerformed
 
     private void cinque_zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinque_zeroActionPerformed
-        // TODO add your handling code here:
-        Comportamento(cinque_zero);
+        Comportamento(5, 0, cinque_zero);
     }//GEN-LAST:event_cinque_zeroActionPerformed
 
     private void zero_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(zero_sei);
+        Comportamento(0, 6, zero_sei);
     }//GEN-LAST:event_zero_seiActionPerformed
 
     private void zero_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(zero_sette);
+        Comportamento(0, 7, zero_sette);
     }//GEN-LAST:event_zero_setteActionPerformed
 
     private void zero_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zero_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(zero_otto);
+        Comportamento(0, 8, zero_otto);
     }//GEN-LAST:event_zero_ottoActionPerformed
 
     private void uno_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(uno_sei);
+        Comportamento(1, 6, uno_sei);
     }//GEN-LAST:event_uno_seiActionPerformed
 
     private void uno_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(uno_sette);
+        Comportamento(1, 7, uno_sette);
     }//GEN-LAST:event_uno_setteActionPerformed
 
     private void uno_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(uno_otto);
+        Comportamento(1, 8, uno_otto);
     }//GEN-LAST:event_uno_ottoActionPerformed
 
     private void uno_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uno_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(uno_nove);
+        Comportamento(1, 9, uno_nove);
     }//GEN-LAST:event_uno_noveActionPerformed
 
     private void due_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(due_sei);
+        Comportamento(2, 6, due_sei);
     }//GEN-LAST:event_due_seiActionPerformed
 
     private void due_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(due_sette);
+        Comportamento(2, 7, due_sette);
     }//GEN-LAST:event_due_setteActionPerformed
 
     private void due_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(due_otto);
+        Comportamento(2, 8, due_otto);
     }//GEN-LAST:event_due_ottoActionPerformed
 
     private void due_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_due_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(due_nove);
+        Comportamento(2, 9, due_nove);
     }//GEN-LAST:event_due_noveActionPerformed
 
     private void tre_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(tre_cinque);
+        Comportamento(3, 5, tre_cinque);
     }//GEN-LAST:event_tre_cinqueActionPerformed
 
     private void tre_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(tre_sei);
+        Comportamento(3, 6, tre_sei);
     }//GEN-LAST:event_tre_seiActionPerformed
 
     private void tre_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(tre_sette);
+        Comportamento(3, 7, tre_sette);
     }//GEN-LAST:event_tre_setteActionPerformed
 
     private void tre_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(tre_otto);
+        Comportamento(3, 8, tre_otto);
     }//GEN-LAST:event_tre_ottoActionPerformed
 
     private void tre_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tre_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(tre_nove);
+        Comportamento(3, 9, tre_nove);
     }//GEN-LAST:event_tre_noveActionPerformed
 
     private void quattro_cinqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_cinqueActionPerformed
-        // TODO add your handling code here:
-        Comportamento(quattro_cinque);
+        Comportamento(4, 5, quattro_cinque);
     }//GEN-LAST:event_quattro_cinqueActionPerformed
 
     private void quattro_seiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_seiActionPerformed
-        // TODO add your handling code here:
-        Comportamento(quattro_sei);
+        Comportamento(4, 6, quattro_sei);
     }//GEN-LAST:event_quattro_seiActionPerformed
 
     private void quattro_setteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_setteActionPerformed
-        // TODO add your handling code here:
-        Comportamento(quattro_sette);
+        Comportamento(4, 7, quattro_sette);
     }//GEN-LAST:event_quattro_setteActionPerformed
 
     private void quattro_ottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_ottoActionPerformed
-        // TODO add your handling code here:
-        Comportamento(quattro_otto);
+        Comportamento(4, 8, quattro_otto);
     }//GEN-LAST:event_quattro_ottoActionPerformed
 
     private void quattro_noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quattro_noveActionPerformed
-        // TODO add your handling code here:
-        Comportamento(quattro_nove);
+        Comportamento(4, 9, quattro_nove);
     }//GEN-LAST:event_quattro_noveActionPerformed
 
     private void insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertActionPerformed
-        // TODO add your handling code here:
-        for(int j = 0; j<5; j++)
-        {
-            for(int j2 = 0; j2<5;j2++)
-            {
-                miaAcqua [j][j2]=0;
+       //if (numeroNavi == 3) {
+        //insert.setVisible(false);
+        //start.setEnabled(true);
+        // }
+       
+      int contaNavi=0;
+      Random random =  new Random();
+
+        if (insert.getText().equalsIgnoreCase("Inserisci navi") || insert.getText().equalsIgnoreCase("Enter ships")) {
+           
+        if (facile.isSelected() == true) {
+            setAll1(di._10x10, false, false);
+            setAll1(di._5x5, true, true);
+            setColoroCyan(di._5x5);
+        }
+        else if (medio.isSelected() == true) {
+            setAll1(di._10x10, false, false);
+            setAll1(di._8x8, true, true);
+        } else {
+            setAll1(di._10x10, true, true);
+        }
+        } 
+        
+        while (numeroNavi > contaNavi) {
+            int row;
+            int column;
+            if (medio.isSelected() == true) {
+                row = random.nextInt(7); //numero casuale generato in base alla griglia
+                column = random.nextInt(7);
+            } else if (difficile.isSelected() == true) {
+                row = random.nextInt(9);
+                column = random.nextInt(9);
+            } else {
+                row = random.nextInt(4);
+                column = random.nextInt(4);
+            }
+            if (myWater[row][column] == 0) {
+                if (contaNavi < 4) {// 4 navi da una cella
+                    myWater[row][column] = 1;
+                    contaNavi++;
+                } else {
+                    int direction = random.nextInt(4);// scelta casuale della direzione
+                    if (direction == 0 && (row - 2) > 0) {
+                        if (contaNavi > 6&& contaNavi <=8) { //max 4 navi da 3
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {//controllo che tutte le celle siano vuote
+                                if (myWater[row - again][column] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        myWater[row - 2][column] = 3;
+                                        myWater[row - 1][column] = 3;
+                                        myWater[row][column] = 3;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        } else if (contaNavi >8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (myWater[row - again][column] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        myWater[row - 3][column] = 4;
+                                        myWater[row - 2][column] = 4;
+                                        myWater[row - 1][column] = 4;
+                                        myWater[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+
+                        } else if(contaNavi>=4&& contaNavi <=6) {//max 3 navi da 2
+                            if (myWater[row - 1][column] == 0) {
+                            myWater[row][column] = 2;
+                            myWater[row - 1][column] = 2;
+                            contaNavi++;
+                        }
+                        }
+                    } else if (direction == 1 && row + 2 < (myWater.length-1)) {
+                        if (contaNavi > 6&& contaNavi <=8) {
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {
+                                if (myWater[row + again][column] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        myWater[row + 2][column] = 3;
+                                        myWater[row + 1][column] = 3;
+                                        myWater[row][column] = 3;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        }else if (contaNavi >8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (myWater[row + again][column] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        myWater[row + 3][column] = 4;
+                                        myWater[row + 2][column] = 4;
+                                        myWater[row + 1][column] = 4;
+                                        myWater[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        }else if(contaNavi>=4&& contaNavi <=6) {if (myWater[row + 1][column] == 0) {
+                            myWater[row][column] = 2;
+                            myWater[row + 1][column] = 2;
+                            contaNavi++;
+                        }
+                        }
+                    } else if (direction == 2 && column - 2 > 0) {
+                        if (contaNavi > 6&& contaNavi <=8) {
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {
+                                if (myWater[row][column - again] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        myWater[row][column - 2] =3;
+                                        myWater[row][column - 1] = 3;
+                                        myWater[row][column] = 3;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+                        } else if (contaNavi >8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (myWater[row][column-again] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        myWater[row - 3][column] = 4;
+                                        myWater[row - 2][column] = 4;
+                                        myWater[row - 1][column] = 4;
+                                        myWater[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+
+                        }
+                        else if(contaNavi>=4&&contaNavi <=6) {
+                            if (myWater[row][column - 1] == 0) {
+                            myWater[row][column - 1] = 2;
+                            myWater[row][column] = 2;
+                            contaNavi++;
+                        }
+                        }
+                     else if (direction == 3 && column + 2 < (myWater.length-1)) {
+                        if (contaNavi > 6&& contaNavi <=8) {
+                            int x = 0;
+                            for (int again = 1; again < 3; again++) {
+                                if (myWater[row][column + 1] == 0) {
+                                    x++;
+                                    if (x == 2) {
+                                        myWater[row][column + 2] = 3;
+                                        myWater[row][column] = 3;
+                                        myWater[row][column + 1] = 3;
+                                        contaNavi++;
+                                    }
+
+                                }
+                            }
+                        }
+                        else if (contaNavi > 8) {
+                            int x = 0;
+                            for (int again = 1; again < 4; again++) {
+                                if (myWater[row][column+again] == 0) {
+                                    x++;
+                                    if (x == 3) {
+                                        myWater[row][column+3] = 4;
+                                        myWater[row][column+2] = 4;
+                                        myWater[row][column+1] = 4;
+                                        myWater[row][column] = 4;
+                                        contaNavi++;
+                                    }
+                                }
+                            }
+
+                        }else if(contaNavi>=4&& contaNavi <=6) { if (myWater[row][column + 1] == 0) {
+                            myWater[row][column] = 2;
+                            myWater[row][column + 1] = 2;
+                            contaNavi++;
+                        }
+                    }}
+
+                }
+
             }
         }
+        numeroNavi=0;
+        setVisibleShip ();
+           /* for (int j = 0; j < (water.length - 1); j++) {
+                for (int j2 = 0; j2 < (water.length - 1); j2++) {
+                    myWater[j][j2] = 0;
+                }
+            }
+            navi.setText("0");
+            navi.setVisible(true);
+            if (English.isSelected() == true) {
+                insert.setText("next");
+            } else {
+                insert.setText("prossima");
+                insert.setEnabled(false);
+            }
             
+           /* if (facile.isSelected()==true)
+            { 
+                numeroNavi= 5;
+                while(numeroNavi> conta)
+                { int x =0;
+                    if (conta<4)
+                    {
+                        
+                        
+                }
+                
+            }*/
+        /*} else if(insert.getText().equalsIgnoreCase("prossima")||insert.getText().equalsIgnoreCase("next"))
+        {
+            if(facile.isSelected()==true)
+            { 
+                if(conta<7)
+                {   
+                    navi.setText(Integer.toString(conta));                    
+                }
+                else 
+                {
+                    insert.setVisible(false);
+                    start.setEnabled(true);
+                    navi.setText("hai messo tutte le navi");
+                }
+                
+            }*/
+            
+        
+
+        }
+
+
     }//GEN-LAST:event_insertActionPerformed
+
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+        // TODO add your handling code here:
+        insert.setVisible(false);
+        start.setEnabled(true);
+        ok.setVisible(false);
+    }//GEN-LAST:event_okActionPerformed
 
     /**
      * @param args the command line arguments
@@ -5943,22 +3576,17 @@ public class interfaccia extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-
+        //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new interfaccia().setVisible(true);
+
             }
         });
     }
@@ -6014,6 +3642,7 @@ public class interfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel dieci;
     private javax.swing.JRadioButtonMenuItem difficile;
     private javax.swing.JMenu difficolta;
+    private javax.swing.JLabel due;
     private javax.swing.JButton due_cinque;
     private javax.swing.JButton due_cinque1;
     private javax.swing.JButton due_due;
@@ -6042,38 +3671,40 @@ public class interfaccia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JCheckBoxMenuItem limiteMosse;
     private javax.swing.JMenu lingua;
     private javax.swing.JRadioButtonMenuItem medio;
+    private javax.swing.JButton nine_eight1;
+    private javax.swing.JButton nine_five1;
+    private javax.swing.JButton nine_nine1;
+    private javax.swing.JButton nine_seven1;
+    private javax.swing.JButton nine_six1;
     private javax.swing.JLabel nove;
     private javax.swing.JButton nove_cinque;
-    private javax.swing.JButton nove_cinque1;
     private javax.swing.JButton nove_due;
     private javax.swing.JButton nove_due1;
     private javax.swing.JButton nove_nove;
-    private javax.swing.JButton nove_nove1;
     private javax.swing.JButton nove_otto;
-    private javax.swing.JButton nove_otto1;
     private javax.swing.JButton nove_quattro;
     private javax.swing.JButton nove_quattro1;
     private javax.swing.JButton nove_sei;
-    private javax.swing.JButton nove_sei1;
     private javax.swing.JButton nove_sette;
-    private javax.swing.JButton nove_sette1;
     private javax.swing.JButton nove_tre;
     private javax.swing.JButton nove_tre1;
     private javax.swing.JButton nove_uno;
     private javax.swing.JButton nove_uno1;
     private javax.swing.JButton nove_zero;
     private javax.swing.JButton nove_zero1;
+    private javax.swing.JButton ok;
     private javax.swing.JMenu opzioni;
     private javax.swing.JLabel otto;
     private javax.swing.JButton otto_cinque;
@@ -6186,6 +3817,7 @@ public class interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton tre_uno1;
     private javax.swing.JButton tre_zero;
     private javax.swing.JButton tre_zero1;
+    private javax.swing.JLabel uno;
     private javax.swing.JButton uno_cinque;
     private javax.swing.JButton uno_cinque1;
     private javax.swing.JButton uno_due;
@@ -6206,6 +3838,7 @@ public class interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton uno_uno1;
     private javax.swing.JButton uno_zero;
     private javax.swing.JButton uno_zero1;
+    private javax.swing.JLabel win;
     private javax.swing.JButton zero_cinque;
     private javax.swing.JButton zero_cinque1;
     private javax.swing.JButton zero_due;
@@ -6228,72 +3861,791 @@ public class interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton zero_zero1;
     // End of variables declaration//GEN-END:variables
 
-    private void Comportamento(JButton button) {
-        if (fineGioco == 5) {
-         for (int j = 0; j < lMat; j++)// riempimento matrice ,disattiva bottoni
-         {
-         for (int j2 = 0; j2 < lMat; j2++) {
-         acqua[j][j2] = 2;
-         }
-         }
-         }
-         else {
-        boolean clik = click.contains(button);
-        if (clik == false)//mosse aumentano solo al primo click
-        {
-            
-            if (limiteMosse.isSelected() == true) {
-                click.add(button);
-                if (mosse > 0) {
-                    mosse--;
-                    testomosse.setText(Integer.toString(mosse));
-                    if (button.getBackground() == (Color.black)) {
-                        fineGioco++;
-                    }
+    private void Comportamento(int riga, int colonna, JButton button) {
+        int caselleNere;
+        caselleNere = 0;
+        if (facile.isSelected() == true) {
+            caselleNere = 6;// 4 navi da 1, 1 nave da 2
+        } else if (medio.isSelected() == true) {
+            caselleNere = 13;//4 navi da 1, 3 navi da 2, 1 nave da 3
+        } else if (difficile.isSelected() == true) {
+            caselleNere = 20;//4 navi da 1, 3 navi da 2, 2 navi da 3, 1 nave da 4
+        }
 
-                } else if (mosse == 0) {
-                    for (int j = 0; j < 5; j++)// riempimento matrice 
-                    {
-                        for (int j2 = 0; j2 < 5; j2++) {
-                            acqua[j][j2] = 2;
+        switch (water[riga][colonna]) { // colora caselle in base alla lunghezza della nave
+            case 0:
+                button.setBackground(Color.cyan);
+                break;
+            case 1:
+                button.setBackground(Color.black);
+                break;
+            case 2:
+                button.setBackground(Color.darkGray);
+                break;
+            case 3:
+                button.setBackground(Color.gray);
+                break;
+            case 4:
+                button.setBackground(Color.lightGray);
+                break;
+            default:
+                break;
+        }
+                {
+        if (fineGioco == caselleNere) {
+            win.setVisible(true);
+            for (int j = 0; j < water.length - 1; j++)// riempimento matrice ,disattiva bottoni
+            {
+                for (int j2 = 0; j2 < water.length - 1; j2++) {
+                    water[j][j2] = 5; //se è 5 non succede niente, il bottone rimane bianco.
+                }
+            }
+
+        } else {
+            boolean clik = click.contains(button);
+            if (clik == false)//mosse aumentano solo al primo click
+            {
+
+                if (limiteMosse.isSelected() == true) {
+                    click.add(button);
+                    if (mosse > 0) {
+                        mosse--;
+                        testomosse.setText(Integer.toString(mosse));
+                        if (button.getBackground() == (Color.black)||button.getBackground() == (Color.gray)||button.getBackground() == (Color.darkGray)||button.getBackground() == (Color.lightGray)) {
+                            fineGioco++;
+                        }
+
+                    } else if (mosse == 0) {
+                        for (int j = 0; j < water.length-1; j++)// 
+                        {
+                            for (int j2 = 0; j2 < water.length-1; j2++) {
+                                water[j][j2] = 5;
+                            }
                         }
                     }
+                } else if (limiteMosse.isSelected() == false) {
+                    mosse++;
+                    testomosse.setText(Integer.toString(mosse));
+                    click.add(button);
+                    if (button.getBackground() == (Color.black)||button.getBackground() == (Color.darkGray)||button.getBackground() == (Color.lightGray)||button.getBackground() == (Color.gray)) {
+                        fineGioco++;
+                    }
                 }
-            } else if (limiteMosse.isSelected() == false) {
-                mosse++;
-                testomosse.setText(Integer.toString(mosse));
-                click.add(button);
-                if (button.getBackground() == (Color.black)) {
-                    fineGioco++;
+            
+                if (button.getBackground() == (Color.black)||button.getBackground() == (Color .darkGray)||button.getBackground() == (Color .lightGray)||button.getBackground() == (Color .gray))//assegnameto punti
+                {
+                    scores += 5000;
+                    testoPunti.setText(Integer.toString(scores));
+                } else {
+                    scores -= 1250;
+                    testoPunti.setText(Integer.toString((scores)));
+                }
+            
+            
+                }}
+            if (fineGioco == caselleNere) {
+                win.setVisible(true);
+                for (int j = 0; j < water.length-1; j++)// riempimento matrice 
+                {
+                    for (int j2 = 0; j2 < water.length-1; j2++) {
+                        water[j][j2] = 5;
+                    }
                 }
             }
-            if (button.getBackground() == (Color.black))//assegnameto punti
-            {
-                punteggio += 5000;
-                testoPunti.setText(Integer.toString(punteggio));
-            } else {
-                punteggio -= 1250;
-                testoPunti.setText(Integer.toString((punteggio)));
-            }
-        }
-        if (fineGioco == 5) {
-            for (int j = 0; j < lMat; j++)// riempimento matrice 
-            {
-                for (int j2 = 0; j2 < lMat; j2++) {
-                    acqua[j][j2] = 2;
-                }
-            }
-        }
 
-    }
-  }
-    protected void Colore(int riga,int colonna,JButton button)
-    {
-        if (acqua[riga][colonna] == 0) {
-            button.setBackground(Color.cyan);
-        } else if (acqua[riga][colonna] == 1) {
-            button.setBackground(Color.black);
         }
     }
     
-}
+
+    private void Comportamento1(int riga, int colonna, JButton button) {
+        if(button.isSelected()==true){
+         switch (water[riga][colonna]) { // colora caselle in base alla lunghezza della nave
+             
+            case 0:
+                button.setBackground(Color.cyan);
+                break;
+            case 1:
+                button.setBackground(Color.black);
+                break;
+            case 2:
+                button.setBackground(Color.darkGray);
+                break;
+            case 3:
+                button.setBackground(Color.gray);
+                break;
+            case 4:
+                button.setBackground(Color.lightGray);
+                break;
+            default:
+                break;
+            }
+        }
+    }
+        /*if(insert.isEnabled()==false)
+        {
+             conta = numeroNavi+1;
+        if(myWater [riga][colonna]==0)
+        {
+            button.setBackground(Color.black);
+            myWater [riga][colonna]=1;
+            numeroNavi++;
+        }
+        if(numeroNavi==conta)
+           {
+               
+               //navi.setText(Integer.toString(conta));
+               insert.setEnabled(true);
+           }
+        /*int ultimaRigaColonna = 0;
+        if (myWater[riga][colonna] == 3) {
+            button.setBackground(Color.black);
+        }
+        if (myWater[riga][colonna] == 1) {
+            button.setBackground(Color.gray);
+            if (numeroNavi == 0) {
+                myWater[riga][colonna] = 1;
+                button.setBackground(Color.black);
+                numeroNavi++;
+                navi.setText(Integer.toString(numeroNavi));
+                insert.setEnabled(true);
+
+                if (facile.isSelected() == true) {
+                    ultimaRigaColonna = 4;
+                } else if (medio.isSelected() == true) {
+                    ultimaRigaColonna = 7;
+                } else //(difficile.isSelected()==true)
+                {
+                    ultimaRigaColonna = 9;
+                }
+            } else if (numeroNavi > 0) {
+                if (riga != 0 && colonna != 0 && riga != ultimaRigaColonna && colonna != ultimaRigaColonna) {
+                    myWater[riga - 1][colonna] = 3;
+                    myWater[riga][colonna - 1] = 3;
+                    myWater[riga + 1][colonna] = 3;
+                    myWater[riga][colonna + 1] = 3;
+                    numeroNavi++;
+                    navi.setText(Integer.toString(numeroNavi));
+                    insert.setEnabled(true);
+                }
+                //indexOf indice arrayList oggetto
+                for (int j = 0; j < 5; j++)// riempimento matrice ,disattiva bottoni
+                {
+                    for (int j2 = 0; j2 < 5; j2++) {
+                        water[j][j2] = 2;
+                    }
+                }
+            } //else if (miaAcqua[riga][colonna] == 1) {
+            // button.setBackground(Color.black);
+            // }
+            if (fineGioco == 5) {
+                for (int j = 0; j < 5; j++)// riempimento matrice ,disattiva bottoni
+                {
+                    for (int j2 = 0; j2 < 5; j2++) {
+                        water[j][j2] = 2;
+                    }
+                }
+            } else {
+                boolean clik = click.contains(button);
+                if (clik == false) {
+                    click.add(button);
+                    if (mosse == 0) {
+                        for (int j = 0; j < 5; j++)// riempimento matrice 
+                        {
+                            for (int j2 = 0; j2 < 5; j2++) {
+                                water[j][j2] = 2;
+                            }
+                        }
+                    }
+                }
+            }
+        }*/
+        
+    
+
+    private void setAll(boolean Visible, boolean Enable, JButton b) {
+        b.setVisible(Visible);
+        b.setEnabled(Enable);
+        b.setBackground(Color.white);
+    }
+
+    private void setAll(di f, boolean Visible, boolean Enable) {
+
+        switch (f) {
+            case _5x5: {
+                setAll(Visible, Enable, zero_zero);
+                setAll(Visible, Enable, zero_uno);
+                setAll(Visible, Enable, zero_due);
+                setAll(Visible, Enable, zero_tre);
+                setAll(Visible, Enable, zero_quattro);
+                setAll(Visible, Enable, uno_zero);
+                setAll(Visible, Enable, uno_uno);
+                setAll(Visible, Enable, uno_due);
+                setAll(Visible, Enable, uno_tre);
+                setAll(Visible, Enable, uno_quattro);
+                setAll(Visible, Enable, due_zero);
+                setAll(Visible, Enable, due_uno);
+                setAll(Visible, Enable, due_due);
+                setAll(Visible, Enable, due_tre);
+                setAll(Visible, Enable, due_quattro);
+                setAll(Visible, Enable, tre_zero);
+                setAll(Visible, Enable, tre_uno);
+                setAll(Visible, Enable, tre_due);
+                setAll(Visible, Enable, tre_tre);
+                setAll(Visible, Enable, tre_quattro);
+                setAll(Visible, Enable, quattro_zero);
+                setAll(Visible, Enable, quattro_uno);
+                setAll(Visible, Enable, quattro_due);
+                setAll(Visible, Enable, quattro_tre);
+                setAll(Visible, Enable, quattro_quattro);
+                J.setVisible(false);
+                F.setVisible(false);
+                G.setVisible(false);
+                H.setVisible(false);
+                I.setVisible(false);
+                dieci.setVisible(false);
+                nove.setVisible(false);
+                otto.setVisible(false);
+                sette.setVisible(false);
+                sei.setVisible(false);
+                cinque.setVisible(true);
+                quattro.setVisible(true);
+                tre.setVisible(true);
+                due.setVisible(true);
+                uno.setVisible(true);
+            }
+            break;
+            case _8x8: {
+                setAll(Visible, Enable, zero_zero);
+                setAll(Visible, Enable, zero_uno);
+                setAll(Visible, Enable, zero_due);
+                setAll(Visible, Enable, zero_tre);
+                setAll(Visible, Enable, zero_quattro);
+                setAll(Visible, Enable, zero_cinque);
+                setAll(Visible, Enable, zero_sei);
+                setAll(Visible, Enable, zero_sette);
+                setAll(Visible, Enable, uno_zero);
+                setAll(Visible, Enable, uno_uno);
+                setAll(Visible, Enable, uno_due);
+                setAll(Visible, Enable, uno_tre);
+                setAll(Visible, Enable, uno_quattro);
+                setAll(Visible, Enable, uno_cinque);
+                setAll(Visible, Enable, uno_sei);
+                setAll(Visible, Enable, uno_sette);
+                setAll(Visible, Enable, due_zero);
+                setAll(Visible, Enable, due_uno);
+                setAll(Visible, Enable, due_due);
+                setAll(Visible, Enable, due_tre);
+                setAll(Visible, Enable, due_quattro);
+                setAll(Visible, Enable, due_cinque);
+                setAll(Visible, Enable, due_sei);
+                setAll(Visible, Enable, due_sette);
+                setAll(Visible, Enable, tre_zero);
+                setAll(Visible, Enable, tre_uno);
+                setAll(Visible, Enable, tre_due);
+                setAll(Visible, Enable, tre_tre);
+                setAll(Visible, Enable, tre_quattro);
+                setAll(Visible, Enable, tre_cinque);
+                setAll(Visible, Enable, tre_sei);
+                setAll(Visible, Enable, tre_sette);
+                setAll(Visible, Enable, quattro_zero);
+                setAll(Visible, Enable, quattro_uno);
+                setAll(Visible, Enable, quattro_due);
+                setAll(Visible, Enable, quattro_tre);
+                setAll(Visible, Enable, quattro_quattro);
+                setAll(Visible, Enable, quattro_cinque);
+                setAll(Visible, Enable, quattro_sei);
+                setAll(Visible, Enable, quattro_sette);
+                setAll(Visible, Enable, cinque_zero);
+                setAll(Visible, Enable, cinque_uno);
+                setAll(Visible, Enable, cinque_due);
+                setAll(Visible, Enable, cinque_tre);
+                setAll(Visible, Enable, cinque_quattro);
+                setAll(Visible, Enable, cinque_cinque);
+                setAll(Visible, Enable, cinque_sei);
+                setAll(Visible, Enable, cinque_sette);
+                setAll(Visible, Enable, sei_zero);
+                setAll(Visible, Enable, sei_uno);
+                setAll(Visible, Enable, sei_due);
+                setAll(Visible, Enable, sei_tre);
+                setAll(Visible, Enable, sei_quattro);
+                setAll(Visible, Enable, sei_cinque);
+                setAll(Visible, Enable, sei_sei);
+                setAll(Visible, Enable, sei_sette);
+                setAll(Visible, Enable, sette_zero);
+                setAll(Visible, Enable, sette_uno);
+                setAll(Visible, Enable, sette_due);
+                setAll(Visible, Enable, sette_tre);
+                setAll(Visible, Enable, sette_quattro);
+                setAll(Visible, Enable, sette_cinque);
+                setAll(Visible, Enable, sette_sei);
+                setAll(Visible, Enable, sette_sette);
+                J.setVisible(false);
+                F.setVisible(true);
+                G.setVisible(true);
+                H.setVisible(false);
+                I.setVisible(false);
+                dieci.setVisible(false);
+                nove.setVisible(false);
+                otto.setVisible(true);
+                sette.setVisible(true);
+                sei.setVisible(true);
+                cinque.setVisible(true);
+                quattro.setVisible(true);
+                tre.setVisible(true);
+                due.setVisible(true);
+                uno.setVisible(true);
+            }
+            break;
+            case _10x10: {
+                setAll(Visible, Enable, zero_zero);
+                setAll(Visible, Enable, zero_uno);
+                setAll(Visible, Enable, zero_due);
+                setAll(Visible, Enable, zero_tre);
+                setAll(Visible, Enable, zero_quattro);
+                setAll(Visible, Enable, zero_cinque);
+                setAll(Visible, Enable, zero_sei);
+                setAll(Visible, Enable, zero_sette);
+                setAll(Visible, Enable, zero_otto);
+                setAll(Visible, Enable, zero_nove);
+                setAll(Visible, Enable, uno_zero);
+                setAll(Visible, Enable, uno_uno);
+                setAll(Visible, Enable, uno_due);
+                setAll(Visible, Enable, uno_tre);
+                setAll(Visible, Enable, uno_quattro);
+                setAll(Visible, Enable, uno_cinque);
+                setAll(Visible, Enable, uno_sei);
+                setAll(Visible, Enable, uno_sette);
+                setAll(Visible, Enable, uno_otto);
+                setAll(Visible, Enable, uno_nove);
+                setAll(Visible, Enable, due_zero);
+                setAll(Visible, Enable, due_uno);
+                setAll(Visible, Enable, due_due);
+                setAll(Visible, Enable, due_tre);
+                setAll(Visible, Enable, due_quattro);
+                setAll(Visible, Enable, due_cinque);
+                setAll(Visible, Enable, due_sei);
+                setAll(Visible, Enable, due_sette);
+                setAll(Visible, Enable, due_otto);
+                setAll(Visible, Enable, due_nove);
+                setAll(Visible, Enable, tre_zero);
+                setAll(Visible, Enable, tre_uno);
+                setAll(Visible, Enable, tre_due);
+                setAll(Visible, Enable, tre_tre);
+                setAll(Visible, Enable, tre_quattro);
+                setAll(Visible, Enable, tre_cinque);
+                setAll(Visible, Enable, tre_sei);
+                setAll(Visible, Enable, tre_sette);
+                setAll(Visible, Enable, tre_otto);
+                setAll(Visible, Enable, tre_nove);
+                setAll(Visible, Enable, quattro_zero);
+                setAll(Visible, Enable, quattro_uno);
+                setAll(Visible, Enable, quattro_due);
+                setAll(Visible, Enable, quattro_tre);
+                setAll(Visible, Enable, quattro_quattro);
+                setAll(Visible, Enable, quattro_cinque);
+                setAll(Visible, Enable, quattro_sei);
+                setAll(Visible, Enable, quattro_sette);
+                setAll(Visible, Enable, quattro_otto);
+                setAll(Visible, Enable, quattro_nove);
+                setAll(Visible, Enable, cinque_zero);
+                setAll(Visible, Enable, cinque_uno);
+                setAll(Visible, Enable, cinque_due);
+                setAll(Visible, Enable, cinque_tre);
+                setAll(Visible, Enable, cinque_quattro);
+                setAll(Visible, Enable, cinque_cinque);
+                setAll(Visible, Enable, cinque_sei);
+                setAll(Visible, Enable, cinque_sette);
+                setAll(Visible, Enable, cinque_otto);
+                setAll(Visible, Enable, cinque_nove);
+                setAll(Visible, Enable, sei_zero);
+                setAll(Visible, Enable, sei_uno);
+                setAll(Visible, Enable, sei_due);
+                setAll(Visible, Enable, sei_tre);
+                setAll(Visible, Enable, sei_quattro);
+                setAll(Visible, Enable, sei_cinque);
+                setAll(Visible, Enable, sei_sei);
+                setAll(Visible, Enable, sei_sette);
+                setAll(Visible, Enable, sei_otto);
+                setAll(Visible, Enable, sei_nove);
+                setAll(Visible, Enable, sette_zero);
+                setAll(Visible, Enable, sette_uno);
+                setAll(Visible, Enable, sette_due);
+                setAll(Visible, Enable, sette_tre);
+                setAll(Visible, Enable, sette_quattro);
+                setAll(Visible, Enable, sette_cinque);
+                setAll(Visible, Enable, sette_sei);
+                setAll(Visible, Enable, sette_sette);
+                setAll(Visible, Enable, sette_otto);
+                setAll(Visible, Enable, sette_nove);
+                setAll(Visible, Enable, otto_zero);
+                setAll(Visible, Enable, otto_uno);
+                setAll(Visible, Enable, otto_due);
+                setAll(Visible, Enable, otto_tre);
+                setAll(Visible, Enable, otto_quattro);
+                setAll(Visible, Enable, otto_cinque);
+                setAll(Visible, Enable, otto_sei);
+                setAll(Visible, Enable, otto_sette);
+                setAll(Visible, Enable, otto_otto);
+                setAll(Visible, Enable, otto_nove);
+                setAll(Visible, Enable, nove_zero);
+                setAll(Visible, Enable, nove_uno);
+                setAll(Visible, Enable, nove_due);
+                setAll(Visible, Enable, nove_tre);
+                setAll(Visible, Enable, nove_quattro);
+                setAll(Visible, Enable, nove_cinque);
+                setAll(Visible, Enable, nove_sei);
+                setAll(Visible, Enable, nove_sette);
+                setAll(Visible, Enable, nove_otto);
+                setAll(Visible, Enable, nove_nove);
+                J.setVisible(true);
+                F.setVisible(true);
+                G.setVisible(true);
+                H.setVisible(true);
+                I.setVisible(true);
+                dieci.setVisible(true);
+                nove.setVisible(true);
+                otto.setVisible(true);
+                sette.setVisible(true);
+                sei.setVisible(true);
+                cinque.setVisible(true);
+                quattro.setVisible(true);
+                tre.setVisible(true);
+                due.setVisible(true);
+                uno.setVisible(true);
+            }
+        }
+    }
+
+    private void setAll1(di f, boolean Visible, boolean Enable) {
+
+        switch (f) {
+            case _5x5: {
+                setAll(Visible, Enable, zero_zero1);
+                setAll(Visible, Enable, zero_uno1);
+                setAll(Visible, Enable, zero_due1);
+                setAll(Visible, Enable, zero_tre1);
+                setAll(Visible, Enable, zero_quattro1);
+                setAll(Visible, Enable, uno_zero1);
+                setAll(Visible, Enable, uno_uno1);
+                setAll(Visible, Enable, uno_due1);
+                setAll(Visible, Enable, uno_tre1);
+                setAll(Visible, Enable, uno_quattro1);
+                setAll(Visible, Enable, due_zero1);
+                setAll(Visible, Enable, due_uno1);
+                setAll(Visible, Enable, due_due1);
+                setAll(Visible, Enable, due_tre1);
+                setAll(Visible, Enable, due_quattro1);
+                setAll(Visible, Enable, tre_zero1);
+                setAll(Visible, Enable, tre_uno1);
+                setAll(Visible, Enable, tre_due1);
+                setAll(Visible, Enable, tre_tre1);
+                setAll(Visible, Enable, tre_quattro1);
+                setAll(Visible, Enable, quattro_zero1);
+                setAll(Visible, Enable, quattro_uno1);
+                setAll(Visible, Enable, quattro_due1);
+                setAll(Visible, Enable, quattro_tre1);
+                setAll(Visible, Enable, quattro_quattro1);
+                A1.setVisible(true);
+                B1.setVisible(true);
+                C1.setVisible(true);
+                D1.setVisible(true);
+                E1.setVisible(true);
+                J1.setVisible(false);
+                F1.setVisible(false);
+                G1.setVisible(false);
+                H1.setVisible(false);
+                I1.setVisible(false);
+                _10.setVisible(false);
+                _9.setVisible(false);
+                _8.setVisible(false);
+                _7.setVisible(false);
+                _6.setVisible(true);
+                _5.setVisible(true);
+                _4.setVisible(true);
+                _3.setVisible(true);
+                _2.setVisible(true);
+                _1.setVisible(true);
+            }
+            break;
+            case _8x8: {
+                setAll(Visible, Enable, zero_zero1);
+                setAll(Visible, Enable, zero_uno1);
+                setAll(Visible, Enable, zero_due1);
+                setAll(Visible, Enable, zero_tre1);
+                setAll(Visible, Enable, zero_quattro1);
+                setAll(Visible, Enable, zero_cinque1);
+                setAll(Visible, Enable, zero_sei1);
+                setAll(Visible, Enable, zero_sette1);
+                setAll(Visible, Enable, uno_zero1);
+                setAll(Visible, Enable, uno_uno1);
+                setAll(Visible, Enable, uno_due1);
+                setAll(Visible, Enable, uno_tre1);
+                setAll(Visible, Enable, uno_quattro1);
+                setAll(Visible, Enable, uno_cinque1);
+                setAll(Visible, Enable, uno_sei1);
+                setAll(Visible, Enable, uno_sette1);
+                setAll(Visible, Enable, due_zero1);
+                setAll(Visible, Enable, due_uno1);
+                setAll(Visible, Enable, due_due1);
+                setAll(Visible, Enable, due_tre1);
+                setAll(Visible, Enable, due_quattro1);
+                setAll(Visible, Enable, due_cinque1);
+                setAll(Visible, Enable, due_sei1);
+                setAll(Visible, Enable, due_sette1);
+                setAll(Visible, Enable, tre_zero1);
+                setAll(Visible, Enable, tre_uno1);
+                setAll(Visible, Enable, tre_due1);
+                setAll(Visible, Enable, tre_tre1);
+                setAll(Visible, Enable, tre_quattro1);
+                setAll(Visible, Enable, tre_cinque1);
+                setAll(Visible, Enable, tre_sei1);
+                setAll(Visible, Enable, tre_sette1);
+                setAll(Visible, Enable, quattro_zero1);
+                setAll(Visible, Enable, quattro_uno1);
+                setAll(Visible, Enable, quattro_due1);
+                setAll(Visible, Enable, quattro_tre1);
+                setAll(Visible, Enable, quattro_quattro1);
+                setAll(Visible, Enable, quattro_cinque1);
+                setAll(Visible, Enable, quattro_sei1);
+                setAll(Visible, Enable, quattro_sette1);
+                setAll(Visible, Enable, cinque_zero1);
+                setAll(Visible, Enable, cinque_uno1);
+                setAll(Visible, Enable, cinque_due1);
+                setAll(Visible, Enable, cinque_tre1);
+                setAll(Visible, Enable, cinque_quattro1);
+                setAll(Visible, Enable, cinque_cinque1);
+                setAll(Visible, Enable, cinque_sei1);
+                setAll(Visible, Enable, cinque_sette1);
+                setAll(Visible, Enable, sei_zero1);
+                setAll(Visible, Enable, sei_uno1);
+                setAll(Visible, Enable, sei_due1);
+                setAll(Visible, Enable, sei_tre1);
+                setAll(Visible, Enable, sei_quattro1);
+                setAll(Visible, Enable, sei_cinque1);
+                setAll(Visible, Enable, sei_sei1);
+                setAll(Visible, Enable, sei_sette1);
+                setAll(Visible, Enable, sette_zero1);
+                setAll(Visible, Enable, sette_uno1);
+                setAll(Visible, Enable, sette_due1);
+                setAll(Visible, Enable, sette_tre1);
+                setAll(Visible, Enable, sette_quattro1);
+                setAll(Visible, Enable, sette_cinque1);
+                setAll(Visible, Enable, sette_sei1);
+                setAll(Visible, Enable, sette_sette1);
+                A1.setVisible(true);
+                B1.setVisible(true);
+                C1.setVisible(true);
+                D1.setVisible(true);
+                E1.setVisible(true);
+                J1.setVisible(false);
+                F1.setVisible(false);
+                G1.setVisible(false);
+                H1.setVisible(false);
+                I1.setVisible(false);
+                _10.setVisible(false);
+                _9.setVisible(false);
+                _8.setVisible(false);
+                _7.setVisible(false);
+                _6.setVisible(true);
+                _5.setVisible(true);
+                _4.setVisible(true);
+                _3.setVisible(true);
+                _2.setVisible(true);
+                _1.setVisible(true);
+            }
+            break;
+            case _10x10: {
+                setAll(Visible, Enable, zero_zero1);
+                setAll(Visible, Enable, zero_uno1);
+                setAll(Visible, Enable, zero_due1);
+                setAll(Visible, Enable, zero_tre1);
+                setAll(Visible, Enable, zero_quattro1);
+                setAll(Visible, Enable, zero_cinque1);
+                setAll(Visible, Enable, zero_sei1);
+                setAll(Visible, Enable, zero_sette1);
+                setAll(Visible, Enable, zero_otto1);
+                setAll(Visible, Enable, zero_nove1);
+                setAll(Visible, Enable, uno_zero1);
+                setAll(Visible, Enable, uno_uno1);
+                setAll(Visible, Enable, uno_due1);
+                setAll(Visible, Enable, uno_tre1);
+                setAll(Visible, Enable, uno_quattro1);
+                setAll(Visible, Enable, uno_cinque1);
+                setAll(Visible, Enable, uno_sei1);
+                setAll(Visible, Enable, uno_sette1);
+                setAll(Visible, Enable, uno_otto1);
+                setAll(Visible, Enable, uno_nove1);
+                setAll(Visible, Enable, due_zero1);
+                setAll(Visible, Enable, due_uno1);
+                setAll(Visible, Enable, due_due1);
+                setAll(Visible, Enable, due_tre1);
+                setAll(Visible, Enable, due_quattro1);
+                setAll(Visible, Enable, due_cinque1);
+                setAll(Visible, Enable, due_sei1);
+                setAll(Visible, Enable, due_sette1);
+                setAll(Visible, Enable, due_otto1);
+                setAll(Visible, Enable, due_nove1);
+                setAll(Visible, Enable, tre_zero1);
+                setAll(Visible, Enable, tre_uno1);
+                setAll(Visible, Enable, tre_due1);
+                setAll(Visible, Enable, tre_tre1);
+                setAll(Visible, Enable, tre_quattro1);
+                setAll(Visible, Enable, tre_cinque1);
+                setAll(Visible, Enable, tre_sei1);
+                setAll(Visible, Enable, tre_sette1);
+                setAll(Visible, Enable, tre_otto1);
+                setAll(Visible, Enable, tre_nove1);
+                setAll(Visible, Enable, quattro_zero1);
+                setAll(Visible, Enable, quattro_uno1);
+                setAll(Visible, Enable, quattro_due1);
+                setAll(Visible, Enable, quattro_tre1);
+                setAll(Visible, Enable, quattro_quattro1);
+                setAll(Visible, Enable, quattro_cinque1);
+                setAll(Visible, Enable, quattro_sei1);
+                setAll(Visible, Enable, quattro_sette1);
+                setAll(Visible, Enable, quattro_otto1);
+                setAll(Visible, Enable, quattro_nove1);
+                setAll(Visible, Enable, cinque_zero1);
+                setAll(Visible, Enable, cinque_uno1);
+                setAll(Visible, Enable, cinque_due1);
+                setAll(Visible, Enable, cinque_tre1);
+                setAll(Visible, Enable, cinque_quattro1);
+                setAll(Visible, Enable, cinque_cinque1);
+                setAll(Visible, Enable, cinque_sei1);
+                setAll(Visible, Enable, cinque_sette1);
+                setAll(Visible, Enable, cinque_otto1);
+                setAll(Visible, Enable, cinque_nove1);
+                setAll(Visible, Enable, sei_zero1);
+                setAll(Visible, Enable, sei_uno1);
+                setAll(Visible, Enable, sei_due1);
+                setAll(Visible, Enable, sei_tre1);
+                setAll(Visible, Enable, sei_quattro1);
+                setAll(Visible, Enable, sei_cinque1);
+                setAll(Visible, Enable, sei_sei1);
+                setAll(Visible, Enable, sei_sette1);
+                setAll(Visible, Enable, sei_otto1);
+                setAll(Visible, Enable, sei_nove1);
+                setAll(Visible, Enable, sette_zero1);
+                setAll(Visible, Enable, sette_uno1);
+                setAll(Visible, Enable, sette_due1);
+                setAll(Visible, Enable, sette_tre1);
+                setAll(Visible, Enable, sette_quattro1);
+                setAll(Visible, Enable, sette_cinque1);
+                setAll(Visible, Enable, sette_sei1);
+                setAll(Visible, Enable, sette_sette1);
+                setAll(Visible, Enable, sette_otto1);
+                setAll(Visible, Enable, sette_nove1);
+                setAll(Visible, Enable, otto_zero1);
+                setAll(Visible, Enable, otto_uno1);
+                setAll(Visible, Enable, otto_due1);
+                setAll(Visible, Enable, otto_tre1);
+                setAll(Visible, Enable, otto_quattro1);
+                setAll(Visible, Enable, otto_cinque1);
+                setAll(Visible, Enable, otto_sei1);
+                setAll(Visible, Enable, otto_sette1);
+                setAll(Visible, Enable, otto_otto1);
+                setAll(Visible, Enable, otto_nove1);
+                setAll(Visible, Enable, nove_zero1);
+                setAll(Visible, Enable, nove_uno1);
+                setAll(Visible, Enable, nove_due1);
+                setAll(Visible, Enable, nove_tre1);
+                setAll(Visible, Enable, nove_quattro1);
+                setAll(Visible, Enable, nine_five1);
+                setAll(Visible, Enable, nine_six1);
+                setAll(Visible, Enable, nine_seven1);
+                setAll(Visible, Enable, nine_eight1);
+                setAll(Visible, Enable, nine_nine1);
+                A1.setVisible(true);
+                B1.setVisible(true);
+                C1.setVisible(true);
+                D1.setVisible(true);
+                E1.setVisible(true);
+                J1.setVisible(false);
+                F1.setVisible(false);
+                G1.setVisible(false);
+                H1.setVisible(false);
+                I1.setVisible(false);
+                _10.setVisible(false);
+                _9.setVisible(false);
+                _8.setVisible(false);
+                _7.setVisible(false);
+                _6.setVisible(true);
+                _5.setVisible(true);
+                _4.setVisible(true);
+                _3.setVisible(true);
+                _2.setVisible(true);
+                _1.setVisible(true);
+            }
+        }
+    }
+
+    private void setColoroCyan(di f)
+    {
+        switch (f)
+        {
+            case _5x5 :
+            {
+                zero_zero1.setBackground(Color.cyan);
+                zero_uno1.setBackground(Color.cyan);
+                zero_due1.setBackground(Color.cyan);
+                zero_tre1.setBackground(Color.cyan);
+                zero_quattro1.setBackground(Color.cyan);
+                uno_zero1.setBackground(Color.cyan);
+                uno_uno1.setBackground(Color.cyan);
+                uno_due1.setBackground(Color.cyan);
+                uno_tre1.setBackground(Color.cyan);
+                uno_quattro1.setBackground(Color.cyan);
+                due_zero1.setBackground(Color.cyan);
+                due_uno1.setBackground(Color.cyan);
+                due_due1.setBackground(Color.cyan);
+                due_tre1.setBackground(Color.cyan);
+                due_quattro1.setBackground(Color.cyan);
+                tre_zero1.setBackground(Color.cyan);
+                tre_uno1.setBackground(Color.cyan);
+                tre_due1.setBackground(Color.cyan);
+                tre_tre1.setBackground(Color.cyan);
+                tre_quattro1.setBackground(Color.cyan);
+                quattro_zero1.setBackground(Color.cyan);
+                quattro_uno1.setBackground(Color.cyan);
+                quattro_due1.setBackground(Color.cyan);
+                quattro_tre1.setBackground(Color.cyan);
+                quattro_quattro1.setBackground(Color.cyan);
+                break;
+            }
+            case _8x8:
+            {
+                break;
+            }
+            }
+        }
+    
+    private void setVisibleShip ()
+    {
+        zero_zero1.setSelected(true);
+        zero_uno1.setSelected(true);
+        zero_due1.setSelected(true);
+        zero_tre1.setSelected(true);
+        zero_quattro1.setSelected(true);
+        uno_zero1.setSelected(true);
+        uno_uno1.setSelected(true);
+        uno_due1.setSelected(true);
+        uno_tre1.setSelected(true);
+        uno_quattro1.setSelected(true);
+        due_zero1.setSelected(true);
+        due_uno1.setSelected(true);
+        due_due1.setSelected(true);
+        due_tre1.setSelected(true);
+        due_quattro1.setSelected(true);
+        tre_zero1.setSelected(true);
+        tre_uno1.setSelected(true);
+        tre_due1.setSelected(true);
+        tre_tre1.setSelected(true);
+        tre_quattro1.setSelected(true);
+        quattro_zero1.setSelected(true);
+        quattro_uno1.setSelected(true);
+        quattro_due1.setSelected(true);
+        quattro_tre1.setSelected(true);
+        quattro_quattro1.setSelected(true);
+    }
+    }
+
